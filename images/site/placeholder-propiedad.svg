@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#F5F5F5"/>
+  <rect width="400" height="300" fill="none" stroke="#C9A85D" stroke-width="2" stroke-dasharray="6 6" transform="translate(1,1) scale(0.995)"/>
+  <g transform="translate(160,95)" fill="none" stroke="#0F3D5E" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M0 40 L40 8 L80 40"/>
+    <rect x="10" y="40" width="60" height="46"/>
+    <rect x="34" y="60" width="14" height="26" fill="#0F3D5E" stroke="none"/>
+  </g>
+  <text x="200" y="168" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#2F2F2F" text-anchor="middle" letter-spacing="0.5">FOTO DE LA PROPIEDAD</text>
+  <text x="200" y="188" font-family="Inter, Arial, sans-serif" font-size="11" fill="#2F2F2F" opacity="0.6" text-anchor="middle">PRÓXIMAMENTE</text>
+</svg>
