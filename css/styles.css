@@ -143,14 +143,16 @@ h1, h2, h3, h4 {
   font-family: var(--font-heading);
 }
 
-.logo-mark {
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: var(--color-blue);
-  letter-spacing: 0.04em;
+.acostel-logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-black);
+  letter-spacing: 0.08em;
+  line-height: 1;
 }
 
-.logo-mark span { color: var(--color-gold); }
+.acostel-logo .e { color: var(--color-gold); }
+.acostel-logo.on-dark { color: var(--color-white); }
 
 .logo-tagline {
   display: none;
@@ -501,7 +503,7 @@ h1, h2, h3, h4 {
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
 }
 
-.footer-brand .logo-mark { color: var(--color-white); }
+.footer-brand .acostel-logo { font-size: 1.3rem; }
 .footer-brand p { margin-top: 14px; font-size: 0.88rem; max-width: 320px; }
 
 .footer-col h4 {
