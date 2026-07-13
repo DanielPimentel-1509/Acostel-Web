@@ -8,7 +8,7 @@
    código de país y SIN signos "+" ni espacios.
    Ejemplo El Salvador: "50378001234"
    -------------------------------------------- */
-const WHATSAPP_NUMBER = "50300000000"; // TODO: reemplazar por el número real
+const WHATSAPP_NUMBER = "50361968521";
 
 function buildWhatsAppLink(message) {
   const encoded = encodeURIComponent(message);
