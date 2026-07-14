@@ -66,9 +66,6 @@ function initContactSection() {
   const footerLink = document.getElementById("footer-whatsapp-link");
   if (footerLink) footerLink.href = buildWhatsAppLink(whatsappMessage);
 
-  const phoneLink = document.getElementById("contact-phone-link");
-  if (phoneLink) phoneLink.href = buildWhatsAppLink(whatsappMessage);
-
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
