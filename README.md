@@ -84,6 +84,25 @@ el texto "Foto próximamente"). Cuando tengas fotos reales:
 La primera imagen de la lista es la que aparece en la tarjeta del catálogo;
 todas las imágenes aparecen como galería en la ficha individual.
 
+## 2.1 Videos
+
+Cada ficha puede tener un video (opcional). Al pasar el mouse sobre la
+tarjeta en el catálogo (o mantener presionado en el celular) se reproduce
+una vista previa automática, silenciosa y en bucle — como en YouTube o
+Instagram. En la ficha individual aparece un reproductor completo.
+
+Para agregarlo, solo agrega una línea `video:` al bloque de la ficha en
+`data.js`, de dos formas posibles:
+
+- **Un link de YouTube** (recomendado para recorridos completos):
+  `video: "https://www.youtube.com/watch?v=XXXXXXXXXXX"`
+  Sube el video a YouTube como **"No listado"** (así no aparece en
+  búsquedas, pero el link funciona) y pega esa dirección aquí.
+- **Un archivo de video subido directo al repositorio** (mejor para clips
+  cortos, de pocos segundos): `video: "images/listings/veh-001.mp4"`
+  Evita subir videos largos así — hacen el sitio lento y GitHub limita el
+  tamaño de archivos.
+
 ## 3. Número de WhatsApp
 
 Está definido en **`js/common.js`**, en esta línea:

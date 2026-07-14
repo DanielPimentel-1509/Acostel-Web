@@ -30,10 +30,11 @@ function cardHtml(listing) {
   return `
     <article class="card">
       <a href="ficha.html?id=${encodeURIComponent(listing.id)}" class="card-link">
-        <div class="card-media">
+        <div class="card-media"${listing.video ? ` data-video="${listing.video}"` : ""}>
           <img src="${cover}" alt="${listing.title}" loading="lazy">
           ${listing.badge ? `<span class="card-badge">${listing.badge}</span>` : ""}
           <span class="card-type">${listing.type === "propiedad" ? "Propiedad" : "Vehículo"}</span>
+          ${listing.video ? `<span class="card-play" aria-hidden="true">▶</span>` : ""}
         </div>
         <div class="card-body">
           <span class="card-price">${formatPrice(listing)}</span>
@@ -45,6 +46,61 @@ function cardHtml(listing) {
       </a>
     </article>
   `;
+}
+
+function buildVideoPreviewElement(videoUrl) {
+  if (isVideoFile(videoUrl)) {
+    const video = document.createElement("video");
+    video.src = videoUrl;
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.className = "card-preview-video";
+    return video;
+  }
+  const ytId = getYouTubeId(videoUrl);
+  if (!ytId) return null;
+  const iframe = document.createElement("iframe");
+  iframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&playsinline=1`;
+  iframe.className = "card-preview-video";
+  iframe.setAttribute("frameborder", "0");
+  iframe.setAttribute("allow", "autoplay; encrypted-media");
+  return iframe;
+}
+
+function attachVideoPreviews(grid) {
+  grid.querySelectorAll(".card-media[data-video]").forEach((media) => {
+    const videoUrl = media.dataset.video;
+    let previewEl = null;
+    let pressTimer = null;
+
+    const start = () => {
+      if (previewEl) return;
+      previewEl = buildVideoPreviewElement(videoUrl);
+      if (!previewEl) return;
+      media.appendChild(previewEl);
+    };
+    const stop = () => {
+      clearTimeout(pressTimer);
+      if (previewEl) {
+        previewEl.remove();
+        previewEl = null;
+      }
+    };
+
+    media.addEventListener("mouseenter", start);
+    media.addEventListener("mouseleave", stop);
+    media.addEventListener(
+      "touchstart",
+      () => {
+        pressTimer = setTimeout(start, 350);
+      },
+      { passive: true }
+    );
+    media.addEventListener("touchend", stop);
+    media.addEventListener("touchcancel", stop);
+  });
 }
 
 function renderCatalog(type) {
@@ -62,6 +118,8 @@ function renderCatalog(type) {
     const label = type === "propiedad" ? "propiedades" : "vehículos";
     count.textContent = `${filtered.length} ${label} disponibles`;
   }
+
+  attachVideoPreviews(grid);
 }
 
 function setActiveTab(type) {

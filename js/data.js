@@ -14,6 +14,17 @@
    fotos reales, se usan las imágenes de marcador
    images/site/placeholder-propiedad.svg o
    images/site/placeholder-vehiculo.svg
+
+   video (opcional): agrega esta línea a cualquier ficha
+   para mostrar un video. Al pasar el mouse sobre la
+   tarjeta (o mantener presionado en el celular) se
+   reproduce una vista previa; en la ficha aparece un
+   reproductor completo. Acepta dos formas:
+     video: "https://www.youtube.com/watch?v=XXXXXXXXXXX"
+     video: "images/listings/veh-001.mp4"
+   Para videos largos (recorridos completos) se recomienda
+   subirlos a YouTube como "no listado" y pegar el link acá,
+   en vez de subir el archivo de video directo al repositorio.
    ============================================ */
 
 const listings = [

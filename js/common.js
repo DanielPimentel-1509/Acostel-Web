@@ -28,6 +28,16 @@ function formatPrice(listing) {
   return formatted;
 }
 
+function getYouTubeId(url) {
+  if (!url) return null;
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
+function isVideoFile(url) {
+  return !!url && /\.(mp4|webm|mov)$/i.test(url);
+}
+
 function initWhatsAppFloat() {
   const float = document.getElementById("whatsapp-float");
   if (!float) return;

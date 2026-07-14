@@ -57,6 +57,30 @@ function galleryHtml(listing) {
   `;
 }
 
+function videoSectionHtml(listing) {
+  if (!listing.video) return "";
+
+  if (isVideoFile(listing.video)) {
+    return `
+      <div class="detail-section">
+        <h2>Video</h2>
+        <video controls playsinline class="detail-video" src="${listing.video}"></video>
+      </div>
+    `;
+  }
+
+  const ytId = getYouTubeId(listing.video);
+  if (!ytId) return "";
+  return `
+    <div class="detail-section">
+      <h2>Video</h2>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/${ytId}" title="Video de ${listing.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  `;
+}
+
 function renderNotFound() {
   const root = document.querySelector("#detail-root .container");
   root.innerHTML = `
@@ -107,6 +131,8 @@ function renderListing(listing) {
       <h2>Descripción</h2>
       <p>${listing.description}</p>
     </div>
+
+    ${videoSectionHtml(listing)}
 
     ${listing.features && listing.features.length ? `
       <div class="detail-section">
