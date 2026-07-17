@@ -66,6 +66,13 @@ function initContactSection() {
   const footerLink = document.getElementById("footer-whatsapp-link");
   if (footerLink) footerLink.href = buildWhatsAppLink(whatsappMessage);
 
+  const sellBtn = document.getElementById("sell-whatsapp-btn");
+  if (sellBtn) {
+    sellBtn.href = buildWhatsAppLink(
+      "Hola, tengo una propiedad/vehículo que me gustaría vender con Acostel. Les comparto los detalles:"
+    );
+  }
+
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 }

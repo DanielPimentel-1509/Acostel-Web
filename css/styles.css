@@ -305,6 +305,60 @@ h1, h2, h3, h4 {
   color: var(--color-white);
 }
 
+.catalog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  background: var(--color-gray-light);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 160px;
+}
+
+.filter-field label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-gray-dark);
+  opacity: 0.7;
+}
+
+.filter-field select,
+.filter-field input {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-black);
+  background: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 9px 12px;
+}
+
+.filter-field select:focus,
+.filter-field input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+.filter-clear {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-blue);
+  padding: 9px 4px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.filter-clear:hover { color: var(--color-gold-dark); }
+
 .catalog-count { font-size: 0.9rem; color: var(--color-gray-dark); opacity: 0.75; }
 
 .catalog-grid {
@@ -469,6 +523,30 @@ h1, h2, h3, h4 {
 }
 
 .about-stat span { font-size: 0.82rem; color: var(--color-gray-dark); opacity: 0.8; }
+
+/* ---------- Sell CTA ---------- */
+.sell-cta { background: var(--color-blue); padding: 56px 0; }
+
+.sell-cta-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.sell-cta-label { color: var(--color-gold); }
+
+.sell-cta-title {
+  color: var(--color-white);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  margin-bottom: 10px;
+}
+
+.sell-cta p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 480px;
+}
 
 /* ---------- Contact ---------- */
 .contact { padding: 88px 0; background: var(--color-white); }

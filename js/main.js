@@ -103,19 +103,60 @@ function attachVideoPreviews(grid) {
   });
 }
 
+function populateLocationFilter(type) {
+  const select = document.getElementById("filter-location");
+  const wrap = document.getElementById("filter-location-wrap");
+  if (!select) return;
+
+  if (type === "vehiculo") {
+    wrap.style.display = "none";
+    select.value = "";
+    return;
+  }
+  wrap.style.display = "";
+
+  const locations = Array.from(
+    new Set(listings.filter((item) => item.type === type).map((item) => item.location))
+  ).sort((a, b) => a.localeCompare(b, "es"));
+
+  const current = select.value;
+  select.innerHTML = '<option value="">Todas las ubicaciones</option>' +
+    locations.map((loc) => `<option value="${loc}">${loc}</option>`).join("");
+  if (locations.includes(current)) select.value = current;
+}
+
+function getActiveFilters() {
+  const locationEl = document.getElementById("filter-location");
+  const minEl = document.getElementById("filter-price-min");
+  const maxEl = document.getElementById("filter-price-max");
+  return {
+    location: locationEl ? locationEl.value : "",
+    priceMin: minEl && minEl.value !== "" ? Number(minEl.value) : null,
+    priceMax: maxEl && maxEl.value !== "" ? Number(maxEl.value) : null,
+  };
+}
+
 function renderCatalog(type) {
   const grid = document.getElementById("catalog-grid");
   const count = document.getElementById("catalog-count");
   if (!grid) return;
 
-  const filtered = listings.filter((item) => item.type === type);
+  const { location, priceMin, priceMax } = getActiveFilters();
 
+  const filtered = listings.filter((item) => {
+    if (item.type !== type) return false;
+    if (location && item.location !== location) return false;
+    if (priceMin !== null && item.price < priceMin) return false;
+    if (priceMax !== null && item.price > priceMax) return false;
+    return true;
+  });
+
+  const label = type === "propiedad" ? "propiedades" : "vehículos";
   grid.innerHTML = filtered.length
     ? filtered.map(cardHtml).join("")
-    : `<p class="catalog-empty">Aún no hay ${type === "propiedad" ? "propiedades" : "vehículos"} publicados. Vuelve pronto.</p>`;
+    : `<p class="catalog-empty">No encontramos ${label} con esos filtros. Prueba ajustando la búsqueda.</p>`;
 
   if (count) {
-    const label = type === "propiedad" ? "propiedades" : "vehículos";
     count.textContent = `${filtered.length} ${label} disponibles`;
   }
 
@@ -128,26 +169,53 @@ function setActiveTab(type) {
   });
 }
 
+function initStatsCount() {
+  const el = document.getElementById("stat-listings-count");
+  if (el) el.textContent = `${listings.length}+`;
+}
+
 function initCatalog() {
   const grid = document.getElementById("catalog-grid");
   if (!grid) return;
 
   const params = new URLSearchParams(window.location.search);
-  const initialType = params.get("tipo") === "vehiculo" ? "vehiculo" : "propiedad";
+  let currentType = params.get("tipo") === "vehiculo" ? "vehiculo" : "propiedad";
 
-  setActiveTab(initialType);
-  renderCatalog(initialType);
+  setActiveTab(currentType);
+  populateLocationFilter(currentType);
+  renderCatalog(currentType);
 
   document.querySelectorAll(".tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const type = btn.dataset.type;
-      setActiveTab(type);
-      renderCatalog(type);
+      currentType = btn.dataset.type;
+      setActiveTab(currentType);
+      document.getElementById("filter-price-min").value = "";
+      document.getElementById("filter-price-max").value = "";
+      populateLocationFilter(currentType);
+      renderCatalog(currentType);
       const url = new URL(window.location.href);
-      url.searchParams.set("tipo", type);
+      url.searchParams.set("tipo", currentType);
       window.history.replaceState({}, "", url);
     });
   });
+
+  const locationEl = document.getElementById("filter-location");
+  const minEl = document.getElementById("filter-price-min");
+  const maxEl = document.getElementById("filter-price-max");
+  const clearBtn = document.getElementById("filter-clear");
+
+  locationEl.addEventListener("change", () => renderCatalog(currentType));
+  minEl.addEventListener("input", () => renderCatalog(currentType));
+  maxEl.addEventListener("input", () => renderCatalog(currentType));
+  clearBtn.addEventListener("click", () => {
+    locationEl.value = "";
+    minEl.value = "";
+    maxEl.value = "";
+    renderCatalog(currentType);
+  });
 }
 
-document.addEventListener("DOMContentLoaded", initCatalog);
+document.addEventListener("DOMContentLoaded", () => {
+  initStatsCount();
+  initCatalog();
+});
