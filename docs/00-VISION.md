@@ -2,7 +2,7 @@
 
 ## Acostel OS — Visión del Proyecto
 
-> **Versión:** 2.0
+> **Versión:** 2.1 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-18
 > **Estado:** Documento vivo — se actualiza a medida que el proyecto avanza y se validan (o se descartan) supuestos.
 > Ver [Registro de cambios](#registro-de-cambios) al final.
@@ -20,10 +20,9 @@ No se construye una plataforma genérica desde el día uno. Se construye Acostel
 ## Filosofía
 
 - La web es solo una interfaz. El contenido no vive "en el sitio", vive en Notion.
-- La **fuente única de la verdad de contenido será siempre Notion.**
-- Notion es la fuente de la verdad para **editar y capturar** información — no necesariamente la fuente que el sitio consulta en vivo (ver [Arquitectura del sistema](#arquitectura-del-sistema)).
+- La **fuente única de la verdad será siempre Notion** — para editar y capturar información, no necesariamente para lo que el sitio consulta en vivo (ver [Arquitectura del sistema](#arquitectura-del-sistema)).
 - Toda la plataforma gira alrededor de datos centralizados, consistentes y reutilizables.
-- **La automatización es una meta, no un punto de partida.** Mientras no exista un pipeline real de sincronización, el proceso manual (humano o asistido por IA) es un paso legítimo — pero debe tratarse como algo temporal y documentado, no como el diseño final.
+- **La automatización es una meta, no un punto de partida.** Mientras no exista un pipeline real, el proceso manual (humano o asistido por IA) es un paso legítimo — pero temporal, no el diseño final.
 
 ---
 
@@ -44,7 +43,7 @@ No se construye una plataforma genérica desde el día uno. Se construye Acostel
 Explícito, para que el alcance no crezca solo:
 
 - No se está construyendo un backend propio ni una base de datos separada de Notion todavía.
-- No se está construyendo el "Core Platform" compartido todavía — no existe un segundo módulo real que lo justifique.
+- No se está construyendo el "Core Platform" compartido todavía (condición completa en [Visión a largo plazo](#visión-a-largo-plazo)).
 - No se están construyendo pagos, autenticación de usuarios finales, ni panel de administración propio.
 - No se está optimizando para alto tráfico o múltiples países — el foco es El Salvador, un solo idioma, un solo negocio activo.
 
@@ -53,14 +52,13 @@ Explícito, para que el alcance no crezca solo:
 ## Principios
 
 1. **Fuente única de la verdad en Notion** — para contenido y datos de negocio. (Ver matiz en Arquitectura.)
-2. **Frontera clara entre datos públicos e internos** — cada campo de Notion que alimenta al sitio debe estar explícitamente marcado como público o interno. Nunca se asume; se declara. *(Principio nuevo — surgió de un problema real: campos de Notion mezclando comisiones y datos de contacto de propietarios con el texto que ve el cliente.)*
+2. **Frontera clara entre datos públicos e internos** — cada campo de Notion que alimenta al sitio debe estar explícitamente marcado como público o interno. Nunca se asume; se declara (detalle en [Modelo de datos](#modelo-de-datos-y-frontera-públicointerno)).
 3. **Arquitectura modular** — pero modular no significa genérica desde el inicio. Un módulo se separa cuando ya existe, no antes.
 4. **Reutilización antes que reconstrucción** — aplica una vez que exista un segundo caso de uso real. Reutilizar algo que no se ha probado dos veces es adivinar, no reutilizar.
-5. **Automatizar solo después de validar manualmente el proceso completo** (ver Regla de trabajo corregida).
-6. **Simplicidad antes que complejidad** — este principio tiene prioridad sobre "escalabilidad desde el inicio" cuando entran en conflicto. Ante la duda, se elige lo simple.
-7. **Escalabilidad como intención, no como estructura prematura** — se diseñan las decisiones actuales para no bloquear el futuro, sin construir ese futuro por adelantado.
-8. **Resiliencia ante fallos de la fuente de datos** — el sitio debe seguir funcionando (mostrando el último dato válido) si Notion no responde o la sincronización falla. *(Principio nuevo.)*
-9. **Seguridad y control de acceso explícitos** — quién puede editar Notion, quién tiene permisos de escritura en el repositorio, cómo se gestionan credenciales y tokens, por módulo. *(Principio nuevo — motivado por los problemas reales de permisos que surgieron al conectar GitHub.)*
+5. **Automatizar solo después de validar manualmente el proceso completo** (ver [Regla de trabajo](#regla-de-trabajo)).
+6. **Simplicidad antes que complejidad** — incluye no construir escalabilidad que todavía no se necesita. Las decisiones de hoy no deben bloquear el futuro, pero tampoco deben construirlo por adelantado. Ante la duda, se elige lo simple.
+7. **Resiliencia ante fallos de la fuente de datos** — el sitio debe seguir funcionando (mostrando el último dato válido) si Notion no responde o la sincronización falla.
+8. **Seguridad y control de acceso explícitos** — quién puede editar Notion, quién tiene permisos de escritura en el repositorio, cómo se gestionan credenciales y tokens, por módulo.
 
 ---
 
@@ -151,24 +149,13 @@ Nunca automatizar sin haber operado el proceso manualmente primero. Nunca quedar
 
 ## Riesgos abiertos
 
-Lista viva — no resueltos todavía, mencionados a propósito para no perderlos de vista:
+Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas arriba, solo se registra que siguen abiertos:
 
-- No existe todavía un mecanismo real de sincronización Notion → sitio (hoy es manual).
-- No hay definición de qué pasa si Notion está caído o inaccesible.
-- No hay política de acceso/seguridad documentada (quién edita Notion, quién tiene acceso de escritura al repositorio).
-- No hay métricas de éxito definidas para el MVP (ver más abajo, pendiente de definir con el cliente).
-- El estado "Revisión" de las fichas en Notion no se está usando de forma consistente (todo permanece en "Por revisar").
-
----
-
-## Métricas de éxito (pendiente de definir)
-
-Sección deliberadamente incompleta — a definir con el negocio. Ejemplos de qué podría medirse:
-
-- Tiempo entre "propiedad lista en Notion" y "publicada en el sitio"
-- Número de contactos generados por WhatsApp desde el sitio
-- Velocidad de carga del sitio
-- Número de fichas activas mantenidas al día
+- Pipeline de sincronización Notion → sitio real (ver [Arquitectura del sistema](#arquitectura-del-sistema)).
+- Comportamiento del sitio si Notion está caído (principio 7).
+- Política de acceso/seguridad documentada (principio 8).
+- Métricas de éxito del MVP — aún sin definir con el cliente. Candidatas: tiempo entre "listo en Notion" y "publicado", contactos generados por WhatsApp, velocidad de carga, fichas activas mantenidas al día.
+- El estado "Revisión" de las fichas en Notion no se usa de forma consistente (todo permanece en "Por revisar").
 
 ---
 
@@ -178,3 +165,4 @@ Sección deliberadamente incompleta — a definir con el negocio. Ejemplos de qu
 |---|---|---|
 | 1.0 | (original) | Documento inicial: propósito, filosofía, objetivos, principios, MVP, visión a largo plazo, regla principal, enfoque estratégico. |
 | 2.0 | 2026-07-18 | Revisión crítica de arquitectura. Se agregan: no-objetivos, frontera público/interno de datos, sección de arquitectura del sistema (estado real vs. aspiracional), modelo de datos, MVP priorizado (MoSCoW), riesgos abiertos, métricas pendientes, y este registro de cambios. Se corrige la secuencia de la "Regla Principal". Se marca la visión a largo plazo como especulativa para evitar abstracción prematura. Se confirma: WhatsApp como canal principal, formularios de contacto como canal secundario (no reemplazados), con arquitectura lista para integrar CRM más adelante. Documento ubicado en `Acostel-Web/docs/` por decisión explícita de no crear un repositorio separado todavía. |
+| 2.1 | 2026-07-18 | Pasada de simplificación: se eliminan redundancias (la regla de "no construir Core Platform hasta un segundo módulo real" ahora vive en un solo lugar; se fusionan los principios de simplicidad y escalabilidad prematura; se quitan las etiquetas "(principio nuevo)" que ya documentaba este registro). Se fusiona "Métricas de éxito" dentro de "Riesgos abiertos" para no repetir una sección casi vacía. **Documento validado como base oficial del proyecto.** |
