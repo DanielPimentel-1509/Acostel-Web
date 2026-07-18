@@ -2,7 +2,7 @@
 
 ## Acostel OS — Visión del Proyecto
 
-> **Versión:** 2.1 — Validado como base oficial del proyecto
+> **Versión:** 2.2 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-18
 > **Estado:** Documento vivo — se actualiza a medida que el proyecto avanza y se validan (o se descartan) supuestos.
 > Ver [Registro de cambios](#registro-de-cambios) al final.
@@ -82,7 +82,7 @@ Sitio web estático (HTML/CSS/JS) — la interfaz
 
 **Estrategia de imágenes:** los archivos de imagen de Notion no son directamente enlazables desde un sitio público (son adjuntos internos con URLs temporales). Mientras no se defina una estrategia distinta, las imágenes reales se suben directamente al repositorio del sitio (no se leen desde Notion), y Notion solo guarda referencia/metadatos.
 
-**Estrategia de contacto (decisión confirmada):** WhatsApp es el canal principal de contacto para el MVP. Los formularios de contacto **no se eliminan** — se mantienen como canal secundario, y su arquitectura debe capturar datos estructurados (nombre, contacto, mensaje, referencia de la ficha) desde el día en que se implementen, para poder conectarse a un CRM más adelante sin rediseño. Mientras el formulario no exista, WhatsApp es el único canal activo.
+**Estrategia de contacto (decisión confirmada; corresponde al módulo *Sales / Leads* en `docs/01-CORE-PLATFORM.md`):** WhatsApp es el canal principal de contacto para el MVP. Los formularios de contacto **no se eliminan** — se mantienen como canal secundario, y su arquitectura debe capturar datos estructurados (nombre, contacto, mensaje, referencia de la ficha) desde el día en que se implementen, para poder conectarse a un CRM más adelante sin rediseño. Mientras el formulario no exista, WhatsApp es el único canal activo.
 
 ---
 
@@ -156,6 +156,9 @@ Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas a
 - Política de acceso/seguridad documentada (principio 8).
 - Métricas de éxito del MVP — aún sin definir con el cliente. Candidatas: tiempo entre "listo en Notion" y "publicado", contactos generados por WhatsApp, velocidad de carga, fichas activas mantenidas al día.
 - El estado "Revisión" de las fichas en Notion no se usa de forma consistente (todo permanece en "Por revisar").
+- Content Engine: los canales que no son Web/SEO (WhatsApp, Instagram, TikTok, Facebook, Marketplace) ya tienen copy redactado en Notion, pero no están conectados a nada dentro de este sistema.
+- Creative Engine: sin pipeline definido para creativos diseñados (portadas, gráficas) — hoy solo hay fotos crudas y las imágenes ya integradas al sitio (logo, favicon).
+- Distribution: la publicación en redes sociales y marketplace es 100% manual, sin conexión a este sistema.
 
 ---
 
@@ -166,3 +169,4 @@ Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas a
 | 1.0 | (original) | Documento inicial: propósito, filosofía, objetivos, principios, MVP, visión a largo plazo, regla principal, enfoque estratégico. |
 | 2.0 | 2026-07-18 | Revisión crítica de arquitectura. Se agregan: no-objetivos, frontera público/interno de datos, sección de arquitectura del sistema (estado real vs. aspiracional), modelo de datos, MVP priorizado (MoSCoW), riesgos abiertos, métricas pendientes, y este registro de cambios. Se corrige la secuencia de la "Regla Principal". Se marca la visión a largo plazo como especulativa para evitar abstracción prematura. Se confirma: WhatsApp como canal principal, formularios de contacto como canal secundario (no reemplazados), con arquitectura lista para integrar CRM más adelante. Documento ubicado en `Acostel-Web/docs/` por decisión explícita de no crear un repositorio separado todavía. |
 | 2.1 | 2026-07-18 | Pasada de simplificación: se eliminan redundancias (la regla de "no construir Core Platform hasta un segundo módulo real" ahora vive en un solo lugar; se fusionan los principios de simplicidad y escalabilidad prematura; se quitan las etiquetas "(principio nuevo)" que ya documentaba este registro). Se fusiona "Métricas de éxito" dentro de "Riesgos abiertos" para no repetir una sección casi vacía. **Documento validado como base oficial del proyecto.** |
+| 2.2 | 2026-07-18 | Revisión de coherencia cruzada con `CLAUDE.md` y `docs/01-CORE-PLATFORM.md`. Se agregan tres riesgos abiertos identificados en `01-CORE-PLATFORM.md` que no estaban registrados aquí (canales de Content Engine sin conectar, Creative Engine sin pipeline, Distribution 100% manual), para que la referencia cruzada entre ambos documentos sea exacta. Se conecta "Estrategia de contacto" con el módulo *Sales / Leads*. |

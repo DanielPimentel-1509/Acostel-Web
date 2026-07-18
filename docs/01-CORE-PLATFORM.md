@@ -2,7 +2,7 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.0 — Validado como base oficial del proyecto
+> **Versión:** 1.1 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-18
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
@@ -10,7 +10,7 @@
 
 ## Propósito de este documento
 
-`00-VISION.md` define la dirección del proyecto y por qué existe. `CLAUDE.md` define cómo se trabaja. **Este documento define de qué piezas está hecho el sistema hoy** — no una arquitectura genérica para negocios futuros, sino el mapa real de Acostel tal como funciona ahora mismo.
+`docs/00-VISION.md` define la dirección del proyecto y por qué existe. `CLAUDE.md` define cómo se trabaja. **Este documento define de qué piezas está hecho el sistema hoy** — no una arquitectura genérica para negocios futuros, sino el mapa real de Acostel tal como funciona ahora mismo.
 
 Regla de este documento: si algo no existe todavía, se marca como **Futuro**. No se describe como si ya existiera.
 
@@ -80,7 +80,7 @@ Ningún módulo es 100% "Futuro" — todos tienen al menos una parte real hoy. L
 
 **Dueño:** el cliente. **Dónde vive:** workspace de Notion — bases "🏠 Propiedades", "🚗 Vehículos", "📣 Copies por Canal".
 
-Es la fuente única de la verdad (principio ya establecido en `00-VISION.md`). Contiene dos tipos de información distintos que antes se trataban como una sola cosa: datos estructurados (precio, ubicación, specs) y contenido redactado (los copies). Separarlos conceptualmente es lo que permitió identificar Content Engine como módulo propio.
+Es la fuente única de la verdad (principio ya establecido en `docs/00-VISION.md`). Contiene dos tipos de información distintos que antes se trataban como una sola cosa: datos estructurados (precio, ubicación, specs) y contenido redactado (los copies). Separarlos conceptualmente es lo que permitió identificar Content Engine como módulo propio.
 
 **Futuro:** si se agrega un segundo negocio (Carshtel, etc.), reutiliza el mismo patrón de bases de datos — no antes.
 
@@ -88,11 +88,11 @@ Es la fuente única de la verdad (principio ya establecido en `00-VISION.md`). C
 
 ### 2. Data Processing / Sync
 
-**Dueño:** Claude Code, hoy. **Dónde vive:** no existe como proceso independiente todavía — es una tarea que se ejecuta bajo demanda.
+**Dueño:** Claude Code, bajo dirección del cliente. **Dónde vive:** no existe como proceso independiente todavía — es una tarea que se ejecuta bajo demanda.
 
-Lee las bases de Propiedades y Vehículos, aplica la frontera público/interno (definida en `00-VISION.md`), y genera los datos que consume el sitio (hoy: `js/data.js`).
+Lee las bases de Propiedades y Vehículos, aplica la frontera público/interno (definida en `docs/00-VISION.md`), y genera los datos que consume el sitio (hoy: `js/data.js`).
 
-**Hoy:** manual, asistido por IA, bajo demanda. **Futuro:** un proceso programado o disparado por webhook que haga lo mismo sin intervención manual — es el candidato número uno a automatizar, ya señalado como riesgo abierto en `00-VISION.md`.
+**Hoy:** manual, asistido por IA, bajo demanda. **Futuro:** un proceso programado o disparado por webhook que haga lo mismo sin intervención manual — es el candidato número uno a automatizar, ya señalado como riesgo abierto en `docs/00-VISION.md`.
 
 ---
 
@@ -128,13 +128,13 @@ Produce el material visual de cada ficha: fotos, portadas, creativos diseñados.
 
 Consume lo que producen Data Processing/Sync (datos), Content Engine (texto del canal Web/SEO) y Creative Engine (imágenes), y los muestra como catálogo, fichas, filtros y contacto.
 
-**Hoy:** completo y en producción. **Futuro:** plantilla reutilizable para otro negocio, una vez que exista un segundo caso real (condición ya establecida en `00-VISION.md`).
+**Hoy:** completo y en producción. **Futuro:** plantilla reutilizable para otro negocio, una vez que exista un segundo caso real (condición ya establecida en `docs/00-VISION.md`).
 
 ---
 
 ### 6. Publishing
 
-**Dueño:** infraestructura automática. **Dónde vive:** GitHub (rama `claude/acostel-website-build-e5gau7`) → Netlify.
+**Dueño:** infraestructura automática. **Dónde vive:** GitHub (rama de trabajo activa del repositorio) → Netlify.
 
 Lleva cualquier cambio del repositorio al sitio en vivo (`acostel.netlify.app`) sin intervención manual.
 
@@ -148,7 +148,7 @@ Lleva cualquier cambio del repositorio al sitio en vivo (`acostel.netlify.app`) 
 
 Recibe al cliente potencial que llega desde el sitio.
 
-**Hoy:** WhatsApp es el único canal, sin registro estructurado de quién contactó ni por qué ficha. **Futuro:** formulario de contacto como canal secundario + integración con un CRM — ya definido como "debería/podría tener" en el MVP de `00-VISION.md`, no se repite aquí.
+**Hoy:** WhatsApp es el único canal, sin registro estructurado de quién contactó ni por qué ficha. **Futuro:** formulario de contacto como canal secundario + integración con un CRM — ya definido como "debería/podría tener" en el MVP de `docs/00-VISION.md`, no se repite aquí.
 
 ---
 
@@ -164,9 +164,9 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 
 ## Relación con la documentación
 
-- `00-VISION.md` — dirección del proyecto y arquitectura de capas (Notion → sync → sitio). Este documento no repite ese diagrama; lo desglosa por módulo.
+- `docs/00-VISION.md` — dirección del proyecto y arquitectura de capas (Notion → sync → sitio). Este documento no repite ese diagrama; lo desglosa por módulo.
 - `CLAUDE.md` — cómo trabaja Claude en este proyecto, incluida la regla de cuándo pausar (aplica también a cambios en estos módulos).
-- Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `00-VISION.md` → Riesgos abiertos. No se duplican aquí.
+- Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `docs/00-VISION.md` → Riesgos abiertos. No se duplican aquí.
 
 ---
 
@@ -175,3 +175,4 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 1.0 | 2026-07-18 | Documento inicial. Define 8 módulos reales del sistema (Notion, Data Processing/Sync, Content Engine, Creative Engine, Web Interface, Publishing, Sales/Leads, Distribution), su estado actual (existe / existe parcial), responsabilidades, y notas puntuales de escalabilidad. Content Engine se identifica como módulo propio, separado de Notion y Creative Engine, tras revisión con el cliente. Documento validado como base oficial del proyecto. |
+| 1.1 | 2026-07-18 | Revisión de coherencia cruzada con `docs/00-VISION.md` y `CLAUDE.md`. Corrige la ruta de referencia a `00-VISION.md` (faltaba `docs/`). Generaliza la referencia a la rama de Git en Publishing (ya no fija un nombre de rama específico, que era temporal a esta sesión). Ajusta el "dueño" de Data Processing/Sync a "Claude Code, bajo dirección del cliente" para no implicar autoridad propia sobre el módulo. La afirmación de que los riesgos de estos módulos "ya están registrados en 00-VISION.md" ahora es exacta — se agregaron ahí los tres que faltaban. |
