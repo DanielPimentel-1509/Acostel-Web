@@ -1,0 +1,180 @@
+# 00-VISION.md
+
+## Acostel OS — Visión del Proyecto
+
+> **Versión:** 2.0
+> **Última actualización:** 2026-07-18
+> **Estado:** Documento vivo — se actualiza a medida que el proyecto avanza y se validan (o se descartan) supuestos.
+> Ver [Registro de cambios](#registro-de-cambios) al final.
+
+---
+
+## Propósito
+
+Construir una plataforma empresarial modular cuyo primer caso de uso real es **Acostel Bienes Raíces**, con una arquitectura que *podría* reutilizarse en el futuro para otros negocios (PIMFORCE, Carshtel, Pimentech, etc.) — **una vez que exista evidencia real de qué partes conviene compartir.**
+
+No se construye una plataforma genérica desde el día uno. Se construye Acostel bien, y se observa qué patrones se repiten cuando exista un segundo negocio real.
+
+---
+
+## Filosofía
+
+- La web es solo una interfaz. El contenido no vive "en el sitio", vive en Notion.
+- La **fuente única de la verdad de contenido será siempre Notion.**
+- Notion es la fuente de la verdad para **editar y capturar** información — no necesariamente la fuente que el sitio consulta en vivo (ver [Arquitectura del sistema](#arquitectura-del-sistema)).
+- Toda la plataforma gira alrededor de datos centralizados, consistentes y reutilizables.
+- **La automatización es una meta, no un punto de partida.** Mientras no exista un pipeline real de sincronización, el proceso manual (humano o asistido por IA) es un paso legítimo — pero debe tratarse como algo temporal y documentado, no como el diseño final.
+
+---
+
+## Objetivos
+
+- Reducir trabajo manual
+- Centralizar la información
+- Evitar duplicación de datos
+- Facilitar automatizaciones futuras
+- Construir módulos reutilizables — **solo cuando la reutilización esté probada, no anticipada**
+- Minimizar el uso de IA para tareas repetitivas que deberían ser un proceso automatizado
+- Escalar hacia nuevos negocios sin repetir trabajo innecesario
+
+---
+
+## No-objetivos (por ahora)
+
+Explícito, para que el alcance no crezca solo:
+
+- No se está construyendo un backend propio ni una base de datos separada de Notion todavía.
+- No se está construyendo el "Core Platform" compartido todavía — no existe un segundo módulo real que lo justifique.
+- No se están construyendo pagos, autenticación de usuarios finales, ni panel de administración propio.
+- No se está optimizando para alto tráfico o múltiples países — el foco es El Salvador, un solo idioma, un solo negocio activo.
+
+---
+
+## Principios
+
+1. **Fuente única de la verdad en Notion** — para contenido y datos de negocio. (Ver matiz en Arquitectura.)
+2. **Frontera clara entre datos públicos e internos** — cada campo de Notion que alimenta al sitio debe estar explícitamente marcado como público o interno. Nunca se asume; se declara. *(Principio nuevo — surgió de un problema real: campos de Notion mezclando comisiones y datos de contacto de propietarios con el texto que ve el cliente.)*
+3. **Arquitectura modular** — pero modular no significa genérica desde el inicio. Un módulo se separa cuando ya existe, no antes.
+4. **Reutilización antes que reconstrucción** — aplica una vez que exista un segundo caso de uso real. Reutilizar algo que no se ha probado dos veces es adivinar, no reutilizar.
+5. **Automatizar solo después de validar manualmente el proceso completo** (ver Regla de trabajo corregida).
+6. **Simplicidad antes que complejidad** — este principio tiene prioridad sobre "escalabilidad desde el inicio" cuando entran en conflicto. Ante la duda, se elige lo simple.
+7. **Escalabilidad como intención, no como estructura prematura** — se diseñan las decisiones actuales para no bloquear el futuro, sin construir ese futuro por adelantado.
+8. **Resiliencia ante fallos de la fuente de datos** — el sitio debe seguir funcionando (mostrando el último dato válido) si Notion no responde o la sincronización falla. *(Principio nuevo.)*
+9. **Seguridad y control de acceso explícitos** — quién puede editar Notion, quién tiene permisos de escritura en el repositorio, cómo se gestionan credenciales y tokens, por módulo. *(Principio nuevo — motivado por los problemas reales de permisos que surgieron al conectar GitHub.)*
+
+---
+
+## Arquitectura del sistema
+
+Estado actual (real, no aspiracional):
+
+```
+Notion (captura y edición de contenido)
+      │
+      │  hoy: extracción manual asistida por IA, bajo demanda
+      │  meta: pipeline de sincronización programado o por webhook
+      ▼
+Capa de datos del sitio (hoy: js/data.js, generado por lote)
+      │
+      ▼
+Sitio web estático (HTML/CSS/JS) — la interfaz
+```
+
+**Punto clave:** hoy, "sincronizar con Notion" significa que alguien (o una IA) ejecuta manualmente una exportación y transforma los datos a mano. Esto **no es el diseño final** — es un atajo válido para el MVP, pero debe quedar registrado como deuda técnica explícita, no confundirse con automatización real. Automatizar esto de verdad implicaría un proceso programado (ej. una función que corre en un horario, o que se dispara cuando algo cambia en Notion) que haga el mismo trabajo sin intervención humana ni de IA en cada ocasión.
+
+**Estrategia de imágenes:** los archivos de imagen de Notion no son directamente enlazables desde un sitio público (son adjuntos internos con URLs temporales). Mientras no se defina una estrategia distinta, las imágenes reales se suben directamente al repositorio del sitio (no se leen desde Notion), y Notion solo guarda referencia/metadatos.
+
+**Estrategia de contacto (decisión confirmada):** WhatsApp es el canal principal de contacto para el MVP. Los formularios de contacto **no se eliminan** — se mantienen como canal secundario, y su arquitectura debe capturar datos estructurados (nombre, contacto, mensaje, referencia de la ficha) desde el día en que se implementen, para poder conectarse a un CRM más adelante sin rediseño. Mientras el formulario no exista, WhatsApp es el único canal activo.
+
+---
+
+## Modelo de datos y frontera público/interno
+
+Por cada entidad sincronizada desde Notion (Propiedad, Vehículo, Copy, futuro Lead), debe existir una distinción explícita:
+
+| Tipo de dato | Ejemplo | ¿Visible en el sitio? |
+|---|---|---|
+| Público | Precio de venta, ubicación general, descripción, características | Sí |
+| Interno | Comisión, precio mínimo/final aceptable, contacto del propietario, quién trajo el anuncio | No, nunca |
+
+Esta tabla debe mantenerse y ampliarse a medida que se agreguen nuevos tipos de ficha. No depender de "limpiar el texto a mano cada vez" — ese es exactamente el problema que ya se repitió una vez.
+
+---
+
+## MVP Inicial
+
+Priorizado (no todo tiene el mismo peso):
+
+**Debe tener (indispensable):**
+- Sitio web profesional
+- Propiedades y vehículos con datos reales (import desde Notion, aunque sea manual por ahora)
+- Fichas completas con imágenes y contenido
+- Botón de WhatsApp funcional como canal principal
+- SEO básico optimizado
+
+**Debería tener (importante, no bloqueante):**
+- Filtros de búsqueda (tipo, precio, ubicación)
+- Formulario de contacto como canal secundario, con datos estructurados
+
+**Podría tener (deseable, no urgente):**
+- Base preparada para automatizaciones futuras del pipeline Notion → sitio
+- Integración del formulario con un CRM
+
+---
+
+## Visión a largo plazo
+
+Acostel es el primer módulo real del sistema. **Esta sección es intencionalmente especulativa** — no compromete decisiones de arquitectura hoy.
+
+La misma plataforma *podría* evolucionar para soportar:
+- PIMFORCE (e-commerce)
+- Carshtel (vehículos)
+- Pimentech (tecnología)
+- Nuevos negocios futuros
+
+**Condición explícita:** no se construye infraestructura compartida ("Core Platform") hasta que exista un segundo módulo real en desarrollo. Cuando eso ocurra, se identifican los patrones que de verdad se repitieron entre Acostel y ese segundo módulo (probablemente: patrón de catálogo con filtros, componente de contacto por WhatsApp, pipeline de sincronización con Notion, sistema de diseño visual) — y recién ahí se extraen a un núcleo compartido.
+
+---
+
+## Regla de trabajo
+
+Antes de construir cualquier funcionalidad:
+
+1. **Diseñarla** — definir qué problema resuelve y cómo se vería.
+2. **Operarla manualmente** — hacerla a mano (o con ayuda puntual de IA) el tiempo suficiente para entender el proceso real, sus casos raros y sus excepciones.
+3. **Implementarla** — construir el soporte de software una vez que el proceso ya se entiende de verdad.
+4. **Automatizarla** — quitar la intervención humana (o de IA) repetitiva, una vez que el proceso implementado ya es estable.
+
+Nunca automatizar sin haber operado el proceso manualmente primero. Nunca quedarse en "manual asistido por IA" indefinidamente cuando el volumen ya justifica automatizar de verdad.
+
+---
+
+## Riesgos abiertos
+
+Lista viva — no resueltos todavía, mencionados a propósito para no perderlos de vista:
+
+- No existe todavía un mecanismo real de sincronización Notion → sitio (hoy es manual).
+- No hay definición de qué pasa si Notion está caído o inaccesible.
+- No hay política de acceso/seguridad documentada (quién edita Notion, quién tiene acceso de escritura al repositorio).
+- No hay métricas de éxito definidas para el MVP (ver más abajo, pendiente de definir con el cliente).
+- El estado "Revisión" de las fichas en Notion no se está usando de forma consistente (todo permanece en "Por revisar").
+
+---
+
+## Métricas de éxito (pendiente de definir)
+
+Sección deliberadamente incompleta — a definir con el negocio. Ejemplos de qué podría medirse:
+
+- Tiempo entre "propiedad lista en Notion" y "publicada en el sitio"
+- Número de contactos generados por WhatsApp desde el sitio
+- Velocidad de carga del sitio
+- Número de fichas activas mantenidas al día
+
+---
+
+## Registro de cambios
+
+| Versión | Fecha | Cambios |
+|---|---|---|
+| 1.0 | (original) | Documento inicial: propósito, filosofía, objetivos, principios, MVP, visión a largo plazo, regla principal, enfoque estratégico. |
+| 2.0 | 2026-07-18 | Revisión crítica de arquitectura. Se agregan: no-objetivos, frontera público/interno de datos, sección de arquitectura del sistema (estado real vs. aspiracional), modelo de datos, MVP priorizado (MoSCoW), riesgos abiertos, métricas pendientes, y este registro de cambios. Se corrige la secuencia de la "Regla Principal". Se marca la visión a largo plazo como especulativa para evitar abstracción prematura. Se confirma: WhatsApp como canal principal, formularios de contacto como canal secundario (no reemplazados), con arquitectura lista para integrar CRM más adelante. Documento ubicado en `Acostel-Web/docs/` por decisión explícita de no crear un repositorio separado todavía. |
