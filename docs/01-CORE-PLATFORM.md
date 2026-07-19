@@ -2,7 +2,7 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.3 — Validado como base oficial del proyecto
+> **Versión:** 1.4 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
@@ -110,6 +110,8 @@ Transforma los datos de una ficha en texto redactado, distinto por canal: Web/SE
 
 **Futuro:** generación asistida de copies para los demás canales a partir del mismo dato base, en vez de redactar cada uno por separado.
 
+El despliegue operativo completo de este módulo (estructura de contenido por canal, proceso de generación, relación exacta con Data Engine) vive en `docs/04-CONTENT-ENGINE.md` — no se repite aquí.
+
 ---
 
 ### 4. Creative Engine
@@ -170,6 +172,7 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 - `CLAUDE.md` — cómo trabaja Claude en este proyecto, incluida la regla de cuándo pausar (aplica también a cambios en estos módulos).
 - `docs/02-DATA-SCHEMA.md` — el contrato exacto de campos que leen Data Processing/Sync y Content Engine. Este documento no lo repite.
 - `docs/03-DATA-ENGINE.md` — el despliegue operativo completo del módulo Data Processing/Sync (flujo, transformaciones, contrato de salida). Este documento solo lo referencia.
+- `docs/04-CONTENT-ENGINE.md` — el despliegue operativo completo del módulo Content Engine (estructura de contenido, proceso de generación, relación con Data Engine). Este documento solo lo referencia.
 - Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `docs/00-VISION.md` → Riesgos abiertos. No se duplican aquí.
 
 ---
@@ -182,3 +185,4 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 | 1.1 | 2026-07-18 | Revisión de coherencia cruzada con `docs/00-VISION.md` y `CLAUDE.md`. Corrige la ruta de referencia a `00-VISION.md` (faltaba `docs/`). Generaliza la referencia a la rama de Git en Publishing (ya no fija un nombre de rama específico, que era temporal a esta sesión). Ajusta el "dueño" de Data Processing/Sync a "Claude Code, bajo dirección del cliente" para no implicar autoridad propia sobre el módulo. La afirmación de que los riesgos de estos módulos "ya están registrados en 00-VISION.md" ahora es exacta — se agregaron ahí los tres que faltaban. |
 | 1.2 | 2026-07-19 | Agrega referencia a `docs/02-DATA-SCHEMA.md` (documento nuevo) en "Relación con la documentación". |
 | 1.3 | 2026-07-19 | Agrega referencia a `docs/03-DATA-ENGINE.md` (documento nuevo, despliegue operativo del módulo Data Processing/Sync) en la sección del módulo y en "Relación con la documentación". |
+| 1.4 | 2026-07-19 | Agrega referencia a `docs/04-CONTENT-ENGINE.md` (documento nuevo, despliegue operativo del módulo Content Engine) en la sección del módulo y en "Relación con la documentación". |

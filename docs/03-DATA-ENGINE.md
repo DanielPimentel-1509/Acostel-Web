@@ -2,7 +2,7 @@
 
 ## Acostel OS — Data Engine
 
-> **Versión:** 1.0 — Validado como base oficial del proyecto
+> **Versión:** 1.1 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — se actualiza cada vez que un paso del flujo cambia (de manual a automatizado, o cuando se agrega/quita una fuente).
 
@@ -19,7 +19,7 @@ El Data Engine es el módulo que en `docs/01-CORE-PLATFORM.md` aparece como **Da
 | Módulo | Relación con Data Engine |
 |---|---|
 | Notion (Data Source) | Entrada. Único origen de datos hoy. |
-| Content Engine | Entrada parcial: Data Engine lee el canal Web/SEO de Copies por Canal. No hay entrega en sentido contrario. |
+| Content Engine | Mismo origen (Notion), responsabilidad distinta — no hay entrega de un módulo a otro. Data Engine lee directamente el campo Web/SEO de la base Copies por Canal al armar la salida, igual que lee Propiedades o Vehículos. Detalle completo en `docs/04-CONTENT-ENGINE.md`. |
 | Web Interface (Site) | Salida. Único consumidor del resultado de Data Engine hoy. |
 | Creative Engine, Sales/Leads, Distribution, Publishing | Sin conexión con Data Engine hoy. Publishing actúa después, sobre el repositorio ya actualizado — no sobre la salida de Data Engine directamente. |
 
@@ -80,6 +80,7 @@ Este listado es más específico que el riesgo ya registrado en `docs/00-VISION.
 
 - `docs/01-CORE-PLATFORM.md` — define Data Processing/Sync como módulo (dueño, estado, responsabilidad). Este documento no repite eso, solo lo despliega.
 - `docs/02-DATA-SCHEMA.md` — el diccionario de campos que este flujo usa en cada paso. No se repite ningún campo aquí.
+- `docs/04-CONTENT-ENGINE.md` — el módulo con el que Data Engine comparte origen (Notion) sin depender de él. No se repite aquí su proceso de generación.
 - `docs/00-VISION.md` — el riesgo abierto de automatizar este pipeline ya está registrado ahí.
 
 ---
@@ -89,3 +90,4 @@ Este listado es más específico que el riesgo ya registrado en `docs/00-VISION.
 | Versión | Fecha | Cambios |
 |---|---|---|
 | 1.0 | 2026-07-19 | Documento inicial. Define el Data Engine como despliegue operativo del módulo Data Processing/Sync: fuentes, flujo de 9 pasos, transformaciones concretas, contrato de salida hacia Web Interface, conexión (y falta de conexión) con los demás módulos, y el detalle técnico de qué faltaría para automatizarlo. Documento validado como base oficial del proyecto. |
+| 1.1 | 2026-07-19 | Ajusta la tabla de conexión con Content Engine: ya no se describe como "entrada" de un módulo a otro, sino como mismo origen (Notion) con responsabilidades distintas — Data Engine lee el campo Web/SEO directamente de Notion, no recibe una entrega de Content Engine. Agrega referencia a `docs/04-CONTENT-ENGINE.md` (documento nuevo). |
