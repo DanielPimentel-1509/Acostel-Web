@@ -2,8 +2,8 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.2 — Validado como base oficial del proyecto
-> **Última actualización:** 2026-07-18
+> **Versión:** 1.3 — Validado como base oficial del proyecto
+> **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
 ---
@@ -94,6 +94,8 @@ Lee las bases de Propiedades y Vehículos, aplica la frontera público/interno (
 
 **Hoy:** manual, asistido por IA, bajo demanda. **Futuro:** un proceso programado o disparado por webhook que haga lo mismo sin intervención manual — es el candidato número uno a automatizar, ya señalado como riesgo abierto en `docs/00-VISION.md`.
 
+El despliegue operativo completo de este módulo (flujo paso a paso, transformaciones concretas, contrato de salida) vive en `docs/03-DATA-ENGINE.md` — no se repite aquí.
+
 ---
 
 ### 3. Content Engine
@@ -167,6 +169,7 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 - `docs/00-VISION.md` — dirección del proyecto y arquitectura de capas (Notion → sync → sitio). Este documento no repite ese diagrama; lo desglosa por módulo.
 - `CLAUDE.md` — cómo trabaja Claude en este proyecto, incluida la regla de cuándo pausar (aplica también a cambios en estos módulos).
 - `docs/02-DATA-SCHEMA.md` — el contrato exacto de campos que leen Data Processing/Sync y Content Engine. Este documento no lo repite.
+- `docs/03-DATA-ENGINE.md` — el despliegue operativo completo del módulo Data Processing/Sync (flujo, transformaciones, contrato de salida). Este documento solo lo referencia.
 - Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `docs/00-VISION.md` → Riesgos abiertos. No se duplican aquí.
 
 ---
@@ -178,3 +181,4 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 | 1.0 | 2026-07-18 | Documento inicial. Define 8 módulos reales del sistema (Notion, Data Processing/Sync, Content Engine, Creative Engine, Web Interface, Publishing, Sales/Leads, Distribution), su estado actual (existe / existe parcial), responsabilidades, y notas puntuales de escalabilidad. Content Engine se identifica como módulo propio, separado de Notion y Creative Engine, tras revisión con el cliente. Documento validado como base oficial del proyecto. |
 | 1.1 | 2026-07-18 | Revisión de coherencia cruzada con `docs/00-VISION.md` y `CLAUDE.md`. Corrige la ruta de referencia a `00-VISION.md` (faltaba `docs/`). Generaliza la referencia a la rama de Git en Publishing (ya no fija un nombre de rama específico, que era temporal a esta sesión). Ajusta el "dueño" de Data Processing/Sync a "Claude Code, bajo dirección del cliente" para no implicar autoridad propia sobre el módulo. La afirmación de que los riesgos de estos módulos "ya están registrados en 00-VISION.md" ahora es exacta — se agregaron ahí los tres que faltaban. |
 | 1.2 | 2026-07-19 | Agrega referencia a `docs/02-DATA-SCHEMA.md` (documento nuevo) en "Relación con la documentación". |
+| 1.3 | 2026-07-19 | Agrega referencia a `docs/03-DATA-ENGINE.md` (documento nuevo, despliegue operativo del módulo Data Processing/Sync) en la sección del módulo y en "Relación con la documentación". |
