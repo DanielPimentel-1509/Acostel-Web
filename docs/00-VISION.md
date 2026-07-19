@@ -2,7 +2,7 @@
 
 ## Acostel OS — Visión del Proyecto
 
-> **Versión:** 2.2 — Validado como base oficial del proyecto
+> **Versión:** 2.3 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-18
 > **Estado:** Documento vivo — se actualiza a medida que el proyecto avanza y se validan (o se descartan) supuestos.
 > Ver [Registro de cambios](#registro-de-cambios) al final.
@@ -95,7 +95,7 @@ Por cada entidad sincronizada desde Notion (Propiedad, Vehículo, Copy, futuro L
 | Público | Precio de venta, ubicación general, descripción, características | Sí |
 | Interno | Comisión, precio mínimo/final aceptable, contacto del propietario, quién trajo el anuncio | No, nunca |
 
-Esta tabla debe mantenerse y ampliarse a medida que se agreguen nuevos tipos de ficha. No depender de "limpiar el texto a mano cada vez" — ese es exactamente el problema que ya se repitió una vez.
+Esta tabla es conceptual. El mapeo exacto, campo por campo, de cada base de Notion vive en `docs/02-DATA-SCHEMA.md` — no depender de "limpiar el texto a mano cada vez" fue exactamente el problema que llevó a documentarlo ahí.
 
 ---
 
@@ -170,3 +170,4 @@ Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas a
 | 2.0 | 2026-07-18 | Revisión crítica de arquitectura. Se agregan: no-objetivos, frontera público/interno de datos, sección de arquitectura del sistema (estado real vs. aspiracional), modelo de datos, MVP priorizado (MoSCoW), riesgos abiertos, métricas pendientes, y este registro de cambios. Se corrige la secuencia de la "Regla Principal". Se marca la visión a largo plazo como especulativa para evitar abstracción prematura. Se confirma: WhatsApp como canal principal, formularios de contacto como canal secundario (no reemplazados), con arquitectura lista para integrar CRM más adelante. Documento ubicado en `Acostel-Web/docs/` por decisión explícita de no crear un repositorio separado todavía. |
 | 2.1 | 2026-07-18 | Pasada de simplificación: se eliminan redundancias (la regla de "no construir Core Platform hasta un segundo módulo real" ahora vive en un solo lugar; se fusionan los principios de simplicidad y escalabilidad prematura; se quitan las etiquetas "(principio nuevo)" que ya documentaba este registro). Se fusiona "Métricas de éxito" dentro de "Riesgos abiertos" para no repetir una sección casi vacía. **Documento validado como base oficial del proyecto.** |
 | 2.2 | 2026-07-18 | Revisión de coherencia cruzada con `CLAUDE.md` y `docs/01-CORE-PLATFORM.md`. Se agregan tres riesgos abiertos identificados en `01-CORE-PLATFORM.md` que no estaban registrados aquí (canales de Content Engine sin conectar, Creative Engine sin pipeline, Distribution 100% manual), para que la referencia cruzada entre ambos documentos sea exacta. Se conecta "Estrategia de contacto" con el módulo *Sales / Leads*. |
+| 2.3 | 2026-07-19 | La tabla de "Modelo de datos" se marca como conceptual y ahora apunta a `docs/02-DATA-SCHEMA.md`, documento nuevo con el mapeo campo por campo real de cada base de Notion. Cierra el vacío de que el contrato de datos solo existía en la memoria de la sesión. |
