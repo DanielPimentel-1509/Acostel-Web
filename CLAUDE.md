@@ -2,7 +2,7 @@
 
 ## Guía de Trabajo para el Proyecto Acostel OS
 
-> **Versión:** 1.2 — Validado como base oficial del proyecto
+> **Versión:** 1.3 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-18
 > **Estado:** Documento vivo — se ajusta si la forma de trabajar deja de servir en la práctica.
 
@@ -86,6 +86,7 @@ El criterio detrás de esta lista tiene dos partes, no una: **qué tan difícil 
 - `docs/00-VISION.md` define la dirección del proyecto y su arquitectura.
 - Este documento (`CLAUDE.md`) define el comportamiento de trabajo, no la arquitectura.
 - Otros documentos que se agreguen definen reglas específicas de su propio dominio.
+- **La documentación se mantiene mínima y operativa** (decisión del cliente, 2026-07-19): solo se documenta lo que se usa para trabajar — recetas, contratos de datos, decisiones. No se crean documentos que solo describan el estado de algo sin servir como herramienta, y no se exige ceremonia de versiones para cambios menores. Construir vale más que documentar.
 
 Si una instrucción contradice algo ya documentado, se señala antes de ejecutar — no se ejecuta primero y se aclara después.
 
@@ -98,3 +99,4 @@ Si una instrucción contradice algo ya documentado, se señala antes de ejecutar
 | 1.0 | 2026-07-18 | Versión inicial revisada. Se elimina la repetición de "pensar antes de actuar" (aparecía en cuatro lugares distintos); se reemplaza "no ejecutar cambios grandes sin confirmar" por un criterio concreto de autonomía (lista explícita de qué se ejecuta solo vs. qué requiere confirmación); se agrega la regla de comunicación adaptada al nivel del cliente; se elimina el "Flujo de Trabajo" genérico de 5 pasos obligatorio para todo cambio y se reemplaza por reglas escaladas según el tipo de cambio, referenciando la Regla de trabajo de `docs/00-VISION.md` en vez de duplicarla; se fusiona "Mejora Continua" dentro de Rol de Claude / Principios. Documento validado como base oficial del proyecto. |
 | 1.1 | 2026-07-18 | Segunda revisión crítica. Se elimina una redundancia entre "Rol de Claude" y "Comunicación" (ambas secciones repetían la regla de señalar problemas sin que se pregunte). Se quita del Principio 1 un paréntesis que era una nota de edición, no una regla de trabajo. Se agrega el Principio 5: verificar que un cambio funciona antes de darlo por terminado. Se agrega el idioma de trabajo (español) en Comunicación. Se aclara que el criterio de "cuándo pausar" combina reversibilidad y exposición pública, no solo reversibilidad — para explicar por qué las primeras publicaciones externas pausan aunque técnicamente se puedan deshacer. |
 | 1.2 | 2026-07-18 | Revisión de coherencia cruzada con `docs/00-VISION.md` y `docs/01-CORE-PLATFORM.md`. Se corrige la ruta de referencia a `00-VISION.md` (faltaba la carpeta `docs/` en 4 de 5 menciones). |
+| 1.3 | 2026-07-19 | Agrega la regla de documentación mínima y operativa, tras la consolidación que eliminó los documentos descriptivos 04–09. |

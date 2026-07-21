@@ -1,196 +1,60 @@
 # 01-CORE-PLATFORM.md
 
-## Acostel OS — Núcleo del Sistema
+## Acostel OS — Mapa del Sistema
 
-> **Versión:** 1.11 — Validado como base oficial del proyecto
+> **Versión:** 2.0 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
-> **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
+> **Estado:** Documento vivo. Esta versión reemplaza y consolida las v1.0–v1.11 y los antiguos documentos 04–09 (recuperables en el historial de Git). Regla: si algo no existe, se marca como futuro — no se describe como si existiera.
 
 ---
 
-## Propósito de este documento
+## Qué es esto
 
-`docs/00-VISION.md` define la dirección del proyecto y por qué existe. `CLAUDE.md` define cómo se trabaja. **Este documento define de qué piezas está hecho el sistema hoy** — no una arquitectura genérica para negocios futuros, sino el mapa real de Acostel tal como funciona ahora mismo.
-
-Regla de este documento: si algo no existe todavía, se marca como **Futuro**. No se describe como si ya existiera.
+`docs/00-VISION.md` define hacia dónde va el proyecto. `CLAUDE.md` define cómo se trabaja. **Este documento es el mapa de una página del sistema real** — qué piezas existen, cómo se conectan, y qué es manual vs. automático. Los únicos procesos con receta operativa propia son los que se ejecutan de verdad: `docs/02-DATA-SCHEMA.md` (qué campo es público/interno) y `docs/03-DATA-ENGINE.md` (cómo se sincroniza Notion → sitio).
 
 ---
 
-## Diagrama de flujo (estado actual)
+## Flujo real
 
 ```
-Notion (Data Source)
- ├─ Propiedades / Vehículos ............. datos estructurados (precio, specs, ubicación)
- └─ Copies por Canal ..................... texto redactado por canal (Content Engine)
-        │
-        ├───────────────────┬───────────────────────┐
-        ▼                   ▼                        ▼
- Data Processing/Sync  Content Engine          Creative Engine
- (hoy: manual,         (hoy: autoría humana    (hoy: producción activa
- asistido por IA)      dentro de Notion)       en Canva, sin pipeline)
-        │                   │                        │
-        └─────────┬─────────┴────────────────────────┘
-                   ▼
-           Web Interface (Site)
-           (repositorio Acostel-Web)
-                   │
-                   ▼
-              Publishing
-        (GitHub → Netlify, automático)
-                   │
-                   ▼
-          Sitio en vivo (acostel.netlify.app)
-                   │
-                   ▼
-              Sales / Leads
-         (WhatsApp — clic del visitante)
-
-
-Aparte, sin conectar al flujo de arriba:
-
-Content Engine (canales Instagram / TikTok / Facebook / Marketplace)
-        +
-Creative Engine (fotos / creativos)
-                   │
-                   ▼
-              Distribution
-       (publicación manual, fuera de este sistema)
+Notion (datos + copies)          Fotos (carpeta procesada)      Canva (creativos para redes)
+        │                                 │                              │
+        ▼                                 ▼                              ▼
+  Data Engine ──────────────► repositorio Acostel-Web ◄─── (pipeline en construcción)
+  (manual, asistido por IA)               │
+                                          ▼
+                              GitHub → Netlify (automático)
+                                          │
+                                          ▼
+                            Sitio en vivo (acostel.netlify.app)
+                                          │
+                              WhatsApp  /  Formulario
+                            (conversación) (Netlify Forms)
 ```
 
-**Nota sobre las flechas hacia Web Interface:** solo la de Data Processing/Sync es una entrega directa. La de Content Engine es indirecta (su texto llega ya incorporado en `js/data.js`), y la de Creative Engine hoy solo aplica al logo y favicon — las fichas siguen usando imágenes de marcador. Detalle en `docs/06-WEB-INTERFACE.md`.
+---
+
+## Los 8 módulos, estado real
+
+| Módulo | Estado | Realidad hoy |
+|---|---|---|
+| **Notion (Data Source)** | Existe | Fuente única de la verdad: bases Propiedades, Vehículos, Copies por Canal. Dueño: el cliente. |
+| **Data Engine** | Existe (manual) | Sincroniza Notion → `js/data.js` bajo demanda. Receta completa en `docs/03-DATA-ENGINE.md`. Candidato #1 a automatizar. |
+| **Content Engine** | Existe (parcial) | Copies por canal redactados a mano en Notion. Solo el canal Web/SEO se usa (lo lee Data Engine). Los otros 5 canales existen pero nada los consume. |
+| **Creative Engine** | En construcción activa | Fotos ya organizadas por código en carpeta local del cliente (pipeline hacia el sitio en curso). En Canva: brand kit + plantilla base + ~15 variaciones para redes, todo manual, sin Brand Template de autofill. |
+| **Web Interface** | Existe | Sitio estático sin backend: 44 fichas, filtros, formulario. Todo lo que muestra viene de `js/data.js`; nunca consulta Notion ni Canva en vivo. |
+| **Publishing** | Existe (automático) | Único módulo 100% automático: push a la rama → Netlify publica. Depende de que todo lo anterior ya se haya hecho a mano. |
+| **Sales / Leads** | Existe (parcial) | WhatsApp (4 enlaces con mensaje pre-llenado) + formulario con captura estructurada. Sin CRM, sin conexión a Notion. |
+| **Distribution** | Existe (manual) | Publicación en Instagram/TikTok/Facebook/Marketplace, 100% a mano desde el teléfono, sin registro de qué se publicó. |
 
 ---
 
-## Los 8 módulos
+## Hallazgos clave (verificados, no asumidos)
 
-| # | Módulo | Estado | Responsabilidad |
-|---|---|---|---|
-| 1 | **Notion (Data Source)** | Existe | Capturar y mantener la información real del negocio: datos estructurados y contenido redactado. Punto de entrada de todo. |
-| 2 | **Data Processing / Sync** | Existe (parcial) | Leer los datos estructurados de Notion, aplicar la frontera público/interno, generar los datos que consume el sitio. |
-| 3 | **Content Engine** | Existe (parcial) | Producir el texto de cada ficha, adaptado por canal. |
-| 4 | **Creative Engine** | Existe (parcial) | Producir el material visual de cada ficha. |
-| 5 | **Web Interface (Site)** | Existe | Mostrar catálogo, fichas, filtros y canal de contacto. |
-| 6 | **Publishing** | Existe | Llevar cualquier cambio del repositorio al sitio en vivo. |
-| 7 | **Sales / Leads** | Existe (parcial) | Recibir y gestionar el contacto de un cliente potencial. |
-| 8 | **Distribution** | Existe (parcial) | Publicar el contenido y los creativos en canales externos. |
-
-Ningún módulo es 100% "Futuro" — todos tienen al menos una parte real hoy. Lo que varía es cuánto de cada uno está automatizado vs. manual, y cuánto está conectado al resto del sistema vs. viviendo aislado.
-
----
-
-### 1. Notion (Data Source)
-
-**Dueño:** el cliente. **Dónde vive:** workspace de Notion — bases "🏠 Propiedades", "🚗 Vehículos", "📣 Copies por Canal".
-
-Es la fuente única de la verdad (principio ya establecido en `docs/00-VISION.md`). Contiene dos tipos de información distintos que antes se trataban como una sola cosa: datos estructurados (precio, ubicación, specs) y contenido redactado (los copies). Separarlos conceptualmente es lo que permitió identificar Content Engine como módulo propio.
-
-**Futuro:** si se agrega un segundo negocio (Carshtel, etc.), reutiliza el mismo patrón de bases de datos — no antes.
-
----
-
-### 2. Data Processing / Sync
-
-**Dueño:** Claude Code, bajo dirección del cliente. **Dónde vive:** no existe como proceso independiente todavía — es una tarea que se ejecuta bajo demanda.
-
-Lee las bases de Propiedades y Vehículos, aplica la frontera público/interno (definida en `docs/00-VISION.md`), y genera los datos que consume el sitio (hoy: `js/data.js`).
-
-**Hoy:** manual, asistido por IA, bajo demanda. **Futuro:** un proceso programado o disparado por webhook que haga lo mismo sin intervención manual — es el candidato número uno a automatizar, ya señalado como riesgo abierto en `docs/00-VISION.md`.
-
-El despliegue operativo completo de este módulo (flujo paso a paso, transformaciones concretas, contrato de salida) vive en `docs/03-DATA-ENGINE.md` — no se repite aquí.
-
----
-
-### 3. Content Engine
-
-**Dueño:** el cliente, hoy. **Dónde vive:** base "📣 Copies por Canal — Acostel" en Notion.
-
-Transforma los datos de una ficha en texto redactado, distinto por canal: Web/SEO, WhatsApp, Instagram, TikTok, Facebook, Marketplace. Hoy es 100% autoría humana dentro de Notion — no hay generación automática de copy todavía.
-
-**Conectado al sistema:** solo el canal Web/SEO — es el que Data Processing/Sync lee para alimentar el sitio. Los demás canales existen en Notion pero no están conectados a nada dentro de este sistema (ver Distribution).
-
-**Nota:** el mensaje de WhatsApp que ofrece el sitio hoy está escrito directamente en el código (`js/common.js`), no se toma del canal "WhatsApp" de Content Engine — son dos cosas separadas que podrían converger más adelante.
-
-**Futuro:** generación asistida de copies para los demás canales a partir del mismo dato base, en vez de redactar cada uno por separado.
-
-El despliegue operativo completo de este módulo (estructura de contenido por canal, proceso de generación, relación exacta con Data Engine) vive en `docs/04-CONTENT-ENGINE.md` — no se repite aquí.
-
----
-
-### 4. Creative Engine
-
-**Dueño:** el cliente. **Dónde vive:** adjuntos de Notion (fotos crudas) + Canva (brand kit, plantilla base y creativos ya diseñados) + `images/site/` y `images/listings/` en el repositorio (logo, favicon, y lo que se vaya subiendo).
-
-Produce el material visual de cada ficha: fotos, portadas, creativos diseñados.
-
-**Hoy:** las fotos crudas en Notion no son directamente utilizables por el sitio (URLs internas temporales); las fichas usan imágenes de marcador. El logo y el favicon ya están integrados. En Canva, la producción de creativos diseñados **ya es una práctica establecida**: existe un brand kit configurado, una plantilla base con campos genéricos, y más de 15 variaciones ya creadas por ficha — pero sin ningún pipeline que las conecte a este sistema (ni al sitio, ni a Notion). Se publican manualmente en redes por fuera de este sistema (ver Distribution).
-
-**Futuro:** definir el pipeline que falta (dónde se exportan desde Canva, con qué nombre, cómo se conectan a cada ficha del sitio). Detalle completo de este módulo en `docs/05-CREATIVE-ENGINE.md`.
-
----
-
-### 5. Web Interface (Site)
-
-**Dueño:** repositorio `Acostel-Web`. **Dónde vive:** `index.html`, `ficha.html`, `css/`, `js/`.
-
-Consume lo que producen Data Processing/Sync (datos), Content Engine (texto del canal Web/SEO) y Creative Engine (imágenes), y los muestra como catálogo, fichas, filtros y contacto.
-
-**Hoy:** completo y en producción. **Futuro:** plantilla reutilizable para otro negocio, una vez que exista un segundo caso real (condición ya establecida en `docs/00-VISION.md`).
-
-El despliegue operativo completo de este módulo (inventario de archivos, cómo consume `js/data.js`, qué está conectado y qué no) vive en `docs/06-WEB-INTERFACE.md` — no se repite aquí.
-
----
-
-### 6. Publishing
-
-**Dueño:** infraestructura automática. **Dónde vive:** GitHub (rama de trabajo activa del repositorio) → Netlify.
-
-Lleva cualquier cambio del repositorio al sitio en vivo (`acostel.netlify.app`) sin intervención manual.
-
-**Es el único módulo 100% automatizado hoy** — vale la pena tenerlo presente como referencia de cómo se ve un módulo terminado, cuando se automaticen los demás. Esa automatización depende por completo de que los módulos anteriores (Data Engine, Content Engine, Creative Engine) ya hayan terminado su trabajo manual — Publishing no reemplaza esos procesos, solo entrega su resultado.
-
-El despliegue operativo completo de este módulo (verificación real del deploy, qué falta para un pipeline completo) vive en `docs/07-PUBLISHING.md` — no se repite aquí.
-
----
-
-### 7. Sales / Leads
-
-**Dueño:** WhatsApp Business (externo al sistema) + Netlify Forms para el formulario. **Dónde vive:** conversación fuera del sitio (WhatsApp) y panel de Netlify (formulario), iniciados ambos desde el sitio.
-
-Recibe al cliente potencial que llega desde el sitio.
-
-**Hoy:** WhatsApp sigue siendo un canal sin registro estructurado. El formulario de contacto ya está implementado como canal secundario y sí captura datos estructurados (nombre, contacto, mensaje, referencia) — pero esas respuestas quedan aisladas en el panel de Netlify, sin notificación automática ni conexión a Notion o a un CRM. No es un módulo de sistema en sentido completo todavía: hay un registro por primera vez, pero sigue sin loop de datos hacia el resto del sistema. **Futuro:** integración con un CRM y conexión del formulario a Notion — ya definido como "podría tener" en el MVP de `docs/00-VISION.md`, no se repite aquí.
-
-El despliegue operativo completo de este módulo (los cinco puntos de entrada reales, qué falta para un loop de datos) vive en `docs/08-SALES-LEADS.md` — no se repite aquí.
-
----
-
-### 8. Distribution
-
-**Dueño:** el cliente, fuera de este sistema. **Dónde vive:** Instagram, TikTok, Facebook, Marketplace — directamente, sin pasar por este repositorio.
-
-Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (visuales) y lo publica manualmente en cada red.
-
-**Hoy:** el contenido para estos canales ya existe en Notion, pero la publicación es 100% manual y ocurre completamente fuera del sistema (apps móviles/plataformas), sin trazabilidad ni registro de lo publicado dentro del sistema. **Futuro:** publicación automática multi-canal — no se construye hasta que Content Engine y Creative Engine estén más maduros.
-
-**Nota (sin resolver):** Content Engine también redacta un canal "WhatsApp", que no está en la lista de canales de este módulo — es un texto reutilizable pensado para conversaciones 1:1 de Sales/Leads, no para publicación pública. Se deja documentado como pendiente en `docs/09-DISTRIBUTION.md`, no se resuelve aquí.
-
-El despliegue operativo completo de este módulo vive en `docs/09-DISTRIBUTION.md` — no se repite aquí.
-
----
-
-## Relación con la documentación
-
-- `docs/00-VISION.md` — dirección del proyecto y arquitectura de capas (Notion → sync → sitio). Este documento no repite ese diagrama; lo desglosa por módulo.
-- `CLAUDE.md` — cómo trabaja Claude en este proyecto, incluida la regla de cuándo pausar (aplica también a cambios en estos módulos).
-- `docs/02-DATA-SCHEMA.md` — el contrato exacto de campos que leen Data Processing/Sync y Content Engine. Este documento no lo repite.
-- `docs/03-DATA-ENGINE.md` — el despliegue operativo completo del módulo Data Processing/Sync (flujo, transformaciones, contrato de salida). Este documento solo lo referencia.
-- `docs/04-CONTENT-ENGINE.md` — el despliegue operativo completo del módulo Content Engine (estructura de contenido, proceso de generación, relación con Data Engine). Este documento solo lo referencia.
-- `docs/05-CREATIVE-ENGINE.md` — el despliegue operativo completo del módulo Creative Engine (estado real en Canva, plantillas, variaciones, proceso de generación). Este documento solo lo referencia.
-- `docs/06-WEB-INTERFACE.md` — el despliegue operativo completo del módulo Web Interface (inventario de archivos, consumo de datos, conexiones reales). Este documento solo lo referencia.
-- `docs/07-PUBLISHING.md` — el despliegue operativo completo del módulo Publishing (verificación real del deploy, qué falta para un pipeline completo). Este documento solo lo referencia.
-- `docs/08-SALES-LEADS.md` — el despliegue operativo completo del módulo Sales/Leads (puntos de entrada reales, ausencia de loop de datos). Este documento solo lo referencia.
-- `docs/09-DISTRIBUTION.md` — el despliegue operativo completo del módulo Distribution (canales reales, ambigüedad del canal WhatsApp sin resolver). Este documento solo lo referencia.
-- Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `docs/00-VISION.md` → Riesgos abiertos. No se duplican aquí.
+- **El mensaje de WhatsApp está duplicado:** el texto de los botones del sitio vive en `js/common.js`; el canal "WhatsApp" de Copies por Canal en Notion es otro texto distinto. Nada los sincroniza. Pendiente decidir cuál manda.
+- **Las respuestas del formulario quedan en el panel de Netlify** — sin notificación automática configurada; hay que entrar a revisarlas. Configurar el aviso por correo es una tarea única en el panel.
+- **La configuración de Netlify no está versionada** (no hay `netlify.toml`) y no hay staging ni CI: todo push a la única rama del repositorio va directo a producción.
+- **Datos internos que nunca deben publicarse** (comisiones, precios mínimos, contactos de propietarios): la lista campo por campo vive en `docs/02-DATA-SCHEMA.md` y es de cumplimiento obligatorio en cada sincronización.
 
 ---
 
@@ -198,15 +62,5 @@ El despliegue operativo completo de este módulo vive en `docs/09-DISTRIBUTION.m
 
 | Versión | Fecha | Cambios |
 |---|---|---|
-| 1.0 | 2026-07-18 | Documento inicial. Define 8 módulos reales del sistema (Notion, Data Processing/Sync, Content Engine, Creative Engine, Web Interface, Publishing, Sales/Leads, Distribution), su estado actual (existe / existe parcial), responsabilidades, y notas puntuales de escalabilidad. Content Engine se identifica como módulo propio, separado de Notion y Creative Engine, tras revisión con el cliente. Documento validado como base oficial del proyecto. |
-| 1.1 | 2026-07-18 | Revisión de coherencia cruzada con `docs/00-VISION.md` y `CLAUDE.md`. Corrige la ruta de referencia a `00-VISION.md` (faltaba `docs/`). Generaliza la referencia a la rama de Git en Publishing (ya no fija un nombre de rama específico, que era temporal a esta sesión). Ajusta el "dueño" de Data Processing/Sync a "Claude Code, bajo dirección del cliente" para no implicar autoridad propia sobre el módulo. La afirmación de que los riesgos de estos módulos "ya están registrados en 00-VISION.md" ahora es exacta — se agregaron ahí los tres que faltaban. |
-| 1.2 | 2026-07-19 | Agrega referencia a `docs/02-DATA-SCHEMA.md` (documento nuevo) en "Relación con la documentación". |
-| 1.3 | 2026-07-19 | Agrega referencia a `docs/03-DATA-ENGINE.md` (documento nuevo, despliegue operativo del módulo Data Processing/Sync) en la sección del módulo y en "Relación con la documentación". |
-| 1.4 | 2026-07-19 | Agrega referencia a `docs/04-CONTENT-ENGINE.md` (documento nuevo, despliegue operativo del módulo Content Engine) en la sección del módulo y en "Relación con la documentación". |
-| 1.5 | 2026-07-19 | Corrige la sección de Creative Engine con el estado real verificado en Canva: ya existe un brand kit, una plantilla base y más de 15 variaciones creadas — no "está por empezar", como decía antes. Agrega referencia a `docs/05-CREATIVE-ENGINE.md` (documento nuevo). |
-| 1.6 | 2026-07-19 | Agrega referencia a `docs/06-WEB-INTERFACE.md` (documento nuevo, despliegue operativo del módulo Web Interface) en la sección del módulo y en "Relación con la documentación". |
-| 1.7 | 2026-07-19 | Aclara que la automatización de Publishing depende por completo de que los módulos anteriores ya hayan terminado su trabajo manual. Agrega referencia a `docs/07-PUBLISHING.md` (documento nuevo). |
-| 1.8 | 2026-07-19 | Aclara que Sales/Leads no es un módulo de sistema completo todavía, sino un punto de salida hacia un canal externo sin loop de datos de vuelta. Agrega referencia a `docs/08-SALES-LEADS.md` (documento nuevo). |
-| 1.9 | 2026-07-19 | Aclara que Distribution es 100% manual y ocurre completamente fuera del sistema, sin trazabilidad de lo publicado. Deja documentada (sin resolver) la ambigüedad del canal "WhatsApp" de Content Engine frente a Sales/Leads. Agrega referencia a `docs/09-DISTRIBUTION.md` (documento nuevo). Con este módulo se completa la documentación de los 8 módulos definidos en este documento. |
-| 1.10 | 2026-07-19 | Revisión integral de los 11 documentos tras completar los 8 módulos. Se corrigen dos desactualizaciones del diagrama de flujo: la descripción de Creative Engine (decía "creativos en curso", cuando la producción en Canva ya es una práctica establecida desde v1.5) y una nota nueva que aclara que las flechas de Content Engine y Creative Engine hacia Web Interface no son entregas directas — para que el diagrama no contradiga a `docs/06-WEB-INTERFACE.md`. |
-| 1.11 | 2026-07-19 | Se implementó el formulario de contacto (Sales/Leads). Se actualiza la sección del módulo: ya no dice "sin registro estructurado" de forma absoluta — el formulario captura datos estructurados, aunque quedan aislados en Netlify Forms sin conexión a Notion o a un CRM. Detalle completo en `docs/08-SALES-LEADS.md` v1.1. |
+| 1.0–1.11 | 2026-07-18/19 | Historia completa en Git. Definición inicial de los 8 módulos y seis documentos descriptivos por módulo (04–09). |
+| 2.0 | 2026-07-19 | Consolidación: se eliminan los documentos 04–09 (eran mapas descriptivos de procesos manuales, no herramientas de trabajo) y este documento absorbe sus hallazgos verificados en una página. La documentación del proyecto queda en 4 archivos: visión, comportamiento, contrato de datos y receta de sincronización. Creative Engine pasa de "vacío documentado" a "en construcción activa" (pipeline de fotos reales al sitio). |

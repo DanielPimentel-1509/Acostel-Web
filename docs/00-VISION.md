@@ -2,7 +2,7 @@
 
 ## Acostel OS — Visión del Proyecto
 
-> **Versión:** 2.6 — Validado como base oficial del proyecto
+> **Versión:** 2.7 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — se actualiza a medida que el proyecto avanza y se validan (o se descartan) supuestos.
 > Ver [Registro de cambios](#registro-de-cambios) al final.
@@ -82,7 +82,7 @@ Sitio web estático (HTML/CSS/JS) — la interfaz
 
 **Estrategia de imágenes:** los archivos de imagen de Notion no son directamente enlazables desde un sitio público (son adjuntos internos con URLs temporales). Mientras no se defina una estrategia distinta, las imágenes reales se suben directamente al repositorio del sitio (no se leen desde Notion), y Notion solo guarda referencia/metadatos.
 
-**Estrategia de contacto (decisión confirmada; corresponde al módulo *Sales / Leads* en `docs/01-CORE-PLATFORM.md`):** WhatsApp es el canal principal de contacto para el MVP. El formulario de contacto ya está implementado como canal secundario, capturando los datos estructurados definidos aquí (nombre, contacto, mensaje, referencia de la ficha) — aunque todavía sin conexión a un CRM (detalle real en `docs/08-SALES-LEADS.md`).
+**Estrategia de contacto (decisión confirmada; corresponde al módulo *Sales / Leads* en `docs/01-CORE-PLATFORM.md`):** WhatsApp es el canal principal de contacto para el MVP. El formulario de contacto ya está implementado como canal secundario, capturando los datos estructurados definidos aquí (nombre, contacto, mensaje, referencia de la ficha) — aunque todavía sin conexión a un CRM.
 
 ---
 
@@ -157,9 +157,9 @@ Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas a
 - Métricas de éxito del MVP — aún sin definir con el cliente. Candidatas: tiempo entre "listo en Notion" y "publicado", contactos generados por WhatsApp, velocidad de carga, fichas activas mantenidas al día.
 - El estado "Revisión" de las fichas en Notion no se usa de forma consistente (todo permanece en "Por revisar").
 - Content Engine: los canales que no son Web/SEO (WhatsApp, Instagram, TikTok, Facebook, Marketplace) ya tienen copy redactado en Notion, pero no están conectados a nada dentro de este sistema.
-- Creative Engine: la producción de creativos diseñados en Canva (brand kit, plantilla base, más de 15 variaciones por ficha) ya es una práctica establecida, pero sin ningún pipeline que la conecte a este sistema — ni al sitio, ni a Notion. Detalle en `docs/05-CREATIVE-ENGINE.md`.
+- Creative Engine: la producción de creativos diseñados en Canva (brand kit, plantilla base, más de 15 variaciones por ficha) ya es una práctica establecida, pero sin ningún pipeline que la conecte a este sistema. El pipeline de fotos reales hacia el sitio está en construcción.
 - Distribution: la publicación en redes sociales y marketplace es 100% manual, sin conexión a este sistema.
-- Publishing: sin entorno de staging/preview (todo push a la única rama que existe hoy va directo a producción); la configuración de build de Netlify no está versionada (no hay `netlify.toml`); no hay pruebas automáticas (CI) antes de publicar. Detalle en `docs/07-PUBLISHING.md`.
+- Publishing: sin entorno de staging/preview (todo push a la única rama que existe hoy va directo a producción); la configuración de build de Netlify no está versionada (no hay `netlify.toml`); no hay pruebas automáticas (CI) antes de publicar.
 
 ---
 
@@ -174,4 +174,5 @@ Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas a
 | 2.3 | 2026-07-19 | La tabla de "Modelo de datos" se marca como conceptual y ahora apunta a `docs/02-DATA-SCHEMA.md`, documento nuevo con el mapeo campo por campo real de cada base de Notion. Cierra el vacío de que el contrato de datos solo existía en la memoria de la sesión. |
 | 2.4 | 2026-07-19 | Corrige el riesgo abierto de Creative Engine con el estado real verificado directamente en Canva: la producción de creativos ya es una práctica establecida (brand kit, plantilla, variaciones), no algo que recién empieza como decía antes. Apunta a `docs/05-CREATIVE-ENGINE.md`, documento nuevo. |
 | 2.5 | 2026-07-19 | Agrega riesgo abierto de Publishing (sin staging, configuración de Netlify no versionada, sin CI) — hallazgos nuevos de `docs/07-PUBLISHING.md`, no registrados hasta ahora porque Publishing nunca se había revisado con este nivel de detalle. |
-| 2.6 | 2026-07-19 | Se implementó el formulario de contacto. Corrige la frase "mientras el formulario no exista, WhatsApp es el único canal activo" en Estrategia de contacto, que ya no era cierta. Detalle real en `docs/08-SALES-LEADS.md` v1.1. |
+| 2.6 | 2026-07-19 | Se implementó el formulario de contacto. Corrige la frase "mientras el formulario no exista, WhatsApp es el único canal activo" en Estrategia de contacto, que ya no era cierta. |
+| 2.7 | 2026-07-19 | Consolidación de la documentación por decisión del cliente: se eliminan los documentos descriptivos 04–09 (eran mapas de procesos manuales, no herramientas; recuperables en Git) y sus hallazgos se absorben en `docs/01-CORE-PLATFORM.md` v2.0. Se actualizan las referencias de este documento. El foco pasa de documentar el sistema a construirlo — empezando por el pipeline de fotos reales al sitio. |
