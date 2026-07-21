@@ -68,7 +68,7 @@ const listings = [
       parqueos: "2",
     },
     features: ["161 m² de terreno (7 × 23 m / 230 v²)", "3 habitaciones amplias", "1 baño completo", "Sala espaciosa y cocina moderna", "Cochera techada", "Agua y luz ya instaladas", "Acceso desde dos calles"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/jose/01.jpg", "images/listings/jose/02.jpg", "images/listings/jose/03.jpg", "images/listings/jose/04.jpg", "images/listings/jose/05.jpg", "images/listings/jose/06.jpg", "images/listings/jose/07.jpg", "images/listings/jose/08.jpg", "images/listings/jose/09.jpg", "images/listings/jose/10.jpg", "images/listings/jose/11.jpg", "images/listings/jose/12.jpg"],
   },
   {
     id: "prop-lour1",
@@ -89,7 +89,7 @@ const listings = [
       parqueos: "2",
     },
     features: ["300 m² de terreno (12.5 × 24 m)", "3 habitaciones, habitación principal con walk-in closet", "2 baños completos", "Cuarto de servicio y lavandería", "Sala, comedor y cocina abierta equipada", "Amplio jardín privado", "Cochera para 2 vehículos", "Acabados premium: porcelanato, ventanales de piso a techo, closets de madera, instalación eléctrica con circuitos independientes"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/cona/01.jpg", "images/listings/cona/02.jpg", "images/listings/cona/03.jpg", "images/listings/cona/04.jpg", "images/listings/cona/05.jpg", "images/listings/cona/06.jpg", "images/listings/cona/07.jpg", "images/listings/cona/08.jpg", "images/listings/cona/09.jpg", "images/listings/cona/10.jpg", "images/listings/cona/11.jpg", "images/listings/cona/12.jpg", "images/listings/cona/13.jpg", "images/listings/cona/14.jpg", "images/listings/cona/15.jpg", "images/listings/cona/16.jpg", "images/listings/cona/17.jpg", "images/listings/cona/18.jpg", "images/listings/cona/19.jpg", "images/listings/cona/20.jpg", "images/listings/cona/21.jpg", "images/listings/cona/22.jpg", "images/listings/cona/23.jpg"],
   },
   {
     id: "prop-atac4",
@@ -109,7 +109,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["1,200 m² (1,717 v²)", "16 m de frente x 75 m de fondo", "Doble acceso (permite parqueo anexo en la parte trasera)", "Terreno plano", "Factibilidad de luz eléctrica y agua potable", "Ideal para negocio, restaurante o desarrollo vertical"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/atac4/01.jpg", "images/listings/atac4/02.jpg", "images/listings/atac4/03.jpg", "images/listings/atac4/04.jpg", "images/listings/atac4/05.jpg", "images/listings/atac4/06.jpg"],
   },
   {
     id: "prop-occi",
@@ -129,7 +129,7 @@ const listings = [
       parqueos: "5",
     },
     features: ["462 m² (661 v²), 11 m de ancho x 42 m de largo", "10 habitaciones, cada una con baño completo", "Área de lavandería independiente", "Energía eléctrica y agua potable", "Parqueo en línea hasta para 5 vehículos", "Potencial de construir un segundo nivel para aumentar la renta"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/occi/01.jpg", "images/listings/occi/02.jpg", "images/listings/occi/03.jpg", "images/listings/occi/04.jpg", "images/listings/occi/05.jpg", "images/listings/occi/06.jpg", "images/listings/occi/07.jpg", "images/listings/occi/08.jpg", "images/listings/occi/09.jpg", "images/listings/occi/10.jpg", "images/listings/occi/11.jpg", "images/listings/occi/12.jpg", "images/listings/occi/13.jpg", "images/listings/occi/14.jpg"],
   },
   {
     id: "prop-atac3",
@@ -149,7 +149,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["17 manzanas (170,000 v² / 118,779 m²)", "Casa patronal incluida", "Se divide en 3 ubicaciones en un radio de 300 a 500 metros", "1,200 metros sobre el nivel del mar", "Topografía plana y semiplana", "Acceso con vehículo 4x4"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/atac3/01.jpg", "images/listings/atac3/02.jpg", "images/listings/atac3/03.jpg", "images/listings/atac3/04.jpg", "images/listings/atac3/05.jpg", "images/listings/atac3/06.jpg", "images/listings/atac3/07.jpg", "images/listings/atac3/08.jpg", "images/listings/atac3/09.jpg"],
   },
   {
     id: "prop-cang",
@@ -169,7 +169,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["349 m² (499 v²)", "12.96 m de frente x 27 m de fondo", "A 700 metros de la playa", "Terreno plano", "Ideal para casa o rancho de playa"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/cang/01.jpg"],
   },
   {
     id: "prop-copa2",
@@ -189,7 +189,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["828 m² (1,185 v²)", "18 m de frente x 46 m de fondo", "3 accesos de entrada (uno con acceso a Claudia Lars)", "Acceso en cualquier vehículo, calle de tierra plana", "Energía eléctrica y agua disponibles (solo de activar)", "Tierra totalmente fértil, terreno 100% plano"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/copa2/01.jpg", "images/listings/copa2/02.jpg"],
   },
   {
     id: "prop-bazz",
@@ -209,7 +209,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["2,500 m² (3,577 v²), compuesto por 2 parcelas", "Vista espectacular", "A 1 minuto de la carretera Bazzini y 4 minutos del desvío a Talnique, Jayaque y Ateos", "A 10 minutos de escuelas, centros comerciales y negocios de Lourdes", "Terreno semiplano, tierra fértil, calle de ingreso plana", "Ideal para cabañas, casa de campo o lugar de retiro"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/bazz/01.jpg", "images/listings/bazz/02.jpg", "images/listings/bazz/03.jpg", "images/listings/bazz/04.jpg", "images/listings/bazz/05.jpg", "images/listings/bazz/06.jpg"],
   },
   {
     id: "prop-copa-p",
@@ -249,7 +249,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["598 m² (856 v²)", "Doble acceso: por el ex Restaurante La Herradura y por la 75 Avenida Norte", "Servicio de agua potable", "Postes de alumbrado eléctrico"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/ssal2/01.jpg", "images/listings/ssal2/02.jpg", "images/listings/ssal2/03.jpg", "images/listings/ssal2/04.jpg", "images/listings/ssal2/05.jpg", "images/listings/ssal2/06.jpg", "images/listings/ssal2/07.jpg", "images/listings/ssal2/08.jpg", "images/listings/ssal2/09.jpg", "images/listings/ssal2/10.jpg", "images/listings/ssal2/11.jpg", "images/listings/ssal2/12.jpg", "images/listings/ssal2/13.jpg", "images/listings/ssal2/14.jpg", "images/listings/ssal2/15.jpg", "images/listings/ssal2/16.jpg"],
   },
   {
     id: "prop-ahua2",
@@ -269,7 +269,7 @@ const listings = [
       parqueos: "2",
     },
     features: ["6 amplias habitaciones", "6 baños", "Piscina, deck y terraza", "2 salas de estar y sala comedor", "Cocina con desayunador", "Amplio jardín", "Espacio para 2 vehículos"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/ahua2/01.jpg", "images/listings/ahua2/02.jpg", "images/listings/ahua2/03.jpg", "images/listings/ahua2/04.jpg", "images/listings/ahua2/05.jpg", "images/listings/ahua2/06.jpg", "images/listings/ahua2/07.jpg", "images/listings/ahua2/08.jpg", "images/listings/ahua2/09.jpg", "images/listings/ahua2/10.jpg", "images/listings/ahua2/11.jpg", "images/listings/ahua2/12.jpg"],
   },
   {
     id: "prop-cumb",
@@ -289,7 +289,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["1,842.16 m² (2,635 v²)", "Topografía plana", "Listo para construir: casa grande o torre de apartamentos (desarrollo vertical)", "Factibilidad de luz eléctrica y agua potable", "Valor de $550 por vara², por debajo del valor de mercado actual"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/cumb/01.jpg", "images/listings/cumb/02.jpg", "images/listings/cumb/03.jpg", "images/listings/cumb/04.jpg", "images/listings/cumb/05.jpg", "images/listings/cumb/06.jpg", "images/listings/cumb/07.jpg", "images/listings/cumb/08.jpg", "images/listings/cumb/09.jpg"],
   },
   {
     id: "prop-sanv",
@@ -309,7 +309,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["215 manzanas (2,150,000 v²)", "2 ríos dentro de la propiedad", "Extracción de piedra, laja y otros minerales", "Ideal para ganadería y cultivo", "Topografía semiplana, acceso en cualquier vehículo", "Factibilidad de agua y luz eléctrica"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/sanv/01.jpg", "images/listings/sanv/02.jpg", "images/listings/sanv/03.jpg", "images/listings/sanv/04.jpg", "images/listings/sanv/05.jpg", "images/listings/sanv/06.jpg", "images/listings/sanv/07.jpg", "images/listings/sanv/08.jpg", "images/listings/sanv/09.jpg", "images/listings/sanv/10.jpg", "images/listings/sanv/11.jpg", "images/listings/sanv/12.jpg", "images/listings/sanv/13.jpg", "images/listings/sanv/14.jpg"],
   },
   {
     id: "prop-ssal",
@@ -329,7 +329,7 @@ const listings = [
       parqueos: "6",
     },
     features: ["840 m² (1,202 v²)", "7 habitaciones (5 de 4x6 m actualmente alquiladas + 2 de 4x4 m)", "Amplio parqueo para 4 a 6 vehículos", "Ubicación de alto tránsito, a 10 minutos de centros comerciales", "Genera ingresos mensuales"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/ssal/01.jpg", "images/listings/ssal/02.jpg", "images/listings/ssal/03.jpg", "images/listings/ssal/04.jpg", "images/listings/ssal/05.jpg", "images/listings/ssal/06.jpg", "images/listings/ssal/07.jpg", "images/listings/ssal/08.jpg", "images/listings/ssal/09.jpg", "images/listings/ssal/10.jpg", "images/listings/ssal/11.jpg", "images/listings/ssal/12.jpg", "images/listings/ssal/13.jpg", "images/listings/ssal/14.jpg", "images/listings/ssal/15.jpg", "images/listings/ssal/16.jpg", "images/listings/ssal/17.jpg", "images/listings/ssal/18.jpg", "images/listings/ssal/19.jpg", "images/listings/ssal/20.jpg", "images/listings/ssal/21.jpg", "images/listings/ssal/22.jpg", "images/listings/ssal/23.jpg", "images/listings/ssal/24.jpg", "images/listings/ssal/25.jpg", "images/listings/ssal/26.jpg", "images/listings/ssal/27.jpg", "images/listings/ssal/28.jpg", "images/listings/ssal/29.jpg", "images/listings/ssal/30.jpg", "images/listings/ssal/31.jpg", "images/listings/ssal/32.jpg", "images/listings/ssal/33.jpg", "images/listings/ssal/34.jpg"],
   },
   {
     id: "prop-volc",
@@ -349,7 +349,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["1,197.9 m² (1,713 v²)", "A orilla de calle, con fácil acceso", "Cerca de restaurantes reconocidos", "Zona fresca de alta plusvalía", "Ideal para residencia de lujo o proyecto turístico"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/volc/01.jpg", "images/listings/volc/02.jpg", "images/listings/volc/03.jpg", "images/listings/volc/04.jpg", "images/listings/volc/05.jpg", "images/listings/volc/06.jpg", "images/listings/volc/07.jpg"],
   },
   {
     id: "prop-clau",
@@ -369,7 +369,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["2,300 m² (3,291 v²)", "Acceso a Sonsonate, Santa Ana y San Salvador", "Acceso en cualquier vehículo, calle de ingreso plana", "Factibilidad de luz y agua", "Tierra totalmente fértil, terreno plano", "Ideal para cabaña, predio de furgones, restaurante y otros negocios"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/clau/01.jpg", "images/listings/clau/02.jpg", "images/listings/clau/03.jpg", "images/listings/clau/04.jpg", "images/listings/clau/05.jpg", "images/listings/clau/06.jpg", "images/listings/clau/07.jpg", "images/listings/clau/08.jpg"],
   },
   {
     id: "prop-ilop",
@@ -389,7 +389,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["2 manzanas (20,000 v²)", "Vista espectacular al Lago de Ilopango", "A 500 m del Turicentro Apulo, en dirección al Club Salvadoreño", "Ideal para hoteles y desarrollo inmobiliario"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/ilop/01.jpg", "images/listings/ilop/02.jpg", "images/listings/ilop/03.jpg", "images/listings/ilop/04.jpg", "images/listings/ilop/05.jpg", "images/listings/ilop/06.jpg"],
   },
   {
     id: "prop-flor",
@@ -409,7 +409,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["2,500 v² (1,747.5 m²)", "26 m de frente x 75 m de fondo", "Vista espectacular al Lago de Coatepeque", "Calle en dirección a los restaurantes, acceso en cualquier vehículo", "Terreno semiplano"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/flor/01.jpg", "images/listings/flor/02.jpg", "images/listings/flor/03.jpg", "images/listings/flor/04.jpg", "images/listings/flor/05.jpg", "images/listings/flor/06.jpg", "images/listings/flor/07.jpg", "images/listings/flor/08.jpg", "images/listings/flor/09.jpg", "images/listings/flor/10.jpg"],
   },
   {
     id: "prop-huiz",
@@ -429,7 +429,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["6 manzanas (60,000 v²)", "Vista al complejo privado El Encanto Golf Country Club", "Factibilidad de agua potable y luz eléctrica", "Acceso en cualquier vehículo, a 20 minutos de la carretera al Puerto de La Libertad", "Topografía irregular", "Ideal para proyecto inmobiliario, apartamentos Airbnb o proyecto agrícola"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/huiz/01.jpg", "images/listings/huiz/02.jpg", "images/listings/huiz/03.jpg", "images/listings/huiz/04.jpg", "images/listings/huiz/05.jpg", "images/listings/huiz/06.jpg", "images/listings/huiz/07.jpg", "images/listings/huiz/08.jpg", "images/listings/huiz/09.jpg", "images/listings/huiz/10.jpg", "images/listings/huiz/11.jpg", "images/listings/huiz/12.jpg", "images/listings/huiz/13.jpg", "images/listings/huiz/14.jpg", "images/listings/huiz/15.jpg"],
   },
   {
     id: "prop-ahua",
@@ -449,7 +449,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["20 manzanas (200,000 v²)", "Topografía plana y semiplana", "Apta para paneles solares", "Agua mediante pozo artesanal", "Acceso con vehículo 4x4"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/ahua/01.jpg", "images/listings/ahua/02.jpg", "images/listings/ahua/03.jpg", "images/listings/ahua/04.jpg", "images/listings/ahua/05.jpg", "images/listings/ahua/06.jpg", "images/listings/ahua/07.jpg", "images/listings/ahua/08.jpg", "images/listings/ahua/09.jpg", "images/listings/ahua/10.jpg", "images/listings/ahua/11.jpg", "images/listings/ahua/12.jpg", "images/listings/ahua/13.jpg"],
   },
   {
     id: "prop-lagu",
@@ -469,7 +469,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["18,000 v² (12,582 m²)", "Vista al Lago de Coatepeque", "Acceso en cualquier vehículo (calle de tierra)", "Factibilidad de agua a 100 metros de distancia", "Luz mediante paneles solares", "Topografía semiplana"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/lagu/01.jpg", "images/listings/lagu/02.jpg", "images/listings/lagu/03.jpg", "images/listings/lagu/04.jpg", "images/listings/lagu/05.jpg", "images/listings/lagu/06.jpg", "images/listings/lagu/07.jpg", "images/listings/lagu/08.jpg", "images/listings/lagu/09.jpg", "images/listings/lagu/10.jpg", "images/listings/lagu/11.jpg", "images/listings/lagu/12.jpg", "images/listings/lagu/13.jpg", "images/listings/lagu/14.jpg"],
   },
   {
     id: "prop-atac",
@@ -509,7 +509,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["4,000 v² (2,794.8 m²)", "A solo 200 metros del Lago de Coatepeque", "Árboles frutales: café, mango, jocote y cacao", "A un costado de Cardedeu", "Ideal para casa de descanso o proyecto con vista"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/card/01.jpg", "images/listings/card/02.jpg", "images/listings/card/03.jpg", "images/listings/card/04.jpg", "images/listings/card/05.jpg", "images/listings/card/06.jpg"],
   },
   {
     id: "prop-juju",
@@ -529,7 +529,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["335 manzanas (3,350,000 v² / 2,340,645 m²)", "100 manzanas de café cultivado en producción", "3 ríos y 6 cascadas dentro de la propiedad", "16 minas de piedra laja (5 sobre la carretera)", "Aproximadamente 2 km de frente sobre carretera", "Agua potable y energía eléctrica", "Acceso para todo tipo de vehículo"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/juju/01.jpg", "images/listings/juju/02.jpg", "images/listings/juju/03.jpg", "images/listings/juju/04.jpg", "images/listings/juju/05.jpg", "images/listings/juju/06.jpg", "images/listings/juju/07.jpg", "images/listings/juju/08.jpg"],
   },
   {
     id: "prop-mora",
@@ -549,7 +549,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["4 manzanas (40,000 v²)", "Ideal para ganadería", "Topografía semiplana (quebrada en invierno)", "Factibilidad de luz eléctrica y agua potable a 200 m"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/mora/01.jpg", "images/listings/mora/02.jpg", "images/listings/mora/03.jpg", "images/listings/mora/04.jpg", "images/listings/mora/05.jpg", "images/listings/mora/06.jpg", "images/listings/mora/07.jpg"],
   },
   {
     id: "prop-atac2",
@@ -569,7 +569,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["10 manzanas (100,000 v²)", "1,300 msnm, café de estricta altura", "Vista al océano", "$75,000 por manzana", "Ideal para producción de café de especialidad y ecoturismo"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/atac2/01.jpg", "images/listings/atac2/02.jpg", "images/listings/atac2/03.jpg", "images/listings/atac2/04.jpg", "images/listings/atac2/05.jpg", "images/listings/atac2/06.jpg", "images/listings/atac2/07.jpg", "images/listings/atac2/08.jpg", "images/listings/atac2/09.jpg", "images/listings/atac2/10.jpg", "images/listings/atac2/11.jpg", "images/listings/atac2/12.jpg", "images/listings/atac2/13.jpg"],
   },
   {
     id: "prop-cost",
@@ -589,7 +589,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["600 m² (858 v²)", "Amplia piscina (sin filtro)", "2 habitaciones y corredor amplio", "Baño con ducha y área de lavado", "Agua de pozo y de punta, energía eléctrica activa", "Amplio parqueo, fácil acceso, a 5 minutos de la playa"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/cost/01.jpg", "images/listings/cost/02.jpg", "images/listings/cost/03.jpg", "images/listings/cost/04.jpg", "images/listings/cost/05.jpg", "images/listings/cost/06.jpg", "images/listings/cost/07.jpg"],
   },
   {
     id: "prop-delg",
@@ -609,7 +609,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["Uso comercial, frente de 10 m x 25 m de fondo", "8 habitaciones y 3 baños", "Cerca de la Avenida Juan Bertis y los juzgados", "Zona de alto movimiento", "Ideal para renta o negocio"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/delg/01.jpg", "images/listings/delg/02.jpg", "images/listings/delg/03.jpg", "images/listings/delg/04.jpg", "images/listings/delg/05.jpg"],
   },
   {
     id: "prop-acaj",
@@ -629,7 +629,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["83 manzanas 100% planas (830,000 v²)", "Cultivo de caña con sistema de riego propio", "2 galeras grandes para tractores y maquinaria", "2 casas de seguridad", "Luz eléctrica y agua potable", "A 8 minutos de la carretera principal"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/acaj/01.jpg", "images/listings/acaj/02.jpg", "images/listings/acaj/03.jpg", "images/listings/acaj/04.jpg", "images/listings/acaj/05.jpg", "images/listings/acaj/06.jpg", "images/listings/acaj/07.jpg", "images/listings/acaj/08.jpg", "images/listings/acaj/09.jpg"],
   },
   {
     id: "prop-jaya",
@@ -649,7 +649,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["27,000 m² (39,000 v²), 89% a orilla de calle", "Cabaña grande de 2 niveles de madera, con 2 baños completos", "Café Bourbon y Cuscatleco en producción", "Glorieta, sala de estar, sala de estudio y mirador con entorno construido", "Cisterna de 40 barriles, luz eléctrica y agua potable", "2 portones de acceso, bodega y casita para encargados", "Piso de laja", "Ideal también para proyecto urbano"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/jaya/01.jpg", "images/listings/jaya/02.jpg", "images/listings/jaya/03.jpg", "images/listings/jaya/04.jpg", "images/listings/jaya/05.jpg", "images/listings/jaya/06.jpg", "images/listings/jaya/07.jpg", "images/listings/jaya/08.jpg", "images/listings/jaya/09.jpg", "images/listings/jaya/10.jpg", "images/listings/jaya/11.jpg", "images/listings/jaya/12.jpg", "images/listings/jaya/13.jpg", "images/listings/jaya/14.jpg", "images/listings/jaya/15.jpg", "images/listings/jaya/16.jpg", "images/listings/jaya/17.jpg", "images/listings/jaya/18.jpg"],
   },
   {
     id: "prop-coat",
@@ -669,7 +669,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["2 manzanas (20,000 v²)", "Vista espectacular al Lago de Coatepeque", "Acceso inmediato, a 200 m de la calle principal", "Ideal para torre de apartamentos, centro comercial, hoteles, restaurantes o cabañas"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/coat/01.jpg", "images/listings/coat/02.jpg", "images/listings/coat/03.jpg", "images/listings/coat/04.jpg", "images/listings/coat/05.jpg", "images/listings/coat/06.jpg", "images/listings/coat/07.jpg", "images/listings/coat/08.jpg", "images/listings/coat/09.jpg"],
   },
   {
     id: "prop-copa-3",
@@ -731,7 +731,7 @@ const listings = [
       motor: "—",
     },
     features: ["Motor 1000 Turbo", "Suspensión FOX de alto rendimiento", "Tijeras y estribos ATB", "4 plazas", "~2,000 millas recorridas"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/rzr4pro/01.jpg", "images/listings/rzr4pro/02.jpg", "images/listings/rzr4pro/03.jpg", "images/listings/rzr4pro/04.jpg", "images/listings/rzr4pro/05.jpg", "images/listings/rzr4pro/06.jpg", "images/listings/rzr4pro/07.jpg", "images/listings/rzr4pro/08.jpg", "images/listings/rzr4pro/09.jpg", "images/listings/rzr4pro/10.jpg"],
   },
   {
     id: "veh-cfmo2020",
@@ -751,7 +751,7 @@ const listings = [
       motor: "—",
     },
     features: ["Marca CF Moto, modelo 2020", "Excelente estado", "Ideal para terreno rústico y trabajo"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/cfmo2020/01.jpg", "images/listings/cfmo2020/02.jpg", "images/listings/cfmo2020/03.jpg", "images/listings/cfmo2020/04.jpg", "images/listings/cfmo2020/05.jpg", "images/listings/cfmo2020/06.jpg", "images/listings/cfmo2020/07.jpg", "images/listings/cfmo2020/08.jpg", "images/listings/cfmo2020/09.jpg", "images/listings/cfmo2020/10.jpg"],
   },
   {
     id: "veh-f1502022",
@@ -771,7 +771,7 @@ const listings = [
       motor: "—",
     },
     features: ["Ford F-150 2022", "Tracción 4x4", "Excelente estado"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/f1502022/01.jpg", "images/listings/f1502022/02.jpg", "images/listings/f1502022/03.jpg", "images/listings/f1502022/04.jpg", "images/listings/f1502022/05.jpg", "images/listings/f1502022/06.jpg", "images/listings/f1502022/07.jpg", "images/listings/f1502022/08.jpg", "images/listings/f1502022/09.jpg", "images/listings/f1502022/10.jpg", "images/listings/f1502022/11.jpg", "images/listings/f1502022/12.jpg", "images/listings/f1502022/13.jpg", "images/listings/f1502022/14.jpg", "images/listings/f1502022/15.jpg", "images/listings/f1502022/16.jpg"],
   },
   {
     id: "veh-acco2020",
@@ -791,7 +791,7 @@ const listings = [
       motor: "—",
     },
     features: ["Honda Accord 2020", "Sedán, alto confort", "Excelente estado"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/acco2020/01.jpg", "images/listings/acco2020/02.jpg", "images/listings/acco2020/03.jpg", "images/listings/acco2020/04.jpg", "images/listings/acco2020/05.jpg", "images/listings/acco2020/06.jpg", "images/listings/acco2020/07.jpg", "images/listings/acco2020/08.jpg", "images/listings/acco2020/09.jpg", "images/listings/acco2020/10.jpg", "images/listings/acco2020/11.jpg", "images/listings/acco2020/12.jpg"],
   },
   {
     id: "veh-q3sl2018",
@@ -811,7 +811,7 @@ const listings = [
       motor: "—",
     },
     features: ["Motor 2.0 Turbo gasolina, 4 cilindros", "Tracción Quattro 4x4", "Tapicería en cuero y techo panorámico", "Encendido de botón con llave de proximidad", "Freno de mano electrónico y baúl eléctrico", "Todas las bolsas de aire en buen estado", "75,000 millas recorridas"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/q3sl2018/01.jpg", "images/listings/q3sl2018/02.jpg", "images/listings/q3sl2018/03.jpg", "images/listings/q3sl2018/04.jpg", "images/listings/q3sl2018/05.jpg", "images/listings/q3sl2018/06.jpg", "images/listings/q3sl2018/07.jpg", "images/listings/q3sl2018/08.jpg", "images/listings/q3sl2018/09.jpg", "images/listings/q3sl2018/10.jpg", "images/listings/q3sl2018/11.jpg", "images/listings/q3sl2018/12.jpg", "images/listings/q3sl2018/13.jpg"],
   },
   {
     id: "veh-mazd2016",
@@ -831,7 +831,7 @@ const listings = [
       motor: "—",
     },
     features: ["Mazda 3 2016", "Sedán deportivo y económico", "Buen estado"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/mazd2016/01.jpg", "images/listings/mazd2016/02.jpg", "images/listings/mazd2016/03.jpg", "images/listings/mazd2016/04.jpg", "images/listings/mazd2016/05.jpg", "images/listings/mazd2016/06.jpg"],
   },
   {
     id: "veh-fron2021",
@@ -851,7 +851,7 @@ const listings = [
       motor: "—",
     },
     features: ["Nissan Frontier 2021", "Cabina King Cab", "Excelente estado"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/fron2021/01.jpg", "images/listings/fron2021/02.jpg", "images/listings/fron2021/03.jpg", "images/listings/fron2021/04.jpg", "images/listings/fron2021/05.jpg", "images/listings/fron2021/06.jpg", "images/listings/fron2021/07.jpg", "images/listings/fron2021/08.jpg", "images/listings/fron2021/09.jpg", "images/listings/fron2021/10.jpg", "images/listings/fron2021/11.jpg", "images/listings/fron2021/12.jpg", "images/listings/fron2021/13.jpg"],
   },
   {
     id: "veh-outl2020",
@@ -871,7 +871,7 @@ const listings = [
       motor: "—",
     },
     features: ["Mitsubishi Outlander 2020", "SUV familiar, amplio y cómodo", "Excelente estado"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/outl2020/01.jpg", "images/listings/outl2020/02.jpg", "images/listings/outl2020/03.jpg", "images/listings/outl2020/04.jpg", "images/listings/outl2020/05.jpg", "images/listings/outl2020/06.jpg", "images/listings/outl2020/07.jpg", "images/listings/outl2020/08.jpg", "images/listings/outl2020/09.jpg", "images/listings/outl2020/10.jpg", "images/listings/outl2020/11.jpg", "images/listings/outl2020/12.jpg", "images/listings/outl2020/13.jpg"],
   },
   {
     id: "veh-kona2023",
@@ -891,7 +891,7 @@ const listings = [
       motor: "—",
     },
     features: ["Hyundai Kona AWD (4x4) 2023", "Tracción integral AWD", "Modelo reciente, excelente estado"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/kona2023/01.jpg", "images/listings/kona2023/02.jpg", "images/listings/kona2023/03.jpg", "images/listings/kona2023/04.jpg", "images/listings/kona2023/05.jpg", "images/listings/kona2023/06.jpg", "images/listings/kona2023/07.jpg", "images/listings/kona2023/08.jpg", "images/listings/kona2023/09.jpg"],
   },
   {
     id: "veh-l2002013",
@@ -911,6 +911,6 @@ const listings = [
       motor: "—",
     },
     features: ["Mitsubishi L200 2013", "Pick-up de trabajo, resistente", "Buen estado"],
-    images: ["images/site/placeholder-vehiculo.svg"],
+    images: ["images/listings/l2002013/01.jpg", "images/listings/l2002013/02.jpg", "images/listings/l2002013/03.jpg", "images/listings/l2002013/04.jpg", "images/listings/l2002013/05.jpg", "images/listings/l2002013/06.jpg", "images/listings/l2002013/07.jpg", "images/listings/l2002013/08.jpg", "images/listings/l2002013/09.jpg", "images/listings/l2002013/10.jpg", "images/listings/l2002013/11.jpg", "images/listings/l2002013/12.jpg", "images/listings/l2002013/13.jpg", "images/listings/l2002013/14.jpg"],
   },
 ];
