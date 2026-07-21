@@ -2,7 +2,7 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.7 — Validado como base oficial del proyecto
+> **Versión:** 1.8 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
@@ -156,7 +156,9 @@ El despliegue operativo completo de este módulo (verificación real del deploy,
 
 Recibe al cliente potencial que llega desde el sitio.
 
-**Hoy:** WhatsApp es el único canal, sin registro estructurado de quién contactó ni por qué ficha. **Futuro:** formulario de contacto como canal secundario + integración con un CRM — ya definido como "debería/podría tener" en el MVP de `docs/00-VISION.md`, no se repite aquí.
+**Hoy:** WhatsApp es el único canal, sin registro estructurado de quién contactó ni por qué ficha. No es un módulo de sistema en sentido completo todavía — es un punto de salida hacia un canal externo, sin ningún loop de datos de vuelta (sin registro, sin seguimiento, sin métrica dentro del sistema). **Futuro:** formulario de contacto como canal secundario + integración con un CRM — ya definido como "debería/podría tener" en el MVP de `docs/00-VISION.md`, no se repite aquí.
+
+El despliegue operativo completo de este módulo (los cuatro puntos de entrada reales, qué falta para un loop de datos) vive en `docs/08-SALES-LEADS.md` — no se repite aquí.
 
 ---
 
@@ -180,6 +182,7 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 - `docs/05-CREATIVE-ENGINE.md` — el despliegue operativo completo del módulo Creative Engine (estado real en Canva, plantillas, variaciones, proceso de generación). Este documento solo lo referencia.
 - `docs/06-WEB-INTERFACE.md` — el despliegue operativo completo del módulo Web Interface (inventario de archivos, consumo de datos, conexiones reales). Este documento solo lo referencia.
 - `docs/07-PUBLISHING.md` — el despliegue operativo completo del módulo Publishing (verificación real del deploy, qué falta para un pipeline completo). Este documento solo lo referencia.
+- `docs/08-SALES-LEADS.md` — el despliegue operativo completo del módulo Sales/Leads (puntos de entrada reales, ausencia de loop de datos). Este documento solo lo referencia.
 - Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `docs/00-VISION.md` → Riesgos abiertos. No se duplican aquí.
 
 ---
@@ -196,3 +199,4 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 | 1.5 | 2026-07-19 | Corrige la sección de Creative Engine con el estado real verificado en Canva: ya existe un brand kit, una plantilla base y más de 15 variaciones creadas — no "está por empezar", como decía antes. Agrega referencia a `docs/05-CREATIVE-ENGINE.md` (documento nuevo). |
 | 1.6 | 2026-07-19 | Agrega referencia a `docs/06-WEB-INTERFACE.md` (documento nuevo, despliegue operativo del módulo Web Interface) en la sección del módulo y en "Relación con la documentación". |
 | 1.7 | 2026-07-19 | Aclara que la automatización de Publishing depende por completo de que los módulos anteriores ya hayan terminado su trabajo manual. Agrega referencia a `docs/07-PUBLISHING.md` (documento nuevo). |
+| 1.8 | 2026-07-19 | Aclara que Sales/Leads no es un módulo de sistema completo todavía, sino un punto de salida hacia un canal externo sin loop de datos de vuelta. Agrega referencia a `docs/08-SALES-LEADS.md` (documento nuevo). |
