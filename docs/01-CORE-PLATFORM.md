@@ -2,7 +2,7 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.8 — Validado como base oficial del proyecto
+> **Versión:** 1.9 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
@@ -168,7 +168,11 @@ El despliegue operativo completo de este módulo (los cuatro puntos de entrada r
 
 Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (visuales) y lo publica manualmente en cada red.
 
-**Hoy:** el contenido para estos canales ya existe en Notion, pero la publicación es 100% manual y no está conectada a este sistema. **Futuro:** publicación automática multi-canal — no se construye hasta que Content Engine y Creative Engine estén más maduros.
+**Hoy:** el contenido para estos canales ya existe en Notion, pero la publicación es 100% manual y ocurre completamente fuera del sistema (apps móviles/plataformas), sin trazabilidad ni registro de lo publicado dentro del sistema. **Futuro:** publicación automática multi-canal — no se construye hasta que Content Engine y Creative Engine estén más maduros.
+
+**Nota (sin resolver):** Content Engine también redacta un canal "WhatsApp", que no está en la lista de canales de este módulo — es un texto reutilizable pensado para conversaciones 1:1 de Sales/Leads, no para publicación pública. Se deja documentado como pendiente en `docs/09-DISTRIBUTION.md`, no se resuelve aquí.
+
+El despliegue operativo completo de este módulo vive en `docs/09-DISTRIBUTION.md` — no se repite aquí.
 
 ---
 
@@ -183,6 +187,7 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 - `docs/06-WEB-INTERFACE.md` — el despliegue operativo completo del módulo Web Interface (inventario de archivos, consumo de datos, conexiones reales). Este documento solo lo referencia.
 - `docs/07-PUBLISHING.md` — el despliegue operativo completo del módulo Publishing (verificación real del deploy, qué falta para un pipeline completo). Este documento solo lo referencia.
 - `docs/08-SALES-LEADS.md` — el despliegue operativo completo del módulo Sales/Leads (puntos de entrada reales, ausencia de loop de datos). Este documento solo lo referencia.
+- `docs/09-DISTRIBUTION.md` — el despliegue operativo completo del módulo Distribution (canales reales, ambigüedad del canal WhatsApp sin resolver). Este documento solo lo referencia.
 - Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `docs/00-VISION.md` → Riesgos abiertos. No se duplican aquí.
 
 ---
@@ -200,3 +205,4 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 | 1.6 | 2026-07-19 | Agrega referencia a `docs/06-WEB-INTERFACE.md` (documento nuevo, despliegue operativo del módulo Web Interface) en la sección del módulo y en "Relación con la documentación". |
 | 1.7 | 2026-07-19 | Aclara que la automatización de Publishing depende por completo de que los módulos anteriores ya hayan terminado su trabajo manual. Agrega referencia a `docs/07-PUBLISHING.md` (documento nuevo). |
 | 1.8 | 2026-07-19 | Aclara que Sales/Leads no es un módulo de sistema completo todavía, sino un punto de salida hacia un canal externo sin loop de datos de vuelta. Agrega referencia a `docs/08-SALES-LEADS.md` (documento nuevo). |
+| 1.9 | 2026-07-19 | Aclara que Distribution es 100% manual y ocurre completamente fuera del sistema, sin trazabilidad de lo publicado. Deja documentada (sin resolver) la ambigüedad del canal "WhatsApp" de Content Engine frente a Sales/Leads. Agrega referencia a `docs/09-DISTRIBUTION.md` (documento nuevo). Con este módulo se completa la documentación de los 8 módulos definidos en este documento. |
