@@ -2,7 +2,7 @@
 
 ## Acostel OS — Visión del Proyecto
 
-> **Versión:** 2.7 — Validado como base oficial del proyecto
+> **Versión:** 2.8 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — se actualiza a medida que el proyecto avanza y se validan (o se descartan) supuestos.
 > Ver [Registro de cambios](#registro-de-cambios) al final.
@@ -99,24 +99,27 @@ Esta tabla es conceptual. El mapeo exacto, campo por campo, de cada base de Noti
 
 ---
 
-## MVP Inicial
+## MVP y fases de desarrollo
 
-Priorizado (no todo tiene el mismo peso):
+El desarrollo avanza por fases. Una fase no se empieza hasta que la anterior funciona de verdad, y dentro de cada fase el orden lo decide el principio de **desarrollo guiado por retorno** (definido en `CLAUDE.md`, Principio 6): aumentar ventas, reducir trabajo manual, o mejorar la experiencia del cliente — si no aporta ninguna, se pausa.
 
-**Debe tener (indispensable):**
-- Sitio web profesional
-- Propiedades y vehículos con datos reales (import desde Notion, aunque sea manual por ahora)
-- Fichas completas con imágenes y contenido
-- Botón de WhatsApp funcional como canal principal
-- SEO básico optimizado
+**V1 — Vender de forma profesional (fase actual, casi completa):**
+- Sitio web profesional y rápido — ✅ hecho
+- Propiedades y vehículos con datos reales desde Notion — ✅ hecho (sincronización manual por ahora)
+- Copies reales en cada ficha — ✅ hecho
+- Filtros de búsqueda (tipo, precio, ubicación) — ✅ hecho
+- WhatsApp como canal principal + formulario como canal secundario con datos estructurados — ✅ hecho
+- Fotos reales en cada ficha — 🔄 en curso (pipeline de fotos desde la carpeta procesada del cliente)
+- SEO básico optimizado — ⏳ pendiente; se hace cuando el contenido esté completo, justo antes de compartir el link públicamente
 
-**Debería tener (importante, no bloqueante):**
-- Filtros de búsqueda (tipo, precio, ubicación)
-- Formulario de contacto como canal secundario, con datos estructurados
+**V2 — Contenido consistente para redes (siguiente):**
+- Proceso repetible para generar creativos por ficha — las piezas ya existen (plantilla y brand kit en Canva, copies por canal en Notion); falta el proceso que las una sin rehacer todo a mano cada vez
+- Base lista para añadir automatizaciones sin reconstruir nada
 
-**Podría tener (deseable, no urgente):**
-- Base preparada para automatizaciones futuras del pipeline Notion → sitio
-- Integración del formulario con un CRM
+**V3 — Escalar (después, solo si el retorno lo justifica):**
+- CRM y registro de leads conectado (el formulario ya captura los datos estructurados que esto necesita)
+- Automatización del pipeline Notion → sitio
+- Analítica: qué fichas generan interés, de dónde llegan los contactos
 
 ---
 
@@ -176,3 +179,4 @@ Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas a
 | 2.5 | 2026-07-19 | Agrega riesgo abierto de Publishing (sin staging, configuración de Netlify no versionada, sin CI) — hallazgos nuevos de `docs/07-PUBLISHING.md`, no registrados hasta ahora porque Publishing nunca se había revisado con este nivel de detalle. |
 | 2.6 | 2026-07-19 | Se implementó el formulario de contacto. Corrige la frase "mientras el formulario no exista, WhatsApp es el único canal activo" en Estrategia de contacto, que ya no era cierta. |
 | 2.7 | 2026-07-19 | Consolidación de la documentación por decisión del cliente: se eliminan los documentos descriptivos 04–09 (eran mapas de procesos manuales, no herramientas; recuperables en Git) y sus hallazgos se absorben en `docs/01-CORE-PLATFORM.md` v2.0. Se actualizan las referencias de este documento. El foco pasa de documentar el sistema a construirlo — empezando por el pipeline de fotos reales al sitio. |
+| 2.8 | 2026-07-19 | Reestructura "MVP Inicial" como "MVP y fases de desarrollo" (V1 vender profesional / V2 contenido para redes / V3 escalar), propuesto por el cliente, marcando el estado real de cada punto. Conecta el orden de las fases con el nuevo Principio 6 de `CLAUDE.md` (desarrollo guiado por retorno). |
