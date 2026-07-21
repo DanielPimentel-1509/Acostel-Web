@@ -2,7 +2,7 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.5 — Validado como base oficial del proyecto
+> **Versión:** 1.6 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
@@ -134,6 +134,8 @@ Consume lo que producen Data Processing/Sync (datos), Content Engine (texto del 
 
 **Hoy:** completo y en producción. **Futuro:** plantilla reutilizable para otro negocio, una vez que exista un segundo caso real (condición ya establecida en `docs/00-VISION.md`).
 
+El despliegue operativo completo de este módulo (inventario de archivos, cómo consume `js/data.js`, qué está conectado y qué no) vive en `docs/06-WEB-INTERFACE.md` — no se repite aquí.
+
 ---
 
 ### 6. Publishing
@@ -174,6 +176,7 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 - `docs/03-DATA-ENGINE.md` — el despliegue operativo completo del módulo Data Processing/Sync (flujo, transformaciones, contrato de salida). Este documento solo lo referencia.
 - `docs/04-CONTENT-ENGINE.md` — el despliegue operativo completo del módulo Content Engine (estructura de contenido, proceso de generación, relación con Data Engine). Este documento solo lo referencia.
 - `docs/05-CREATIVE-ENGINE.md` — el despliegue operativo completo del módulo Creative Engine (estado real en Canva, plantillas, variaciones, proceso de generación). Este documento solo lo referencia.
+- `docs/06-WEB-INTERFACE.md` — el despliegue operativo completo del módulo Web Interface (inventario de archivos, consumo de datos, conexiones reales). Este documento solo lo referencia.
 - Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `docs/00-VISION.md` → Riesgos abiertos. No se duplican aquí.
 
 ---
@@ -188,3 +191,4 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 | 1.3 | 2026-07-19 | Agrega referencia a `docs/03-DATA-ENGINE.md` (documento nuevo, despliegue operativo del módulo Data Processing/Sync) en la sección del módulo y en "Relación con la documentación". |
 | 1.4 | 2026-07-19 | Agrega referencia a `docs/04-CONTENT-ENGINE.md` (documento nuevo, despliegue operativo del módulo Content Engine) en la sección del módulo y en "Relación con la documentación". |
 | 1.5 | 2026-07-19 | Corrige la sección de Creative Engine con el estado real verificado en Canva: ya existe un brand kit, una plantilla base y más de 15 variaciones creadas — no "está por empezar", como decía antes. Agrega referencia a `docs/05-CREATIVE-ENGINE.md` (documento nuevo). |
+| 1.6 | 2026-07-19 | Agrega referencia a `docs/06-WEB-INTERFACE.md` (documento nuevo, despliegue operativo del módulo Web Interface) en la sección del módulo y en "Relación con la documentación". |
