@@ -2,8 +2,8 @@
 
 ## Acostel OS — Visión del Proyecto
 
-> **Versión:** 2.3 — Validado como base oficial del proyecto
-> **Última actualización:** 2026-07-18
+> **Versión:** 2.4 — Validado como base oficial del proyecto
+> **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — se actualiza a medida que el proyecto avanza y se validan (o se descartan) supuestos.
 > Ver [Registro de cambios](#registro-de-cambios) al final.
 
@@ -157,7 +157,7 @@ Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas a
 - Métricas de éxito del MVP — aún sin definir con el cliente. Candidatas: tiempo entre "listo en Notion" y "publicado", contactos generados por WhatsApp, velocidad de carga, fichas activas mantenidas al día.
 - El estado "Revisión" de las fichas en Notion no se usa de forma consistente (todo permanece en "Por revisar").
 - Content Engine: los canales que no son Web/SEO (WhatsApp, Instagram, TikTok, Facebook, Marketplace) ya tienen copy redactado en Notion, pero no están conectados a nada dentro de este sistema.
-- Creative Engine: sin pipeline definido para creativos diseñados (portadas, gráficas) — hoy solo hay fotos crudas y las imágenes ya integradas al sitio (logo, favicon).
+- Creative Engine: la producción de creativos diseñados en Canva (brand kit, plantilla base, más de 15 variaciones por ficha) ya es una práctica establecida, pero sin ningún pipeline que la conecte a este sistema — ni al sitio, ni a Notion. Detalle en `docs/05-CREATIVE-ENGINE.md`.
 - Distribution: la publicación en redes sociales y marketplace es 100% manual, sin conexión a este sistema.
 
 ---
@@ -171,3 +171,4 @@ Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas a
 | 2.1 | 2026-07-18 | Pasada de simplificación: se eliminan redundancias (la regla de "no construir Core Platform hasta un segundo módulo real" ahora vive en un solo lugar; se fusionan los principios de simplicidad y escalabilidad prematura; se quitan las etiquetas "(principio nuevo)" que ya documentaba este registro). Se fusiona "Métricas de éxito" dentro de "Riesgos abiertos" para no repetir una sección casi vacía. **Documento validado como base oficial del proyecto.** |
 | 2.2 | 2026-07-18 | Revisión de coherencia cruzada con `CLAUDE.md` y `docs/01-CORE-PLATFORM.md`. Se agregan tres riesgos abiertos identificados en `01-CORE-PLATFORM.md` que no estaban registrados aquí (canales de Content Engine sin conectar, Creative Engine sin pipeline, Distribution 100% manual), para que la referencia cruzada entre ambos documentos sea exacta. Se conecta "Estrategia de contacto" con el módulo *Sales / Leads*. |
 | 2.3 | 2026-07-19 | La tabla de "Modelo de datos" se marca como conceptual y ahora apunta a `docs/02-DATA-SCHEMA.md`, documento nuevo con el mapeo campo por campo real de cada base de Notion. Cierra el vacío de que el contrato de datos solo existía en la memoria de la sesión. |
+| 2.4 | 2026-07-19 | Corrige el riesgo abierto de Creative Engine con el estado real verificado directamente en Canva: la producción de creativos ya es una práctica establecida (brand kit, plantilla, variaciones), no algo que recién empieza como decía antes. Apunta a `docs/05-CREATIVE-ENGINE.md`, documento nuevo. |

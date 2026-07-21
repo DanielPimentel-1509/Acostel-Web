@@ -2,7 +2,7 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.4 — Validado como base oficial del proyecto
+> **Versión:** 1.5 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
@@ -116,13 +116,13 @@ El despliegue operativo completo de este módulo (estructura de contenido por ca
 
 ### 4. Creative Engine
 
-**Dueño:** el cliente (en desarrollo). **Dónde vive:** adjuntos de Notion (fotos crudas) + `images/site/` y `images/listings/` en el repositorio (logo, favicon, y lo que se vaya subiendo).
+**Dueño:** el cliente. **Dónde vive:** adjuntos de Notion (fotos crudas) + Canva (brand kit, plantilla base y creativos ya diseñados) + `images/site/` y `images/listings/` en el repositorio (logo, favicon, y lo que se vaya subiendo).
 
 Produce el material visual de cada ficha: fotos, portadas, creativos diseñados.
 
-**Hoy:** las fotos crudas en Notion no son directamente utilizables por el sitio (URLs internas temporales); las fichas usan imágenes de marcador. El logo y el favicon ya están integrados. El cliente está por empezar a producir creativos diseñados — todavía sin un pipeline definido de cómo entran al sistema.
+**Hoy:** las fotos crudas en Notion no son directamente utilizables por el sitio (URLs internas temporales); las fichas usan imágenes de marcador. El logo y el favicon ya están integrados. En Canva, la producción de creativos diseñados **ya es una práctica establecida**: existe un brand kit configurado, una plantilla base con campos genéricos, y más de 15 variaciones ya creadas por ficha — pero sin ningún pipeline que las conecte a este sistema (ni al sitio, ni a Notion). Se publican manualmente en redes por fuera de este sistema (ver Distribution).
 
-**Futuro:** definir ese pipeline (dónde se suben, con qué nombre, cómo se conectan a cada ficha) en cuanto exista un primer lote real de creativos.
+**Futuro:** definir el pipeline que falta (dónde se exportan desde Canva, con qué nombre, cómo se conectan a cada ficha del sitio). Detalle completo de este módulo en `docs/05-CREATIVE-ENGINE.md`.
 
 ---
 
@@ -173,6 +173,7 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 - `docs/02-DATA-SCHEMA.md` — el contrato exacto de campos que leen Data Processing/Sync y Content Engine. Este documento no lo repite.
 - `docs/03-DATA-ENGINE.md` — el despliegue operativo completo del módulo Data Processing/Sync (flujo, transformaciones, contrato de salida). Este documento solo lo referencia.
 - `docs/04-CONTENT-ENGINE.md` — el despliegue operativo completo del módulo Content Engine (estructura de contenido, proceso de generación, relación con Data Engine). Este documento solo lo referencia.
+- `docs/05-CREATIVE-ENGINE.md` — el despliegue operativo completo del módulo Creative Engine (estado real en Canva, plantillas, variaciones, proceso de generación). Este documento solo lo referencia.
 - Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `docs/00-VISION.md` → Riesgos abiertos. No se duplican aquí.
 
 ---
@@ -186,3 +187,4 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 | 1.2 | 2026-07-19 | Agrega referencia a `docs/02-DATA-SCHEMA.md` (documento nuevo) en "Relación con la documentación". |
 | 1.3 | 2026-07-19 | Agrega referencia a `docs/03-DATA-ENGINE.md` (documento nuevo, despliegue operativo del módulo Data Processing/Sync) en la sección del módulo y en "Relación con la documentación". |
 | 1.4 | 2026-07-19 | Agrega referencia a `docs/04-CONTENT-ENGINE.md` (documento nuevo, despliegue operativo del módulo Content Engine) en la sección del módulo y en "Relación con la documentación". |
+| 1.5 | 2026-07-19 | Corrige la sección de Creative Engine con el estado real verificado en Canva: ya existe un brand kit, una plantilla base y más de 15 variaciones creadas — no "está por empezar", como decía antes. Agrega referencia a `docs/05-CREATIVE-ENGINE.md` (documento nuevo). |
