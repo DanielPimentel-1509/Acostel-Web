@@ -47,7 +47,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["842.5 m² (1,205 v²)", "Zona con plusvalía y fácil acceso", "Energía eléctrica disponible y agua potable", "Cerca del río, entorno natural", "Lote ya segregado; acceso por servidumbre privada en proyecto (plano), aún no construida"],
-    images: ["images/listings/copa/01.jpg", "images/listings/copa/02.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
+    images: ["images/listings/copa/02.jpg", "images/listings/copa/01.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
   },
   {
     id: "prop-clou",
@@ -229,7 +229,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["842.5 m² (1,205 v²)", "Pozo propio incluido y agua potable", "Energía eléctrica disponible", "Acceso por ambos extremos (colinda en su lado más largo con la servidumbre)", "Entorno natural, cerca del río", "Lote ya segregado; la calle de servidumbre interna está en proyecto (plano), aún no construida"],
-    images: ["images/listings/copa/01.jpg", "images/listings/copa/02.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
+    images: ["images/listings/copa/02.jpg", "images/listings/copa/01.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
   },
   {
     id: "prop-ssal2",
@@ -689,7 +689,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["842.5 m² (1,205 v²)", "Entorno natural, cerca del río", "Energía eléctrica disponible y agua potable", "Zona tranquila y de buen acceso", "Lote ya segregado; acceso por servidumbre en proyecto (plano), aún no construida"],
-    images: ["images/listings/copa/01.jpg", "images/listings/copa/02.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
+    images: ["images/listings/copa/02.jpg", "images/listings/copa/01.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
   },
   {
     id: "prop-copa-1",
@@ -709,7 +709,7 @@ const listings = [
       parqueos: "—",
     },
     features: ["842.5 m² (1,205 v²)", "A pocos minutos de la carretera principal", "Energía eléctrica disponible y agua potable", "Zona tranquila y fresca, cerca del río", "Lote ya segregado; acceso por servidumbre privada en proyecto (plano), aún no construida"],
-    images: ["images/listings/copa/01.jpg", "images/listings/copa/02.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
+    images: ["images/listings/copa/02.jpg", "images/listings/copa/01.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
   },
 
   // ---------------- VEHÍCULOS ----------------
