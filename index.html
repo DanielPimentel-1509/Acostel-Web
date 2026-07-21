@@ -186,12 +186,17 @@
         <input type="text" id="form-nombre" name="nombre" required>
       </div>
       <div class="form-row">
-        <label for="form-contacto">Teléfono o correo</label>
-        <input type="text" id="form-contacto" name="contacto" required>
+        <label for="form-telefono">Teléfono</label>
+        <input type="tel" id="form-telefono" name="telefono" inputmode="numeric" placeholder="7000 0000" required>
+      </div>
+      <div class="form-row">
+        <label for="form-correo">Correo (opcional)</label>
+        <input type="email" id="form-correo" name="correo">
       </div>
       <div class="form-row">
         <label for="form-referencia">¿Sobre qué propiedad o vehículo? (opcional)</label>
-        <input type="text" id="form-referencia" name="referencia">
+        <input type="text" id="form-referencia" name="referencia" list="form-referencia-list" autocomplete="off" placeholder="Escribe para buscar...">
+        <datalist id="form-referencia-list"></datalist>
       </div>
       <div class="form-row form-row-full">
         <label for="form-mensaje">Mensaje</label>

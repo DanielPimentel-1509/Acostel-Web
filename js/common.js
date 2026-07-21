@@ -81,6 +81,20 @@ function initContactForm() {
   const referenciaField = document.getElementById("form-referencia");
   if (!referenciaField) return;
 
+  const telefonoField = document.getElementById("form-telefono");
+  if (telefonoField) {
+    telefonoField.addEventListener("input", () => {
+      telefonoField.value = telefonoField.value.replace(/[^0-9]/g, "");
+    });
+  }
+
+  const datalist = document.getElementById("form-referencia-list");
+  if (datalist && typeof listings !== "undefined") {
+    datalist.innerHTML = listings
+      .map((item) => `<option value="${item.title} (ref. ${item.id})"></option>`)
+      .join("");
+  }
+
   const params = new URLSearchParams(window.location.search);
   const ref = params.get("ref");
   if (!ref) return;
