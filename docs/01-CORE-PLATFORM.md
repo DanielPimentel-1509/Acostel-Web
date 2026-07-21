@@ -2,7 +2,7 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.10 — Validado como base oficial del proyecto
+> **Versión:** 1.11 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
@@ -154,13 +154,13 @@ El despliegue operativo completo de este módulo (verificación real del deploy,
 
 ### 7. Sales / Leads
 
-**Dueño:** WhatsApp Business (externo al sistema). **Dónde vive:** conversación fuera del sitio, iniciada por un botón de WhatsApp.
+**Dueño:** WhatsApp Business (externo al sistema) + Netlify Forms para el formulario. **Dónde vive:** conversación fuera del sitio (WhatsApp) y panel de Netlify (formulario), iniciados ambos desde el sitio.
 
 Recibe al cliente potencial que llega desde el sitio.
 
-**Hoy:** WhatsApp es el único canal, sin registro estructurado de quién contactó ni por qué ficha. No es un módulo de sistema en sentido completo todavía — es un punto de salida hacia un canal externo, sin ningún loop de datos de vuelta (sin registro, sin seguimiento, sin métrica dentro del sistema). **Futuro:** formulario de contacto como canal secundario + integración con un CRM — ya definido como "debería/podría tener" en el MVP de `docs/00-VISION.md`, no se repite aquí.
+**Hoy:** WhatsApp sigue siendo un canal sin registro estructurado. El formulario de contacto ya está implementado como canal secundario y sí captura datos estructurados (nombre, contacto, mensaje, referencia) — pero esas respuestas quedan aisladas en el panel de Netlify, sin notificación automática ni conexión a Notion o a un CRM. No es un módulo de sistema en sentido completo todavía: hay un registro por primera vez, pero sigue sin loop de datos hacia el resto del sistema. **Futuro:** integración con un CRM y conexión del formulario a Notion — ya definido como "podría tener" en el MVP de `docs/00-VISION.md`, no se repite aquí.
 
-El despliegue operativo completo de este módulo (los cuatro puntos de entrada reales, qué falta para un loop de datos) vive en `docs/08-SALES-LEADS.md` — no se repite aquí.
+El despliegue operativo completo de este módulo (los cinco puntos de entrada reales, qué falta para un loop de datos) vive en `docs/08-SALES-LEADS.md` — no se repite aquí.
 
 ---
 
@@ -209,3 +209,4 @@ El despliegue operativo completo de este módulo vive en `docs/09-DISTRIBUTION.m
 | 1.8 | 2026-07-19 | Aclara que Sales/Leads no es un módulo de sistema completo todavía, sino un punto de salida hacia un canal externo sin loop de datos de vuelta. Agrega referencia a `docs/08-SALES-LEADS.md` (documento nuevo). |
 | 1.9 | 2026-07-19 | Aclara que Distribution es 100% manual y ocurre completamente fuera del sistema, sin trazabilidad de lo publicado. Deja documentada (sin resolver) la ambigüedad del canal "WhatsApp" de Content Engine frente a Sales/Leads. Agrega referencia a `docs/09-DISTRIBUTION.md` (documento nuevo). Con este módulo se completa la documentación de los 8 módulos definidos en este documento. |
 | 1.10 | 2026-07-19 | Revisión integral de los 11 documentos tras completar los 8 módulos. Se corrigen dos desactualizaciones del diagrama de flujo: la descripción de Creative Engine (decía "creativos en curso", cuando la producción en Canva ya es una práctica establecida desde v1.5) y una nota nueva que aclara que las flechas de Content Engine y Creative Engine hacia Web Interface no son entregas directas — para que el diagrama no contradiga a `docs/06-WEB-INTERFACE.md`. |
+| 1.11 | 2026-07-19 | Se implementó el formulario de contacto (Sales/Leads). Se actualiza la sección del módulo: ya no dice "sin registro estructurado" de forma absoluta — el formulario captura datos estructurados, aunque quedan aislados en Netlify Forms sin conexión a Notion o a un CRM. Detalle completo en `docs/08-SALES-LEADS.md` v1.1. |

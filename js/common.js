@@ -77,8 +77,25 @@ function initContactSection() {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
+function initContactForm() {
+  const referenciaField = document.getElementById("form-referencia");
+  if (!referenciaField) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get("ref");
+  if (!ref) return;
+
+  if (typeof listings !== "undefined") {
+    const listing = listings.find((item) => item.id === ref);
+    referenciaField.value = listing ? `${listing.title} (ref. ${listing.id})` : ref;
+  } else {
+    referenciaField.value = ref;
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initWhatsAppFloat();
   initMobileNav();
   initContactSection();
+  initContactForm();
 });

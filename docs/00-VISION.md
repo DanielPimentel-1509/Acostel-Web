@@ -2,7 +2,7 @@
 
 ## Acostel OS — Visión del Proyecto
 
-> **Versión:** 2.5 — Validado como base oficial del proyecto
+> **Versión:** 2.6 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — se actualiza a medida que el proyecto avanza y se validan (o se descartan) supuestos.
 > Ver [Registro de cambios](#registro-de-cambios) al final.
@@ -82,7 +82,7 @@ Sitio web estático (HTML/CSS/JS) — la interfaz
 
 **Estrategia de imágenes:** los archivos de imagen de Notion no son directamente enlazables desde un sitio público (son adjuntos internos con URLs temporales). Mientras no se defina una estrategia distinta, las imágenes reales se suben directamente al repositorio del sitio (no se leen desde Notion), y Notion solo guarda referencia/metadatos.
 
-**Estrategia de contacto (decisión confirmada; corresponde al módulo *Sales / Leads* en `docs/01-CORE-PLATFORM.md`):** WhatsApp es el canal principal de contacto para el MVP. Los formularios de contacto **no se eliminan** — se mantienen como canal secundario, y su arquitectura debe capturar datos estructurados (nombre, contacto, mensaje, referencia de la ficha) desde el día en que se implementen, para poder conectarse a un CRM más adelante sin rediseño. Mientras el formulario no exista, WhatsApp es el único canal activo.
+**Estrategia de contacto (decisión confirmada; corresponde al módulo *Sales / Leads* en `docs/01-CORE-PLATFORM.md`):** WhatsApp es el canal principal de contacto para el MVP. El formulario de contacto ya está implementado como canal secundario, capturando los datos estructurados definidos aquí (nombre, contacto, mensaje, referencia de la ficha) — aunque todavía sin conexión a un CRM (detalle real en `docs/08-SALES-LEADS.md`).
 
 ---
 
@@ -174,3 +174,4 @@ Lista viva de pendientes sin resolver — no se repiten explicaciones ya dadas a
 | 2.3 | 2026-07-19 | La tabla de "Modelo de datos" se marca como conceptual y ahora apunta a `docs/02-DATA-SCHEMA.md`, documento nuevo con el mapeo campo por campo real de cada base de Notion. Cierra el vacío de que el contrato de datos solo existía en la memoria de la sesión. |
 | 2.4 | 2026-07-19 | Corrige el riesgo abierto de Creative Engine con el estado real verificado directamente en Canva: la producción de creativos ya es una práctica establecida (brand kit, plantilla, variaciones), no algo que recién empieza como decía antes. Apunta a `docs/05-CREATIVE-ENGINE.md`, documento nuevo. |
 | 2.5 | 2026-07-19 | Agrega riesgo abierto de Publishing (sin staging, configuración de Netlify no versionada, sin CI) — hallazgos nuevos de `docs/07-PUBLISHING.md`, no registrados hasta ahora porque Publishing nunca se había revisado con este nivel de detalle. |
+| 2.6 | 2026-07-19 | Se implementó el formulario de contacto. Corrige la frase "mientras el formulario no exista, WhatsApp es el único canal activo" en Estrategia de contacto, que ya no era cierta. Detalle real en `docs/08-SALES-LEADS.md` v1.1. |
