@@ -2,7 +2,7 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.6 — Validado como base oficial del proyecto
+> **Versión:** 1.7 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
@@ -144,7 +144,9 @@ El despliegue operativo completo de este módulo (inventario de archivos, cómo 
 
 Lleva cualquier cambio del repositorio al sitio en vivo (`acostel.netlify.app`) sin intervención manual.
 
-**Es el único módulo 100% automatizado hoy** — vale la pena tenerlo presente como referencia de cómo se ve un módulo terminado, cuando se automaticen los demás.
+**Es el único módulo 100% automatizado hoy** — vale la pena tenerlo presente como referencia de cómo se ve un módulo terminado, cuando se automaticen los demás. Esa automatización depende por completo de que los módulos anteriores (Data Engine, Content Engine, Creative Engine) ya hayan terminado su trabajo manual — Publishing no reemplaza esos procesos, solo entrega su resultado.
+
+El despliegue operativo completo de este módulo (verificación real del deploy, qué falta para un pipeline completo) vive en `docs/07-PUBLISHING.md` — no se repite aquí.
 
 ---
 
@@ -177,6 +179,7 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 - `docs/04-CONTENT-ENGINE.md` — el despliegue operativo completo del módulo Content Engine (estructura de contenido, proceso de generación, relación con Data Engine). Este documento solo lo referencia.
 - `docs/05-CREATIVE-ENGINE.md` — el despliegue operativo completo del módulo Creative Engine (estado real en Canva, plantillas, variaciones, proceso de generación). Este documento solo lo referencia.
 - `docs/06-WEB-INTERFACE.md` — el despliegue operativo completo del módulo Web Interface (inventario de archivos, consumo de datos, conexiones reales). Este documento solo lo referencia.
+- `docs/07-PUBLISHING.md` — el despliegue operativo completo del módulo Publishing (verificación real del deploy, qué falta para un pipeline completo). Este documento solo lo referencia.
 - Los riesgos abiertos de estos módulos (sync manual, sin CRM, etc.) ya están registrados en `docs/00-VISION.md` → Riesgos abiertos. No se duplican aquí.
 
 ---
@@ -192,3 +195,4 @@ Toma lo que produce Content Engine (copies de esos canales) y Creative Engine (v
 | 1.4 | 2026-07-19 | Agrega referencia a `docs/04-CONTENT-ENGINE.md` (documento nuevo, despliegue operativo del módulo Content Engine) en la sección del módulo y en "Relación con la documentación". |
 | 1.5 | 2026-07-19 | Corrige la sección de Creative Engine con el estado real verificado en Canva: ya existe un brand kit, una plantilla base y más de 15 variaciones creadas — no "está por empezar", como decía antes. Agrega referencia a `docs/05-CREATIVE-ENGINE.md` (documento nuevo). |
 | 1.6 | 2026-07-19 | Agrega referencia a `docs/06-WEB-INTERFACE.md` (documento nuevo, despliegue operativo del módulo Web Interface) en la sección del módulo y en "Relación con la documentación". |
+| 1.7 | 2026-07-19 | Aclara que la automatización de Publishing depende por completo de que los módulos anteriores ya hayan terminado su trabajo manual. Agrega referencia a `docs/07-PUBLISHING.md` (documento nuevo). |
