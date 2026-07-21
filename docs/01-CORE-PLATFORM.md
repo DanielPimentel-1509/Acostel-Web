@@ -2,7 +2,7 @@
 
 ## Acostel OS — Núcleo del Sistema
 
-> **Versión:** 1.9 — Validado como base oficial del proyecto
+> **Versión:** 1.10 — Validado como base oficial del proyecto
 > **Última actualización:** 2026-07-19
 > **Estado:** Documento vivo — refleja el sistema *tal como existe hoy*. Se actualiza cuando un módulo cambia de estado (de futuro a existente, o de manual a automatizado).
 
@@ -26,8 +26,8 @@ Notion (Data Source)
         ├───────────────────┬───────────────────────┐
         ▼                   ▼                        ▼
  Data Processing/Sync  Content Engine          Creative Engine
- (hoy: manual,         (hoy: autoría humana    (hoy: fotos crudas
- asistido por IA)      dentro de Notion)       + creativos en curso)
+ (hoy: manual,         (hoy: autoría humana    (hoy: producción activa
+ asistido por IA)      dentro de Notion)       en Canva, sin pipeline)
         │                   │                        │
         └─────────┬─────────┴────────────────────────┘
                    ▼
@@ -56,6 +56,8 @@ Creative Engine (fotos / creativos)
               Distribution
        (publicación manual, fuera de este sistema)
 ```
+
+**Nota sobre las flechas hacia Web Interface:** solo la de Data Processing/Sync es una entrega directa. La de Content Engine es indirecta (su texto llega ya incorporado en `js/data.js`), y la de Creative Engine hoy solo aplica al logo y favicon — las fichas siguen usando imágenes de marcador. Detalle en `docs/06-WEB-INTERFACE.md`.
 
 ---
 
@@ -206,3 +208,4 @@ El despliegue operativo completo de este módulo vive en `docs/09-DISTRIBUTION.m
 | 1.7 | 2026-07-19 | Aclara que la automatización de Publishing depende por completo de que los módulos anteriores ya hayan terminado su trabajo manual. Agrega referencia a `docs/07-PUBLISHING.md` (documento nuevo). |
 | 1.8 | 2026-07-19 | Aclara que Sales/Leads no es un módulo de sistema completo todavía, sino un punto de salida hacia un canal externo sin loop de datos de vuelta. Agrega referencia a `docs/08-SALES-LEADS.md` (documento nuevo). |
 | 1.9 | 2026-07-19 | Aclara que Distribution es 100% manual y ocurre completamente fuera del sistema, sin trazabilidad de lo publicado. Deja documentada (sin resolver) la ambigüedad del canal "WhatsApp" de Content Engine frente a Sales/Leads. Agrega referencia a `docs/09-DISTRIBUTION.md` (documento nuevo). Con este módulo se completa la documentación de los 8 módulos definidos en este documento. |
+| 1.10 | 2026-07-19 | Revisión integral de los 11 documentos tras completar los 8 módulos. Se corrigen dos desactualizaciones del diagrama de flujo: la descripción de Creative Engine (decía "creativos en curso", cuando la producción en Canva ya es una práctica establecida desde v1.5) y una nota nueva que aclara que las flechas de Content Engine y Creative Engine hacia Web Interface no son entregas directas — para que el diagrama no contradiga a `docs/06-WEB-INTERFACE.md`. |
