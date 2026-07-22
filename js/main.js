@@ -175,8 +175,8 @@ function initStatsCount() {
 
   const yearsEl = document.getElementById("stat-years");
   if (yearsEl) {
-    // Fundación: 10 de octubre de 2020 (asumido para que hoy marque "5+ años").
-    // El número sube solo cada 10 de octubre — ajustar el año si la fecha real es otra.
+    // 10 de octubre de 2020: cuando Daniel cumplió 14 años y vendió su
+    // primera casa. El número sube solo cada 10 de octubre (su cumpleaños).
     const founding = new Date(2020, 9, 10);
     const now = new Date();
     let years = now.getFullYear() - founding.getFullYear();
