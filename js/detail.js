@@ -95,6 +95,21 @@ function renderNotFound() {
 function renderListing(listing) {
   document.title = `${listing.title} | Acostel`;
 
+  const metaDescription = document.getElementById("meta-description");
+  const summaryText = `${listing.summary} ${formatPrice(listing)} — ${listing.location}, El Salvador.`;
+  if (metaDescription) metaDescription.setAttribute("content", summaryText);
+
+  const ogTitle = document.getElementById("og-title");
+  if (ogTitle) ogTitle.setAttribute("content", `${listing.title} | Acostel`);
+  const ogDescription = document.getElementById("og-description");
+  if (ogDescription) ogDescription.setAttribute("content", summaryText);
+  const ogImage = document.getElementById("og-image");
+  if (ogImage && listing.images && listing.images[0]) {
+    ogImage.setAttribute("content", `https://acostel.netlify.app/${listing.images[0]}`);
+  }
+  const ogUrl = document.getElementById("og-url");
+  if (ogUrl) ogUrl.setAttribute("content", `https://acostel.netlify.app/ficha.html?id=${listing.id}`);
+
   const breadcrumbType = document.getElementById("breadcrumb-type");
   const breadcrumbTitle = document.getElementById("breadcrumb-title");
   if (breadcrumbType) {

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://acostel.netlify.app/sitemap.xml
