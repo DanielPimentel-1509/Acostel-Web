@@ -29,7 +29,7 @@ function cardHtml(listing) {
 
   return `
     <article class="card">
-      <a href="ficha.html?id=${encodeURIComponent(listing.id)}" class="card-link">
+      <a href="p/${encodeURIComponent(listing.id)}/" class="card-link">
         <div class="card-media"${listing.video ? ` data-video="${listing.video}"` : ""}>
           <img src="${cover}" alt="${listing.title}" loading="lazy">
           ${listing.badge ? `<span class="card-badge">${listing.badge}</span>` : ""}

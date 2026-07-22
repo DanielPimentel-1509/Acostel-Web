@@ -182,7 +182,10 @@ function initDetailPage() {
     renderNotFound();
     return;
   }
-  renderListing(listing);
+
+  // Los enlaces antiguos (ficha.html?id=X) redirigen a la página
+  // estática canónica (/p/X/), mejor para SEO y vistas previas.
+  window.location.replace(`p/${listing.id}/`);
 }
 
 document.addEventListener("DOMContentLoaded", initDetailPage);
