@@ -69,6 +69,48 @@ function buildVideoPreviewElement(videoUrl) {
   return iframe;
 }
 
+function sidebarItemHtml(listing) {
+  const cover = listing.images && listing.images[0]
+    ? listing.images[0]
+    : listing.type === "propiedad"
+      ? "images/site/placeholder-propiedad.svg"
+      : "images/site/placeholder-vehiculo.svg";
+
+  return `
+    <a href="p/${encodeURIComponent(listing.id)}/" class="sidebar-item">
+      <img src="${cover}" alt="${listing.title}" loading="lazy">
+      <div class="sidebar-item-info">
+        <span class="sidebar-item-title">${listing.title}</span>
+        <span class="sidebar-item-price">${formatPrice(listing)}</span>
+      </div>
+    </a>
+  `;
+}
+
+function renderSidebar(type) {
+  const list = document.getElementById("sidebar-list");
+  if (!list) return;
+
+  const items = listings.filter((item) => item.type === type).slice(0, 4);
+  list.innerHTML = items.length
+    ? items.map(sidebarItemHtml).join("")
+    : `<p class="sidebar-empty">Próximamente.</p>`;
+}
+
+function updateCatalogLabels(primaryType, secondaryType) {
+  const label = (type) => (type === "propiedad" ? "Propiedades disponibles" : "Vehículos disponibles");
+  const titleEl = document.getElementById("catalog-title");
+  const sidebarTitleEl = document.getElementById("sidebar-title");
+  const viewAllEl = document.getElementById("sidebar-viewall");
+
+  if (titleEl) titleEl.textContent = label(primaryType);
+  if (sidebarTitleEl) sidebarTitleEl.textContent = label(secondaryType);
+  if (viewAllEl) {
+    viewAllEl.textContent = secondaryType === "propiedad" ? "Ver todas las propiedades →" : "Ver todos los vehículos →";
+    viewAllEl.href = `index.html?tipo=${secondaryType}#catalogo`;
+  }
+}
+
 function attachVideoPreviews(grid) {
   grid.querySelectorAll(".card-media[data-video]").forEach((media) => {
     const videoUrl = media.dataset.video;
@@ -163,12 +205,6 @@ function renderCatalog(type) {
   attachVideoPreviews(grid);
 }
 
-function setActiveTab(type) {
-  document.querySelectorAll(".tab-btn").forEach((btn) => {
-    btn.classList.toggle("is-active", btn.dataset.type === type);
-  });
-}
-
 function initStatsCount() {
   const el = document.getElementById("stat-listings-count");
   if (el) el.textContent = `${listings.length}+`;
@@ -191,39 +227,27 @@ function initCatalog() {
   if (!grid) return;
 
   const params = new URLSearchParams(window.location.search);
-  let currentType = params.get("tipo") === "vehiculo" ? "vehiculo" : "propiedad";
+  const primaryType = params.get("tipo") === "vehiculo" ? "vehiculo" : "propiedad";
+  const secondaryType = primaryType === "propiedad" ? "vehiculo" : "propiedad";
 
-  setActiveTab(currentType);
-  populateLocationFilter(currentType);
-  renderCatalog(currentType);
-
-  document.querySelectorAll(".tab-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      currentType = btn.dataset.type;
-      setActiveTab(currentType);
-      document.getElementById("filter-price-min").value = "";
-      document.getElementById("filter-price-max").value = "";
-      populateLocationFilter(currentType);
-      renderCatalog(currentType);
-      const url = new URL(window.location.href);
-      url.searchParams.set("tipo", currentType);
-      window.history.replaceState({}, "", url);
-    });
-  });
+  updateCatalogLabels(primaryType, secondaryType);
+  populateLocationFilter(primaryType);
+  renderCatalog(primaryType);
+  renderSidebar(secondaryType);
 
   const locationEl = document.getElementById("filter-location");
   const minEl = document.getElementById("filter-price-min");
   const maxEl = document.getElementById("filter-price-max");
   const clearBtn = document.getElementById("filter-clear");
 
-  locationEl.addEventListener("change", () => renderCatalog(currentType));
-  minEl.addEventListener("input", () => renderCatalog(currentType));
-  maxEl.addEventListener("input", () => renderCatalog(currentType));
+  locationEl.addEventListener("change", () => renderCatalog(primaryType));
+  minEl.addEventListener("input", () => renderCatalog(primaryType));
+  maxEl.addEventListener("input", () => renderCatalog(primaryType));
   clearBtn.addEventListener("click", () => {
     locationEl.value = "";
     minEl.value = "";
     maxEl.value = "";
-    renderCatalog(currentType);
+    renderCatalog(primaryType);
   });
 }
 

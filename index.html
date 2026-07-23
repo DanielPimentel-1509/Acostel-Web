@@ -89,35 +89,40 @@
 
 <section id="catalogo" class="catalog">
   <div class="container">
-    <div class="catalog-header">
-      <div>
-        <span class="section-label">Catálogo</span>
-        <h2 class="section-title">Propiedades y vehículos disponibles</h2>
+    <div class="catalog-layout">
+      <div class="catalog-main">
+        <div class="catalog-header">
+          <div>
+            <span class="section-label">Catálogo</span>
+            <h2 class="section-title" id="catalog-title">Propiedades disponibles</h2>
+          </div>
+        </div>
+        <div class="catalog-filters">
+          <div class="filter-field" id="filter-location-wrap">
+            <label for="filter-location">Ubicación</label>
+            <select id="filter-location">
+              <option value="">Todas las ubicaciones</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-price-min">Precio mínimo</label>
+            <input type="number" id="filter-price-min" placeholder="$0" min="0" inputmode="numeric">
+          </div>
+          <div class="filter-field">
+            <label for="filter-price-max">Precio máximo</label>
+            <input type="number" id="filter-price-max" placeholder="Sin límite" min="0" inputmode="numeric">
+          </div>
+          <button type="button" id="filter-clear" class="filter-clear">Limpiar filtros</button>
+        </div>
+        <p class="catalog-count" id="catalog-count"></p>
+        <div class="catalog-grid" id="catalog-grid" style="margin-top:20px;"></div>
       </div>
-      <div class="tabs" role="tablist">
-        <button class="tab-btn is-active" data-type="propiedad" role="tab">Propiedades</button>
-        <button class="tab-btn" data-type="vehiculo" role="tab">Vehículos</button>
-      </div>
+      <aside class="catalog-sidebar">
+        <h3 class="sidebar-title" id="sidebar-title">Vehículos disponibles</h3>
+        <div class="sidebar-list" id="sidebar-list"></div>
+        <a href="index.html?tipo=vehiculo#catalogo" id="sidebar-viewall" class="sidebar-viewall">Ver todos los vehículos →</a>
+      </aside>
     </div>
-    <div class="catalog-filters">
-      <div class="filter-field" id="filter-location-wrap">
-        <label for="filter-location">Ubicación</label>
-        <select id="filter-location">
-          <option value="">Todas las ubicaciones</option>
-        </select>
-      </div>
-      <div class="filter-field">
-        <label for="filter-price-min">Precio mínimo</label>
-        <input type="number" id="filter-price-min" placeholder="$0" min="0" inputmode="numeric">
-      </div>
-      <div class="filter-field">
-        <label for="filter-price-max">Precio máximo</label>
-        <input type="number" id="filter-price-max" placeholder="Sin límite" min="0" inputmode="numeric">
-      </div>
-      <button type="button" id="filter-clear" class="filter-clear">Limpiar filtros</button>
-    </div>
-    <p class="catalog-count" id="catalog-count"></p>
-    <div class="catalog-grid" id="catalog-grid" style="margin-top:20px;"></div>
   </div>
 </section>
 
