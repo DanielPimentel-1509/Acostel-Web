@@ -1,5 +1,5 @@
 /* ============================================
-   ACOSTEL — Hoja de estilos principal
+   PIMTEL — Hoja de estilos principal
    Paleta e identidad visual definidas por el cliente
    ============================================ */
 
@@ -154,21 +154,13 @@ h1, h2, h3, h4 {
 
 .logo {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  font-family: var(--font-heading);
+  align-items: center;
+  gap: 10px;
 }
 
-.acostel-logo {
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: var(--color-blue);
-  letter-spacing: 0.04em;
-  line-height: 1;
-}
+.brand-logo { height: 34px; width: auto; display: block; }
 
-.acostel-logo .e { color: var(--color-gold); }
-.acostel-logo.on-dark { color: var(--color-white); }
+.footer-brand .brand-logo { height: 38px; }
 
 .logo-tagline {
   display: none;

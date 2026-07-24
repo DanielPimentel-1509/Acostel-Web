@@ -1,5 +1,5 @@
 /* ============================================
-   ACOSTEL — Lógica de la página de ficha (detalle)
+   PIMTEL — Lógica de la página de ficha (detalle)
    ============================================ */
 
 const PROPIEDAD_SPEC_LABELS = {
@@ -93,14 +93,14 @@ function renderNotFound() {
 }
 
 function renderListing(listing) {
-  document.title = `${listing.title} | Acostel`;
+  document.title = `${listing.title} | Pimtel`;
 
   const metaDescription = document.getElementById("meta-description");
   const summaryText = `${listing.summary} ${formatPrice(listing)} — ${listing.location}, El Salvador.`;
   if (metaDescription) metaDescription.setAttribute("content", summaryText);
 
   const ogTitle = document.getElementById("og-title");
-  if (ogTitle) ogTitle.setAttribute("content", `${listing.title} | Acostel`);
+  if (ogTitle) ogTitle.setAttribute("content", `${listing.title} | Pimtel`);
   const ogDescription = document.getElementById("og-description");
   if (ogDescription) ogDescription.setAttribute("content", summaryText);
   const ogImage = document.getElementById("og-image");

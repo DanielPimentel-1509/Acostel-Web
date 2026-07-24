@@ -1,5 +1,5 @@
 /* ============================================
-   ACOSTEL — Datos del catálogo
+   PIMTEL — Datos del catálogo
    ------------------------------------------------
    Este es el ÚNICO archivo que hay que tocar para
    agregar, editar o quitar propiedades y vehículos.

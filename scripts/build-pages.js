@@ -1,5 +1,5 @@
 /* ============================================
-   ACOSTEL — Generador de páginas estáticas por ficha
+   PIMTEL — Generador de páginas estáticas por ficha
    --------------------------------------------
    Lee js/data.js y genera una página HTML real por cada listado en
    p/<id>/index.html, con todo el contenido escrito directamente en el
@@ -127,7 +127,7 @@ function jsonLd(listing) {
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
       areaServed: { "@type": "Country", name: "El Salvador" },
-      seller: { "@type": "RealEstateAgent", name: "Acostel" },
+      seller: { "@type": "RealEstateAgent", name: "Pimtel" },
     },
   };
   const breadcrumb = {
@@ -161,12 +161,12 @@ function pageHtml(listing) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${esc(listing.title)} | Acostel</title>
+<title>${esc(listing.title)} | Pimtel</title>
 <meta name="description" content="${esc(summaryText)}">
 <link rel="canonical" href="${pageUrl}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Acostel">
-<meta property="og:title" content="${esc(listing.title)} | Acostel">
+<meta property="og:site_name" content="Pimtel">
+<meta property="og:title" content="${esc(listing.title)} | Pimtel">
 <meta property="og:description" content="${esc(summaryText)}">
 <meta property="og:image" content="${esc(cover)}">
 <meta property="og:url" content="${pageUrl}">
@@ -184,7 +184,7 @@ ${jsonLd(listing)}
 <header class="site-header">
   <div class="container">
     <a href="/index.html" class="logo">
-      <span class="acostel-logo">ACOST<span class="e">E</span>L</span>
+      <img src="/images/site/logo-header.png" alt="Pimtel" class="brand-logo">
       <span class="logo-tagline">Bienes Raíces &amp; Vehículos</span>
     </a>
     <nav class="main-nav">
@@ -252,7 +252,7 @@ ${jsonLd(listing)}
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <span class="acostel-logo on-dark">ACOST<span class="e">E</span>L</span>
+        <img src="/images/site/logo-footer.png" alt="Pimtel" class="brand-logo">
         <p>Bienes raíces y vehículos en venta en todo El Salvador.</p>
       </div>
       <div class="footer-col">
@@ -276,7 +276,7 @@ ${jsonLd(listing)}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; <span id="year"></span> Acostel. Todos los derechos reservados.</span>
+      <span>&copy; <span id="year"></span> Pimtel. Todos los derechos reservados.</span>
       <span>Sitio construido con Claude Code</span>
     </div>
   </div>

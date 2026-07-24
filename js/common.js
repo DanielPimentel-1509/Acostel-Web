@@ -1,10 +1,10 @@
 /* ============================================
-   ACOSTEL — Funciones compartidas entre páginas
+   PIMTEL — Funciones compartidas entre páginas
    ============================================ */
 
 /* --------------------------------------------
    NÚMERO DE WHATSAPP DEL NEGOCIO
-   Reemplazar por el número real de Acostel con
+   Reemplazar por el número real de Pimtel con
    código de país y SIN signos "+" ni espacios.
    Ejemplo El Salvador: "50378001234"
    -------------------------------------------- */
@@ -69,7 +69,7 @@ function initContactSection() {
   const sellBtn = document.getElementById("sell-whatsapp-btn");
   if (sellBtn) {
     sellBtn.href = buildWhatsAppLink(
-      "Hola, tengo una propiedad/vehículo que me gustaría vender con Acostel. Les comparto los detalles:"
+      "Hola, tengo una propiedad/vehículo que me gustaría vender con Pimtel. Les comparto los detalles:"
     );
   }
 

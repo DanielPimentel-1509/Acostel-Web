@@ -1,5 +1,5 @@
 /* ============================================
-   ACOSTEL — Lógica de la página de inicio
+   PIMTEL — Lógica de la página de inicio
    (pestañas Propiedades / Vehículos + tarjetas)
    ============================================ */
 
