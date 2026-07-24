@@ -285,7 +285,7 @@ function setActiveView(key, { animate = true } = {}) {
   function activate() {
     views.forEach((v) => v.classList.remove("is-active", "is-fading"));
     next.classList.add("is-active", "is-fading");
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     requestAnimationFrame(() => {
       requestAnimationFrame(() => next.classList.remove("is-fading"));
     });
