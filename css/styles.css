@@ -19,10 +19,12 @@
   --max-width: 1180px;
   --radius: 6px;
   --radius-lg: 14px;
-  --color-bg: #eaeef3;
-  --shadow-card: 0 2px 6px rgba(15, 61, 94, 0.07), 0 16px 36px rgba(15, 61, 94, 0.11);
-  --shadow-card-hover: 0 8px 18px rgba(15, 61, 94, 0.13), 0 34px 60px rgba(15, 61, 94, 0.22);
-  --card-border: rgba(15, 61, 94, 0.07);
+  --color-bg: #e2e8ef;
+  /* Sombra de "apoyo": una capa cercana + una difusa hacia abajo, para
+     que cada tarjeta se sienta descansando sobre el fondo con profundidad. */
+  --shadow-card: 0 1px 2px rgba(15, 61, 94, 0.08), 0 10px 18px -8px rgba(15, 61, 94, 0.22), 0 30px 45px -18px rgba(15, 61, 94, 0.30);
+  --shadow-card-hover: 0 2px 6px rgba(15, 61, 94, 0.12), 0 20px 32px -10px rgba(15, 61, 94, 0.28), 0 48px 70px -20px rgba(15, 61, 94, 0.42);
+  --card-border: rgba(15, 61, 94, 0.06);
   --transition: 0.25s ease;
   --transition-card: 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -36,7 +38,9 @@ body {
   font-family: var(--font-body);
   color: var(--color-gray-dark);
   background: var(--color-bg);
-  background-image: radial-gradient(120% 60% at 50% 0%, #f3f6f9 0%, var(--color-bg) 60%, #e2e7ee 100%);
+  /* Fondo con profundidad: claro arriba-centro, más oscuro hacia los
+     bordes y abajo (efecto viñeta), para que las tarjetas floten. */
+  background-image: radial-gradient(115% 75% at 50% -12%, #fbfcfe 0%, #e5eaf0 48%, #cdd6e0 100%);
   background-attachment: fixed;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -1183,3 +1187,72 @@ h1, h2, h3, h4 {
 .social-link.social-tt:hover { background: #010101; }
 .social-link.social-fb:hover { background: #1877F2; }
 .social-link.social-mail:hover { background: var(--color-gold-dark); }
+
+/* ============================================
+   AJUSTES v2 — acento dorado, contacto unificado, profundidad
+   ============================================ */
+
+/* Acento dorado en la "e" de "Pimtel" en texto visible */
+.gold-e { color: var(--color-gold); }
+
+/* ---------- Contacto: un solo panel cohesivo ---------- */
+.contact .container { display: block; }
+
+.contact-card {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+@media (max-width: 820px) {
+  .contact-card { grid-template-columns: 1fr; }
+}
+
+.contact-card-left {
+  background: linear-gradient(160deg, var(--color-blue) 0%, var(--color-blue-dark) 100%);
+  color: var(--color-white);
+  padding: 50px 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact-card-left .section-label { color: var(--color-gold); }
+.contact-card-left h3 { color: var(--color-white); font-size: 1.7rem; line-height: 1.2; }
+.contact-card-left p { color: rgba(255, 255, 255, 0.85); }
+.contact-card-left .btn { align-self: flex-start; margin-top: 2px; }
+
+.contact-card-left .contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.contact-card-left .contact-info-item .icon {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+}
+.contact-card-left .contact-info-item strong { color: var(--color-white); }
+.contact-card-left .contact-info-item span,
+.contact-card-left .contact-info-item a { color: rgba(255, 255, 255, 0.85); }
+.contact-card-left .contact-info-item a:hover { color: var(--color-gold); }
+.contact-card-left .contact-social { margin-top: 8px; }
+.contact-card-left .contact-social-label { color: rgba(255, 255, 255, 0.7); }
+
+.contact-card-right {
+  padding: 50px 46px;
+  background: var(--color-white);
+}
+.contact-card-right > p { margin-bottom: 22px; color: var(--color-gray-dark); }
+.contact-card-right .contact-form { margin-top: 4px; }
+
+/* En el panel unificado, el formulario va en una sola columna para
+   que no quede apretado en la mitad derecha. */
+.contact-card-right .contact-form { grid-template-columns: 1fr; }
+.contact-card-right .form-row-full { grid-column: 1 / -1; }
