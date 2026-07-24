@@ -13,6 +13,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 
 const ROOT = path.join(__dirname, "..");
 const SITE_URL = "https://pimtel.netlify.app";
@@ -22,6 +23,38 @@ const listings = new Function(
 )();
 
 const WHATSAPP_NUMBER = "50361968521";
+
+// Versiona el CSS/JS con un hash de su contenido en la URL (?v=...) para
+// que el navegador (o el caché de WhatsApp/Instagram, que a veces ignora
+// Cache-Control) nunca sirva una copia vieja después de un cambio: al
+// cambiar el archivo, cambia la URL, así que no hay nada que revalidar.
+const ASSET_VERSION = crypto
+  .createHash("sha1")
+  .update(
+    Buffer.concat(
+      ["css/styles.css", "js/data.js", "js/common.js", "js/main.js", "js/detail.js"].map((f) =>
+        fs.readFileSync(path.join(ROOT, f))
+      )
+    )
+  )
+  .digest("hex")
+  .slice(0, 10);
+
+// Reescribe los <link>/<script> de un archivo HTML fuente (no generado)
+// para que apunten a la versión actual de css/styles.css y de cada js/*.js.
+function stampAssetVersion(relPath) {
+  const filePath = path.join(ROOT, relPath);
+  let html = fs.readFileSync(filePath, "utf8");
+  html = html.replace(
+    /(href="\/?css\/styles\.css)(\?v=[^"]*)?(")/g,
+    `$1?v=${ASSET_VERSION}$3`
+  );
+  html = html.replace(
+    /(src="\/?js\/(?:data|common|main|detail)\.js)(\?v=[^"]*)?(")/g,
+    `$1?v=${ASSET_VERSION}$3`
+  );
+  fs.writeFileSync(filePath, html);
+}
 
 const PROPIEDAD_SPEC_LABELS = {
   habitaciones: "Habitaciones",
@@ -216,7 +249,7 @@ ${!hasRealPhoto ? '<meta property="og:image:width" content="1200">\n<meta proper
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/styles.css?v=${ASSET_VERSION}">
 ${jsonLd(listing)}
 </head>
 <body>
@@ -373,5 +406,9 @@ const xml =
   "\n</urlset>\n";
 fs.writeFileSync(path.join(ROOT, "sitemap.xml"), xml);
 
+// --- Versionar CSS/JS en las páginas fuente (no generadas) ---
+["index.html", "ficha.html", "gracias.html"].forEach(stampAssetVersion);
+
 console.log(`Generadas ${count} páginas estáticas en p/<id>/index.html`);
 console.log(`Sitemap regenerado con ${urls.length} URLs`);
+console.log(`Assets versionados con ?v=${ASSET_VERSION}`);
