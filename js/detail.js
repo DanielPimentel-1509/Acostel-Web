@@ -105,10 +105,10 @@ function renderListing(listing) {
   if (ogDescription) ogDescription.setAttribute("content", summaryText);
   const ogImage = document.getElementById("og-image");
   if (ogImage && listing.images && listing.images[0]) {
-    ogImage.setAttribute("content", `https://acostel.netlify.app/${listing.images[0]}`);
+    ogImage.setAttribute("content", `https://pimtel.netlify.app/${listing.images[0]}`);
   }
   const ogUrl = document.getElementById("og-url");
-  if (ogUrl) ogUrl.setAttribute("content", `https://acostel.netlify.app/ficha.html?id=${listing.id}`);
+  if (ogUrl) ogUrl.setAttribute("content", `https://pimtel.netlify.app/ficha.html?id=${listing.id}`);
 
   const breadcrumbType = document.getElementById("breadcrumb-type");
   const breadcrumbTitle = document.getElementById("breadcrumb-title");

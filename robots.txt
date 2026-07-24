@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://acostel.netlify.app/sitemap.xml
+Sitemap: https://pimtel.netlify.app/sitemap.xml

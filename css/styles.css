@@ -158,9 +158,29 @@ h1, h2, h3, h4 {
   gap: 10px;
 }
 
-.brand-logo { height: 34px; width: auto; display: block; }
+.brand-icon { height: 20px; width: auto; display: block; }
 
-.footer-brand .brand-logo { height: 38px; }
+.brand-wordmark {
+  font-family: 'DM Sans', var(--font-body);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+  color: var(--color-black);
+  line-height: 1;
+}
+
+.brand-wordmark .e { color: var(--color-gold); }
+.brand-wordmark.on-dark { color: var(--color-white); }
+
+@media (max-width: 640px) {
+  .logo .brand-icon { display: none; }
+  .logo .brand-wordmark { font-size: 1.2rem; }
+  .header-actions { margin-left: 12px; }
+}
+
+.footer-logo-row { display: flex; align-items: center; gap: 10px; }
+.footer-brand .brand-icon { height: 22px; }
+.footer-brand .brand-wordmark { font-size: 1.65rem; }
 
 .logo-tagline {
   display: none;
@@ -200,7 +220,7 @@ h1, h2, h3, h4 {
   background: var(--color-gold);
 }
 
-.header-actions { display: flex; align-items: center; gap: 18px; }
+.header-actions { display: flex; align-items: center; gap: 18px; margin-left: 32px; }
 
 .header-actions .btn { padding: 10px 20px; font-size: 0.86rem; }
 

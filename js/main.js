@@ -276,11 +276,21 @@ function initCatalog() {
 const VIEW_TRANSITION_MS = 220;
 const INICIO_ANCHORS = ["nosotros", "contacto"];
 
+let currentViewKey = null;
+let pendingViewTimeout = null;
+
 function setActiveView(key, { animate = true } = {}) {
   const views = Array.from(document.querySelectorAll(".view[data-view]"));
-  const current = views.find((v) => v.classList.contains("is-active"));
   const next = views.find((v) => v.dataset.view === key);
-  if (!next || next === current) return false;
+  if (!next || currentViewKey === key) return false;
+
+  const previous = views.find((v) => v.dataset.view === currentViewKey);
+  currentViewKey = key;
+
+  if (pendingViewTimeout) {
+    clearTimeout(pendingViewTimeout);
+    pendingViewTimeout = null;
+  }
 
   function activate() {
     views.forEach((v) => v.classList.remove("is-active", "is-fading"));
@@ -291,13 +301,16 @@ function setActiveView(key, { animate = true } = {}) {
     });
   }
 
-  if (!animate || !current) {
+  if (!animate || !previous) {
     activate();
     return true;
   }
 
-  current.classList.add("is-fading");
-  setTimeout(activate, VIEW_TRANSITION_MS);
+  previous.classList.add("is-fading");
+  pendingViewTimeout = setTimeout(() => {
+    pendingViewTimeout = null;
+    activate();
+  }, VIEW_TRANSITION_MS);
   return true;
 }
 
@@ -337,6 +350,7 @@ function initViews() {
   document.body.classList.add("js-views");
 
   let suppressSpyUntil = 0;
+  let pendingAnchorTimeout = null;
 
   document.addEventListener("click", (e) => {
     const link = e.target.closest("a[href^='index.html']");
@@ -351,8 +365,13 @@ function initViews() {
     setActiveNavLink(nav);
     suppressSpyUntil = Date.now() + (switched ? VIEW_TRANSITION_MS : 0) + 900;
 
+    if (pendingAnchorTimeout) {
+      clearTimeout(pendingAnchorTimeout);
+      pendingAnchorTimeout = null;
+    }
     if (anchor) {
-      setTimeout(() => {
+      pendingAnchorTimeout = setTimeout(() => {
+        pendingAnchorTimeout = null;
         document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, switched ? VIEW_TRANSITION_MS : 0);
     }

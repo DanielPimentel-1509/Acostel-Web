@@ -15,7 +15,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
-const SITE_URL = "https://acostel.netlify.app";
+const SITE_URL = "https://pimtel.netlify.app";
 
 const listings = new Function(
   fs.readFileSync(path.join(ROOT, "js/data.js"), "utf8") + "; return listings;"
@@ -175,7 +175,7 @@ function pageHtml(listing) {
 <link rel="apple-touch-icon" href="/images/site/favicon-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/styles.css">
 ${jsonLd(listing)}
 </head>
@@ -184,7 +184,8 @@ ${jsonLd(listing)}
 <header class="site-header">
   <div class="container">
     <a href="/index.html" class="logo">
-      <img src="/images/site/logo-header.png" alt="Pimtel" class="brand-logo">
+      <img src="/images/site/logo-icon.png" alt="" class="brand-icon">
+      <span class="brand-wordmark">PIMT<span class="e">E</span>L</span>
       <span class="logo-tagline">Bienes Raíces &amp; Vehículos</span>
     </a>
     <nav class="main-nav">
@@ -252,7 +253,10 @@ ${jsonLd(listing)}
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="/images/site/logo-footer.png" alt="Pimtel" class="brand-logo">
+        <div class="footer-logo-row">
+          <img src="/images/site/logo-icon.png" alt="" class="brand-icon">
+          <span class="brand-wordmark on-dark">PIMT<span class="e">E</span>L</span>
+        </div>
         <p>Bienes raíces y vehículos en venta en todo El Salvador.</p>
       </div>
       <div class="footer-col">
