@@ -71,6 +71,45 @@ function absUrl(rel) {
   return `${SITE_URL}/${rel.replace(/^\//, "")}`;
 }
 
+function truncateAtWord(text, maxLen) {
+  if (text.length <= maxLen) return text;
+  const cut = text.slice(0, maxLen);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut).replace(/[,;:\s]+$/, "");
+}
+
+// Google recorta las meta descriptions a ~155-160 caracteres. Muchos "summary"
+// del catálogo son más largos que eso, así que se arma la versión completa
+// (resumen + precio + ubicación) y, si no cabe, se recorta de forma prolija:
+// primero probando quedarse solo con las oraciones completas que sí caben,
+// y si ni la primera oración cabe, se corta en el último espacio con "…".
+function metaDescription(listing, maxLen = 158) {
+  const suffix = ` ${formatPrice(listing)} — ${listing.location}, El Salvador.`;
+  const budget = maxLen - suffix.length;
+  const cleaned = listing.summary.trim().replace(/[.\s…]*$/, "");
+
+  if (cleaned.length <= budget) {
+    return `${cleaned}.${suffix}`;
+  }
+
+  const sentences = cleaned.split(/(?<=[.!?])\s+/);
+  let acc = "";
+  for (const sentence of sentences) {
+    const candidate = acc ? `${acc} ${sentence}` : sentence;
+    if (candidate.length <= budget) {
+      acc = candidate;
+    } else {
+      break;
+    }
+  }
+  if (acc.length >= 40) {
+    if (!/[.!?]$/.test(acc)) acc += ".";
+    return `${acc}${suffix}`;
+  }
+
+  return `${truncateAtWord(cleaned, budget)}…${suffix}`;
+}
+
 function specsGridHtml(listing) {
   const labels = listing.type === "propiedad" ? PROPIEDAD_SPEC_LABELS : VEHICULO_SPEC_LABELS;
   return Object.entries(labels)
@@ -149,7 +188,7 @@ function jsonLd(listing) {
 
 function pageHtml(listing) {
   const pageUrl = `${SITE_URL}/p/${listing.id}/`;
-  const summaryText = `${listing.summary} ${formatPrice(listing)} — ${listing.location}, El Salvador.`;
+  const summaryText = metaDescription(listing);
   const cover = listing.images && listing.images[0] ? absUrl(listing.images[0]) : absUrl("images/site/favicon-icon.png");
   const whatsappMessage = `Hola, estoy interesado/a en "${listing.title}" (ref. ${listing.id}). ¿Me podrían dar más información?`;
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
