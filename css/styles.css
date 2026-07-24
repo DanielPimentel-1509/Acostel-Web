@@ -36,6 +36,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ---------- Vistas (navegación tipo "pantallas") ---------- */
+body.js-views .view { display: none; }
+body.js-views .view.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+body.js-views .view.is-active.is-fading {
+  opacity: 0;
+  transform: translateX(14px);
+}
+
 img { max-width: 100%; display: block; }
 
 a { color: inherit; text-decoration: none; }
@@ -128,8 +141,6 @@ h1, h2, h3, h4 {
   background: var(--color-white);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
-
-.hero, #catalogo, #nosotros, #vender, #contacto { scroll-margin-top: 76px; }
 
 .site-header .container {
   display: flex;

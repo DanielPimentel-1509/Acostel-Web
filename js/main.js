@@ -273,76 +273,78 @@ function initCatalog() {
   });
 }
 
-function initInPageNav() {
-  const sections = {
-    inicio: document.querySelector(".hero"),
-    catalogo: document.getElementById("catalogo"),
-    nosotros: document.getElementById("nosotros"),
-    vender: document.getElementById("vender"),
-    contacto: document.getElementById("contacto"),
-  };
-  if (!sections.catalogo) return;
+const VIEW_TRANSITION_MS = 220;
+const VIEW_KEYS = ["inicio", "catalogo", "nosotros", "vender", "contacto"];
 
-  const navLinks = Array.from(document.querySelectorAll(".main-nav a[data-nav]"));
+function setActiveView(key, { animate = true } = {}) {
+  const views = Array.from(document.querySelectorAll(".view[data-view]"));
+  const current = views.find((v) => v.classList.contains("is-active"));
+  const next = views.find((v) => v.dataset.view === key);
+  if (!next || next === current) return;
 
-  function setActiveNav(key) {
-    navLinks.forEach((link) => link.classList.toggle("is-active", link.dataset.nav === key));
+  function activate() {
+    views.forEach((v) => v.classList.remove("is-active", "is-fading"));
+    next.classList.add("is-active", "is-fading");
+    window.scrollTo(0, 0);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => next.classList.remove("is-fading"));
+    });
   }
+
+  if (!animate || !current) {
+    activate();
+    return;
+  }
+
+  current.classList.add("is-fading");
+  setTimeout(activate, VIEW_TRANSITION_MS);
+}
+
+function setActiveNavLink(key) {
+  document.querySelectorAll(".main-nav a[data-nav]").forEach((link) => {
+    link.classList.toggle("is-active", link.dataset.nav === key);
+  });
+}
+
+function viewTargetFromUrl(url) {
+  const tipo = url.searchParams.get("tipo");
+  if (tipo === "propiedad" || tipo === "vehiculo") return { view: "catalogo", nav: tipo, tipo };
+  const hashKey = url.hash ? url.hash.slice(1) : "";
+  if (VIEW_KEYS.includes(hashKey)) return { view: hashKey, nav: hashKey };
+  return { view: "inicio", nav: "inicio" };
+}
+
+function initViews() {
+  const views = document.querySelectorAll(".view[data-view]");
+  if (!views.length) return;
+  document.body.classList.add("js-views");
 
   document.addEventListener("click", (e) => {
     const link = e.target.closest("a[href^='index.html']");
     if (!link) return;
 
     const url = new URL(link.getAttribute("href"), window.location.href);
-    const tipo = url.searchParams.get("tipo");
-    const hashKey = url.hash ? url.hash.slice(1) : null;
+    const { view, nav, tipo } = viewTargetFromUrl(url);
 
     e.preventDefault();
+    if (tipo) switchCatalogType(tipo);
+    setActiveView(view);
+    setActiveNavLink(nav);
 
-    if (tipo === "propiedad" || tipo === "vehiculo") {
-      switchCatalogType(tipo);
-      sections.catalogo.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveNav(tipo);
-    } else if (hashKey && sections[hashKey]) {
-      window.history.replaceState({}, "", `index.html#${hashKey}`);
-      sections[hashKey].scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveNav(hashKey);
-    } else {
-      window.history.replaceState({}, "", "index.html");
-      sections.inicio.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveNav("inicio");
-    }
+    const newPath = tipo
+      ? `index.html?tipo=${tipo}#catalogo`
+      : nav === "inicio" ? "index.html" : `index.html#${nav}`;
+    window.history.replaceState({}, "", newPath);
   });
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        if (entry.target === sections.catalogo) {
-          setActiveNav(catalogState.type);
-        } else {
-          const key = Object.keys(sections).find((k) => sections[k] === entry.target);
-          if (key) setActiveNav(key);
-        }
-      });
-    },
-    { rootMargin: "-45% 0px -45% 0px" }
-  );
-  Object.values(sections).forEach((el) => el && observer.observe(el));
-
-  const initialParams = new URLSearchParams(window.location.search);
-  const initialTipo = initialParams.get("tipo");
-  if (initialTipo === "propiedad" || initialTipo === "vehiculo") {
-    setActiveNav(initialTipo);
-  } else if (window.location.hash && sections[window.location.hash.slice(1)]) {
-    setActiveNav(window.location.hash.slice(1));
-  } else {
-    setActiveNav("inicio");
-  }
+  const initial = viewTargetFromUrl(new URL(window.location.href));
+  if (initial.tipo) catalogState.type = initial.tipo;
+  setActiveView(initial.view, { animate: false });
+  setActiveNavLink(initial.nav);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initStatsCount();
   initCatalog();
-  initInPageNav();
+  initViews();
 });
