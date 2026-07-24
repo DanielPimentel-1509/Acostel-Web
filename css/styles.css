@@ -218,7 +218,7 @@ h1, h2, h3, h4 {
     overflow: hidden;
     transition: max-height var(--transition);
   }
-  .main-nav.is-open { max-height: 320px; }
+  .main-nav.is-open { max-height: calc(100vh - 76px); overflow-y: auto; }
   .main-nav ul {
     flex-direction: column;
     gap: 0;
