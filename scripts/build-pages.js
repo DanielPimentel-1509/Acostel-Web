@@ -264,8 +264,8 @@ ${jsonLd(listing)}
     <nav class="main-nav">
       <ul>
         <li><a href="/index.html">Inicio</a></li>
-        <li><a href="/index.html?tipo=propiedad#catalogo">Propiedades</a></li>
-        <li><a href="/index.html?tipo=vehiculo#catalogo">Vehículos</a></li>
+        <li><a href="/index.html#propiedades">Propiedades</a></li>
+        <li><a href="/index.html#vehiculos">Vehículos</a></li>
         <li><a href="/index.html#nosotros">Nosotros</a></li>
         <li><a href="/index.html#vender">Vender</a></li>
         <li><a href="/index.html#contacto">Contacto</a></li>
@@ -335,8 +335,8 @@ ${jsonLd(listing)}
       <div class="footer-col">
         <h4>Enlaces</h4>
         <ul>
-          <li><a href="/index.html?tipo=propiedad#catalogo">Propiedades</a></li>
-          <li><a href="/index.html?tipo=vehiculo#catalogo">Vehículos</a></li>
+          <li><a href="/index.html#propiedades">Propiedades</a></li>
+          <li><a href="/index.html#vehiculos">Vehículos</a></li>
           <li><a href="/index.html#nosotros">Nosotros</a></li>
           <li><a href="/index.html#vender">Vender</a></li>
           <li><a href="/index.html#contacto">Contacto</a></li>

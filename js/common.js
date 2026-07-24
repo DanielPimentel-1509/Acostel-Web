@@ -66,6 +66,9 @@ function initContactSection() {
   const footerLink = document.getElementById("footer-whatsapp-link");
   if (footerLink) footerLink.href = buildWhatsAppLink(whatsappMessage);
 
+  const socialWa = document.getElementById("social-whatsapp");
+  if (socialWa) socialWa.href = buildWhatsAppLink(whatsappMessage);
+
   const sellBtn = document.getElementById("sell-whatsapp-btn");
   if (sellBtn) {
     sellBtn.href = buildWhatsAppLink(

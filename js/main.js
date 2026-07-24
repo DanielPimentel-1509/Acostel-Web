@@ -1,6 +1,6 @@
 /* ============================================
    PIMTEL — Lógica de la página de inicio
-   (pestañas Propiedades / Vehículos + tarjetas)
+   (vistas por pantalla + catálogos + carrusel)
    ============================================ */
 
 function specsRowHtml(listing) {
@@ -20,15 +20,17 @@ function specsRowHtml(listing) {
   `;
 }
 
-function cardHtml(listing) {
-  const cover = listing.images && listing.images[0]
-    ? listing.images[0]
-    : listing.type === "propiedad"
-      ? "images/site/placeholder-propiedad.svg"
-      : "images/site/placeholder-vehiculo.svg";
+function coverImage(listing) {
+  if (listing.images && listing.images[0]) return listing.images[0];
+  return listing.type === "propiedad"
+    ? "images/site/placeholder-propiedad.svg"
+    : "images/site/placeholder-vehiculo.svg";
+}
 
+function cardHtml(listing) {
+  const cover = coverImage(listing);
   return `
-    <article class="card">
+    <article class="card reveal">
       <a href="p/${encodeURIComponent(listing.id)}/" class="card-link">
         <div class="card-media"${listing.video ? ` data-video="${listing.video}"` : ""}>
           <img src="${cover}" alt="${listing.title}" loading="lazy">
@@ -69,48 +71,6 @@ function buildVideoPreviewElement(videoUrl) {
   return iframe;
 }
 
-function sidebarItemHtml(listing) {
-  const cover = listing.images && listing.images[0]
-    ? listing.images[0]
-    : listing.type === "propiedad"
-      ? "images/site/placeholder-propiedad.svg"
-      : "images/site/placeholder-vehiculo.svg";
-
-  return `
-    <a href="p/${encodeURIComponent(listing.id)}/" class="sidebar-item">
-      <img src="${cover}" alt="${listing.title}" loading="lazy">
-      <div class="sidebar-item-info">
-        <span class="sidebar-item-title">${listing.title}</span>
-        <span class="sidebar-item-price">${formatPrice(listing)}</span>
-      </div>
-    </a>
-  `;
-}
-
-function renderSidebar(type) {
-  const list = document.getElementById("sidebar-list");
-  if (!list) return;
-
-  const items = listings.filter((item) => item.type === type).slice(0, 4);
-  list.innerHTML = items.length
-    ? items.map(sidebarItemHtml).join("")
-    : `<p class="sidebar-empty">Próximamente.</p>`;
-}
-
-function updateCatalogLabels(primaryType, secondaryType) {
-  const label = (type) => (type === "propiedad" ? "Propiedades disponibles" : "Vehículos disponibles");
-  const titleEl = document.getElementById("catalog-title");
-  const sidebarTitleEl = document.getElementById("sidebar-title");
-  const viewAllEl = document.getElementById("sidebar-viewall");
-
-  if (titleEl) titleEl.textContent = label(primaryType);
-  if (sidebarTitleEl) sidebarTitleEl.textContent = label(secondaryType);
-  if (viewAllEl) {
-    viewAllEl.textContent = secondaryType === "propiedad" ? "Ver todas las propiedades →" : "Ver todos los vehículos →";
-    viewAllEl.href = `index.html?tipo=${secondaryType}#catalogo`;
-  }
-}
-
 function attachVideoPreviews(grid) {
   grid.querySelectorAll(".card-media[data-video]").forEach((media) => {
     const videoUrl = media.dataset.video;
@@ -133,78 +93,119 @@ function attachVideoPreviews(grid) {
 
     media.addEventListener("mouseenter", start);
     media.addEventListener("mouseleave", stop);
-    media.addEventListener(
-      "touchstart",
-      () => {
-        pressTimer = setTimeout(start, 350);
-      },
-      { passive: true }
-    );
+    media.addEventListener("touchstart", () => { pressTimer = setTimeout(start, 350); }, { passive: true });
     media.addEventListener("touchend", stop);
     media.addEventListener("touchcancel", stop);
   });
 }
 
-function populateLocationFilter(type) {
-  const select = document.getElementById("filter-location");
-  const wrap = document.getElementById("filter-location-wrap");
-  if (!select) return;
+/* -------- Animación de aparición al entrar en pantalla --------
+   Comprobación manual (no IntersectionObserver): revela cualquier
+   elemento .reveal cuya parte superior ya entró en la ventana. Se
+   ejecuta al cargar, al hacer scroll, al cambiar de tamaño y cada vez
+   que se activa una vista. Es determinista: lo que ya está a la vista
+   se revela de inmediato; lo de más abajo aparece al hacer scroll. */
+let revealScheduled = false;
 
-  if (type === "vehiculo") {
-    wrap.style.display = "none";
-    select.value = "";
+function revealInView(root) {
+  const scope = root || document;
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  scope.querySelectorAll(".reveal:not(.is-revealed)").forEach((el) => {
+    const r = el.getBoundingClientRect();
+    // Los elementos en una vista oculta (display:none) devuelven rect 0 y no se revelan.
+    if (r.bottom > 0 && r.top < vh * 0.92) el.classList.add("is-revealed");
+  });
+}
+
+function scheduleReveal() {
+  if (revealScheduled) return;
+  revealScheduled = true;
+  requestAnimationFrame(() => {
+    revealScheduled = false;
+    revealInView(document);
+  });
+}
+
+function initReveals() {
+  revealInView(document);
+  window.addEventListener("scroll", scheduleReveal, { passive: true });
+  window.addEventListener("resize", scheduleReveal);
+}
+
+/* -------- Destacadas (Inicio) -------- */
+function featuredCards(type, count) {
+  return listings
+    .filter((item) => item.type === type)
+    .sort((a, b) => (b.badge ? 1 : 0) - (a.badge ? 1 : 0))
+    .slice(0, count);
+}
+
+function renderFeatured() {
+  const grid = document.getElementById("featured-grid");
+  if (!grid) return;
+  const items = [...featuredCards("propiedad", 4), ...featuredCards("vehiculo", 2)];
+  grid.innerHTML = items.map(cardHtml).join("");
+  attachVideoPreviews(grid);
+  revealInView(grid);
+}
+
+/* -------- Carrusel de propiedades destacadas (Inicio) -------- */
+function showcaseCardHtml(listing) {
+  const cover = coverImage(listing);
+  return `
+    <a href="p/${encodeURIComponent(listing.id)}/" class="showcase-card">
+      <img src="${cover}" alt="${listing.title}" loading="lazy">
+      <div class="showcase-card-overlay">
+        <span class="showcase-card-price">${formatPrice(listing)}</span>
+        <span class="showcase-card-title">${listing.title}</span>
+        <span class="showcase-card-location">${listing.location}</span>
+      </div>
+    </a>
+  `;
+}
+
+function initShowcase() {
+  const track = document.getElementById("showcase-track");
+  if (!track) return;
+
+  const items = listings
+    .filter((item) => item.type === "propiedad" && item.images && item.images.length)
+    .sort((a, b) => (b.badge ? 1 : 0) - (a.badge ? 1 : 0))
+    .slice(0, 10);
+  if (!items.length) {
+    track.closest(".showcase")?.remove();
     return;
   }
-  wrap.style.display = "";
+  track.innerHTML = items.map(showcaseCardHtml).join("");
 
-  const locations = Array.from(
-    new Set(listings.filter((item) => item.type === type).map((item) => item.location))
-  ).sort((a, b) => a.localeCompare(b, "es"));
-
-  const current = select.value;
-  select.innerHTML = '<option value="">Todas las ubicaciones</option>' +
-    locations.map((loc) => `<option value="${loc}">${loc}</option>`).join("");
-  if (locations.includes(current)) select.value = current;
-}
-
-function getActiveFilters() {
-  const locationEl = document.getElementById("filter-location");
-  const minEl = document.getElementById("filter-price-min");
-  const maxEl = document.getElementById("filter-price-max");
-  return {
-    location: locationEl ? locationEl.value : "",
-    priceMin: minEl && minEl.value !== "" ? Number(minEl.value) : null,
-    priceMax: maxEl && maxEl.value !== "" ? Number(maxEl.value) : null,
+  const scrollByCard = (dir) => {
+    const card = track.querySelector(".showcase-card");
+    const step = card ? card.offsetWidth + 20 : track.clientWidth * 0.8;
+    track.scrollBy({ left: dir * step, behavior: "smooth" });
   };
-}
 
-function renderCatalog(type) {
-  const grid = document.getElementById("catalog-grid");
-  const count = document.getElementById("catalog-count");
-  if (!grid) return;
-
-  const { location, priceMin, priceMax } = getActiveFilters();
-
-  const filtered = listings.filter((item) => {
-    if (item.type !== type) return false;
-    if (location && item.location !== location) return false;
-    if (priceMin !== null && item.price < priceMin) return false;
-    if (priceMax !== null && item.price > priceMax) return false;
-    return true;
+  document.querySelectorAll(".showcase-arrow").forEach((btn) => {
+    btn.addEventListener("click", () => scrollByCard(btn.dataset.dir === "prev" ? -1 : 1));
   });
 
-  const label = type === "propiedad" ? "propiedades" : "vehículos";
-  grid.innerHTML = filtered.length
-    ? filtered.map(cardHtml).join("")
-    : `<p class="catalog-empty">No encontramos ${label} con esos filtros. Prueba ajustando la búsqueda.</p>`;
-
-  if (count) {
-    count.textContent = `${filtered.length} ${label} disponibles`;
-  }
-
-  attachVideoPreviews(grid);
+  // Auto-avance suave, en pausa al pasar el mouse o tocar.
+  let paused = false;
+  track.addEventListener("mouseenter", () => (paused = true));
+  track.addEventListener("mouseleave", () => (paused = false));
+  track.addEventListener("touchstart", () => (paused = true), { passive: true });
+  setInterval(() => {
+    if (paused || document.hidden) return;
+    if (document.querySelector('.view[data-view="inicio"]')?.classList.contains("is-active") === false) return;
+    const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    if (atEnd) {
+      track.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      scrollByCard(1);
+    }
+  }, 3500);
 }
 
+/* -------- Estadísticas (Nosotros) -------- */
 function initStatsCount() {
   const el = document.getElementById("stat-listings-count");
   if (el) el.textContent = `${listings.length}+`;
@@ -222,59 +223,71 @@ function initStatsCount() {
   }
 }
 
-const catalogState = { type: "propiedad" };
-
-function switchCatalogType(type) {
-  if (catalogState.type === type) return;
-  catalogState.type = type;
-  const secondaryType = type === "propiedad" ? "vehiculo" : "propiedad";
-
-  document.getElementById("filter-location").value = "";
-  document.getElementById("filter-price-min").value = "";
-  document.getElementById("filter-price-max").value = "";
-
-  updateCatalogLabels(type, secondaryType);
-  populateLocationFilter(type);
-  renderCatalog(type);
-  renderSidebar(secondaryType);
-
-  const url = new URL(window.location.href);
-  url.searchParams.set("tipo", type);
-  url.hash = "catalogo";
-  window.history.replaceState({}, "", url);
-}
-
-function initCatalog() {
-  const grid = document.getElementById("catalog-grid");
+/* -------- Catálogo (Propiedades / Vehículos) -------- */
+function initCatalogView(section) {
+  const type = section.dataset.type;
+  const grid = section.querySelector(".js-catalog-grid");
+  const countEl = section.querySelector(".js-catalog-count");
+  const locationEl = section.querySelector(".js-filter-location");
+  const minEl = section.querySelector(".js-filter-min");
+  const maxEl = section.querySelector(".js-filter-max");
+  const clearBtn = section.querySelector(".js-filter-clear");
   if (!grid) return;
 
-  const params = new URLSearchParams(window.location.search);
-  catalogState.type = params.get("tipo") === "vehiculo" ? "vehiculo" : "propiedad";
-  const secondaryType = catalogState.type === "propiedad" ? "vehiculo" : "propiedad";
+  const items = listings.filter((item) => item.type === type);
 
-  updateCatalogLabels(catalogState.type, secondaryType);
-  populateLocationFilter(catalogState.type);
-  renderCatalog(catalogState.type);
-  renderSidebar(secondaryType);
+  if (locationEl) {
+    const locations = Array.from(new Set(items.map((i) => i.location))).sort((a, b) =>
+      a.localeCompare(b, "es")
+    );
+    locationEl.innerHTML =
+      '<option value="">Todas las ubicaciones</option>' +
+      locations.map((loc) => `<option value="${loc}">${loc}</option>`).join("");
+  }
 
-  const locationEl = document.getElementById("filter-location");
-  const minEl = document.getElementById("filter-price-min");
-  const maxEl = document.getElementById("filter-price-max");
-  const clearBtn = document.getElementById("filter-clear");
+  const render = () => {
+    const location = locationEl ? locationEl.value : "";
+    const priceMin = minEl && minEl.value !== "" ? Number(minEl.value) : null;
+    const priceMax = maxEl && maxEl.value !== "" ? Number(maxEl.value) : null;
 
-  locationEl.addEventListener("change", () => renderCatalog(catalogState.type));
-  minEl.addEventListener("input", () => renderCatalog(catalogState.type));
-  maxEl.addEventListener("input", () => renderCatalog(catalogState.type));
-  clearBtn.addEventListener("click", () => {
-    locationEl.value = "";
-    minEl.value = "";
-    maxEl.value = "";
-    renderCatalog(catalogState.type);
-  });
+    const filtered = items.filter((item) => {
+      if (location && item.location !== location) return false;
+      if (priceMin !== null && item.price < priceMin) return false;
+      if (priceMax !== null && item.price > priceMax) return false;
+      return true;
+    });
+
+    const label = type === "propiedad" ? "propiedades" : "vehículos";
+    grid.innerHTML = filtered.length
+      ? filtered.map(cardHtml).join("")
+      : `<p class="catalog-empty">No encontramos ${label} con esos filtros. Prueba ajustando la búsqueda.</p>`;
+    if (countEl) countEl.textContent = `${filtered.length} ${label} disponibles`;
+    attachVideoPreviews(grid);
+    revealInView(grid);
+  };
+
+  if (locationEl) locationEl.addEventListener("change", render);
+  if (minEl) minEl.addEventListener("input", render);
+  if (maxEl) maxEl.addEventListener("input", render);
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      if (locationEl) locationEl.value = "";
+      if (minEl) minEl.value = "";
+      if (maxEl) maxEl.value = "";
+      render();
+    });
+  }
+
+  render();
 }
 
+function initCatalogs() {
+  document.querySelectorAll(".catalog.view[data-type]").forEach(initCatalogView);
+}
+
+/* -------- Navegación entre vistas (pantallas) -------- */
 const VIEW_TRANSITION_MS = 220;
-const INICIO_ANCHORS = ["nosotros", "contacto"];
+const VIEW_KEYS = ["inicio", "propiedades", "vehiculos", "nosotros", "vender", "contacto"];
 
 let currentViewKey = null;
 let pendingViewTimeout = null;
@@ -297,6 +310,7 @@ function setActiveView(key, { animate = true } = {}) {
     next.classList.add("is-active", "is-fading");
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     requestAnimationFrame(() => {
+      revealInView(next);
       requestAnimationFrame(() => next.classList.remove("is-fading"));
     });
   }
@@ -322,26 +336,12 @@ function setActiveNavLink(key) {
 
 function viewTargetFromUrl(url) {
   const tipo = url.searchParams.get("tipo");
-  if (tipo === "propiedad" || tipo === "vehiculo") return { view: "catalogo", nav: tipo, tipo };
+  if (tipo === "propiedad") return "propiedades";
+  if (tipo === "vehiculo") return "vehiculos";
   const hashKey = url.hash ? url.hash.slice(1) : "";
-  if (hashKey === "vender") return { view: "vender", nav: "vender" };
-  if (INICIO_ANCHORS.includes(hashKey)) return { view: "inicio", nav: hashKey, anchor: hashKey };
-  return { view: "inicio", nav: "inicio" };
-}
-
-function featuredCards(type, count) {
-  return listings
-    .filter((item) => item.type === type)
-    .sort((a, b) => (b.badge ? 1 : 0) - (a.badge ? 1 : 0))
-    .slice(0, count);
-}
-
-function renderFeatured() {
-  const grid = document.getElementById("featured-grid");
-  if (!grid) return;
-  const items = [...featuredCards("propiedad", 4), ...featuredCards("vehiculo", 2)];
-  grid.innerHTML = items.map(cardHtml).join("");
-  attachVideoPreviews(grid);
+  if (hashKey === "catalogo") return "propiedades"; // compat con enlaces viejos
+  if (VIEW_KEYS.includes(hashKey)) return hashKey;
+  return "inicio";
 }
 
 function initViews() {
@@ -349,70 +349,31 @@ function initViews() {
   if (!views.length) return;
   document.body.classList.add("js-views");
 
-  let suppressSpyUntil = 0;
-  let pendingAnchorTimeout = null;
-
   document.addEventListener("click", (e) => {
     const link = e.target.closest("a[href^='index.html']");
     if (!link) return;
 
     const url = new URL(link.getAttribute("href"), window.location.href);
-    const { view, nav, tipo, anchor } = viewTargetFromUrl(url);
+    const view = viewTargetFromUrl(url);
 
     e.preventDefault();
-    if (tipo) switchCatalogType(tipo);
-    const switched = setActiveView(view);
-    setActiveNavLink(nav);
-    suppressSpyUntil = Date.now() + (switched ? VIEW_TRANSITION_MS : 0) + 900;
+    setActiveView(view);
+    setActiveNavLink(view);
 
-    if (pendingAnchorTimeout) {
-      clearTimeout(pendingAnchorTimeout);
-      pendingAnchorTimeout = null;
-    }
-    if (anchor) {
-      pendingAnchorTimeout = setTimeout(() => {
-        pendingAnchorTimeout = null;
-        document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, switched ? VIEW_TRANSITION_MS : 0);
-    }
-
-    const newPath = tipo
-      ? `index.html?tipo=${tipo}#catalogo`
-      : nav === "inicio" ? "index.html" : `index.html#${nav}`;
+    const newPath = view === "inicio" ? "index.html" : `index.html#${view}`;
     window.history.replaceState({}, "", newPath);
   });
 
   const initial = viewTargetFromUrl(new URL(window.location.href));
-  if (initial.tipo) catalogState.type = initial.tipo;
-  setActiveView(initial.view, { animate: false });
-  setActiveNavLink(initial.nav);
-  if (initial.anchor) {
-    document.getElementById(initial.anchor)?.scrollIntoView({ behavior: "auto", block: "start" });
-  }
-
-  const spyTargets = [
-    { el: document.querySelector(".hero"), nav: "inicio" },
-    { el: document.getElementById("nosotros"), nav: "nosotros" },
-    { el: document.getElementById("contacto"), nav: "contacto" },
-  ].filter((t) => t.el);
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      if (Date.now() < suppressSpyUntil) return;
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const target = spyTargets.find((t) => t.el === entry.target);
-        if (target) setActiveNavLink(target.nav);
-      });
-    },
-    { rootMargin: "-45% 0px -45% 0px" }
-  );
-  spyTargets.forEach((t) => observer.observe(t.el));
+  setActiveView(initial, { animate: false });
+  setActiveNavLink(initial);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initStatsCount();
-  initCatalog();
   renderFeatured();
+  initShowcase();
+  initCatalogs();
   initViews();
+  initReveals();
 });

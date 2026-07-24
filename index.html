@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=f81f49de95">
+<link rel="stylesheet" href="css/styles.css?v=18ccff5570">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -57,8 +57,8 @@
     <nav class="main-nav">
       <ul>
         <li><a href="index.html" data-nav="inicio">Inicio</a></li>
-        <li><a href="index.html?tipo=propiedad#catalogo" data-nav="propiedad">Propiedades</a></li>
-        <li><a href="index.html?tipo=vehiculo#catalogo" data-nav="vehiculo">Vehículos</a></li>
+        <li><a href="index.html#propiedades" data-nav="propiedades">Propiedades</a></li>
+        <li><a href="index.html#vehiculos" data-nav="vehiculos">Vehículos</a></li>
         <li><a href="index.html#nosotros" data-nav="nosotros">Nosotros</a></li>
         <li><a href="index.html#vender" data-nav="vender">Vender</a></li>
         <li><a href="index.html#contacto" data-nav="contacto">Contacto</a></li>
@@ -85,8 +85,8 @@
       <h1>Encuentra tu próxima propiedad o vehículo con confianza</h1>
       <p>Conectamos a nuestros clientes con las mejores propiedades y vehículos de El Salvador, todo en un solo lugar y con contacto directo.</p>
       <div class="hero-actions">
-        <a href="index.html?tipo=propiedad#catalogo" class="btn btn-primary">Ver propiedades</a>
-        <a href="index.html?tipo=vehiculo#catalogo" class="btn btn-outline">Ver vehículos</a>
+        <a href="index.html#propiedades" class="btn btn-primary">Ver propiedades</a>
+        <a href="index.html#vehiculos" class="btn btn-outline">Ver vehículos</a>
       </div>
     </div>
   </div>
@@ -102,18 +102,47 @@
     </div>
     <div class="catalog-grid" id="featured-grid" style="margin-top:20px;"></div>
     <div class="featured-actions">
-      <a href="index.html?tipo=propiedad#catalogo" class="btn btn-outline">Ver todas las propiedades →</a>
-      <a href="index.html?tipo=vehiculo#catalogo" class="btn btn-outline">Ver todos los vehículos →</a>
+      <a href="index.html#propiedades" class="btn btn-outline">Ver todas las propiedades →</a>
+      <a href="index.html#vehiculos" class="btn btn-outline">Ver todos los vehículos →</a>
     </div>
   </div>
 </section>
 
-<section id="nosotros" class="about">
+<section class="showcase reveal">
   <div class="container">
-    <div class="about-media">
+    <div class="showcase-head">
+      <div>
+        <span class="section-label">Selección</span>
+        <h2 class="section-title">Propiedades que enamoran</h2>
+      </div>
+      <div class="showcase-controls">
+        <button type="button" class="showcase-arrow" data-dir="prev" aria-label="Anterior">‹</button>
+        <button type="button" class="showcase-arrow" data-dir="next" aria-label="Siguiente">›</button>
+      </div>
+    </div>
+    <div class="showcase-track" id="showcase-track"></div>
+  </div>
+</section>
+
+<section class="about-teaser reveal">
+  <div class="container">
+    <div class="about-teaser-inner">
+      <span class="section-label">Nosotros</span>
+      <h2 class="section-title">Bienes raíces y vehículos, sin complicaciones</h2>
+      <p>Conectamos a nuestros clientes con las mejores propiedades y vehículos de El Salvador, con atención directa y honesta de principio a fin.</p>
+      <a href="index.html#nosotros" class="btn btn-outline">Conócenos más →</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<section id="nosotros" class="about view" data-view="nosotros">
+  <div class="container">
+    <div class="about-media reveal">
       <img src="images/site/about.svg" alt="Equipo de Pimtel">
     </div>
-    <div class="about-text">
+    <div class="about-text reveal">
       <span class="section-label">Nosotros</span>
       <h2 class="section-title">Bienes raíces y vehículos, sin complicaciones</h2>
       <p>Pimtel conecta a nuestros clientes con casas, apartamentos, terrenos, lotes y fincas en venta en todo El Salvador, además de una selección de vehículos: carros, pickups, motos y cuatrimotos. Un solo lugar para encontrar tu próxima propiedad o vehículo, con atención directa por WhatsApp.</p>
@@ -140,9 +169,9 @@
   </div>
 </section>
 
-<section id="contacto" class="contact">
+<section id="contacto" class="contact view" data-view="contacto">
   <div class="container">
-    <div class="contact-panel">
+    <div class="contact-panel reveal">
       <h3>Hablemos por WhatsApp</h3>
       <p>La forma más rápida de consultar disponibilidad, agendar una visita o resolver tus dudas es escribiéndonos directamente.</p>
       <a href="#" id="contact-whatsapp-btn" target="_blank" rel="noopener" class="btn btn-primary" style="align-self:flex-start;">
@@ -150,7 +179,7 @@
         Escribir por WhatsApp
       </a>
     </div>
-    <div class="contact-info">
+    <div class="contact-info reveal">
       <span class="section-label">Contacto</span>
       <h2 class="section-title" style="font-size:1.9rem;">Otras formas de contactarnos</h2>
       <div class="contact-info-item">
@@ -180,9 +209,30 @@
           <span>El Salvador</span>
         </div>
       </div>
+      <div class="contact-social">
+        <span class="contact-social-label">Síguenos</span>
+        <div class="social-links">
+          <a href="#" class="social-link social-wa" id="social-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.36.7 4.56 1.9 6.4L4 29l7.8-1.86A11.94 11.94 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3Zm0 21.7c-2 0-3.86-.55-5.46-1.5l-.39-.23-4.63 1.1 1.13-4.5-.25-.4A9.65 9.65 0 0 1 6.3 15c0-5.36 4.4-9.7 9.74-9.7 5.35 0 9.74 4.34 9.74 9.7 0 5.36-4.39 9.7-9.74 9.7Zm5.34-7.26c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.9-2.19-.24-.57-.48-.5-.66-.5-.17 0-.37-.02-.56-.02-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.19 3.03c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.68.62.7.22 1.34.19 1.85.12.56-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.2-.55-.35Z"/></svg>
+          </a>
+          <a href="#" class="social-link social-ig" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-link social-tt" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2.2 1.7 3.9 3.9 4.1v2.5c-1.4.1-2.7-.3-3.9-1v6.2c0 3.3-2.4 5.7-5.6 5.7-2.9 0-5.3-2.2-5.3-5.1 0-3 2.5-5.2 5.6-4.9v2.6c-.4-.1-.9-.2-1.3-.1-1.2.2-2 1.1-1.9 2.4.1 1.2 1.1 2 2.3 2 1.3 0 2.2-1 2.2-2.5V3h3.9z"/></svg>
+          </a>
+          <a href="#" class="social-link social-fb" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5h2.5V5.5H14c-2 0-3.5 1.5-3.5 3.5v2H8v3h2.5v6.5h3V14H16l.5-3H13.5V9.3c0-.5.3-.8.8-.8z"/></svg>
+          </a>
+          <a href="mailto:bienesyraicesacsotel@gmail.com" class="social-link social-mail" aria-label="Correo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="contact-form-panel">
+  <div class="container">
+  <div class="contact-form-panel reveal">
     <span class="section-label">Formulario</span>
     <h2 class="section-title" style="font-size:1.9rem;">¿Prefieres dejarnos un mensaje?</h2>
     <p>WhatsApp sigue siendo la vía más rápida, pero si prefieres escribirnos aquí, te respondemos apenas lo veamos.</p>
@@ -414,60 +464,91 @@
       <button type="submit" class="btn btn-primary">Enviar mensaje</button>
     </form>
   </div>
+  </div>
 </section>
 
-</div>
-
-<section id="catalogo" class="catalog view" data-view="catalogo">
+<section id="propiedades" class="catalog view" data-view="propiedades" data-type="propiedad">
   <div class="container">
-    <div class="catalog-layout">
-      <div class="catalog-main">
-        <div class="catalog-header">
-          <div>
-            <span class="section-label">Catálogo</span>
-            <h2 class="section-title" id="catalog-title">Propiedades disponibles</h2>
-          </div>
-        </div>
-        <div class="catalog-filters">
-          <div class="filter-field" id="filter-location-wrap">
-            <label for="filter-location">Ubicación</label>
-            <select id="filter-location">
-              <option value="">Todas las ubicaciones</option>
-            </select>
-          </div>
-          <div class="filter-field">
-            <label for="filter-price-min">Precio mínimo</label>
-            <input type="number" id="filter-price-min" placeholder="$0" min="0" inputmode="numeric">
-          </div>
-          <div class="filter-field">
-            <label for="filter-price-max">Precio máximo</label>
-            <input type="number" id="filter-price-max" placeholder="Sin límite" min="0" inputmode="numeric">
-          </div>
-          <button type="button" id="filter-clear" class="filter-clear">Limpiar filtros</button>
-        </div>
-        <p class="catalog-count" id="catalog-count"></p>
-        <div class="catalog-grid" id="catalog-grid" style="margin-top:20px;"></div>
+    <div class="catalog-header reveal">
+      <div>
+        <span class="section-label">Catálogo</span>
+        <h2 class="section-title">Propiedades disponibles</h2>
       </div>
-      <aside class="catalog-sidebar">
-        <h3 class="sidebar-title" id="sidebar-title">Vehículos disponibles</h3>
-        <div class="sidebar-list" id="sidebar-list"></div>
-        <a href="index.html?tipo=vehiculo#catalogo" id="sidebar-viewall" class="sidebar-viewall">Ver todos los vehículos →</a>
-      </aside>
     </div>
+    <div class="catalog-filters reveal">
+      <div class="filter-field js-filter-location-wrap">
+        <label>Ubicación</label>
+        <select class="js-filter-location" aria-label="Filtrar por ubicación">
+          <option value="">Todas las ubicaciones</option>
+        </select>
+      </div>
+      <div class="filter-field">
+        <label>Precio mínimo</label>
+        <input type="number" class="js-filter-min" placeholder="$0" min="0" inputmode="numeric" aria-label="Precio mínimo">
+      </div>
+      <div class="filter-field">
+        <label>Precio máximo</label>
+        <input type="number" class="js-filter-max" placeholder="Sin límite" min="0" inputmode="numeric" aria-label="Precio máximo">
+      </div>
+      <button type="button" class="filter-clear js-filter-clear">Limpiar filtros</button>
+    </div>
+    <p class="catalog-count js-catalog-count"></p>
+    <div class="catalog-grid js-catalog-grid" style="margin-top:20px;"></div>
+  </div>
+</section>
+
+<section id="vehiculos" class="catalog view" data-view="vehiculos" data-type="vehiculo">
+  <div class="container">
+    <div class="catalog-header reveal">
+      <div>
+        <span class="section-label">Catálogo</span>
+        <h2 class="section-title">Vehículos disponibles</h2>
+      </div>
+    </div>
+    <div class="catalog-filters reveal">
+      <div class="filter-field">
+        <label>Precio mínimo</label>
+        <input type="number" class="js-filter-min" placeholder="$0" min="0" inputmode="numeric" aria-label="Precio mínimo">
+      </div>
+      <div class="filter-field">
+        <label>Precio máximo</label>
+        <input type="number" class="js-filter-max" placeholder="Sin límite" min="0" inputmode="numeric" aria-label="Precio máximo">
+      </div>
+      <button type="button" class="filter-clear js-filter-clear">Limpiar filtros</button>
+    </div>
+    <p class="catalog-count js-catalog-count"></p>
+    <div class="catalog-grid js-catalog-grid" style="margin-top:20px;"></div>
   </div>
 </section>
 
 <section id="vender" class="sell-cta view" data-view="vender">
-  <div class="container sell-cta-inner">
-    <div>
+  <div class="container">
+    <div class="sell-hero reveal">
       <span class="section-label sell-cta-label">¿Tienes algo para vender?</span>
       <h2 class="sell-cta-title">Vende tu propiedad o vehículo con Pimtel</h2>
-      <p>Publicamos tu propiedad o vehículo en nuestro catálogo y te ayudamos a encontrar comprador. Cuéntanos los detalles y te contactamos para coordinar todo.</p>
+      <p class="sell-lead">Publicamos tu propiedad o vehículo en nuestro catálogo, lo mostramos a compradores reales y te acompañamos hasta cerrar la venta. Tú solo cuéntanos los detalles.</p>
+      <a href="#" id="sell-whatsapp-btn" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+        <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.36.7 4.56 1.9 6.4L4 29l7.8-1.86A11.94 11.94 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3Zm0 21.7c-2 0-3.86-.55-5.46-1.5l-.39-.23-4.63 1.1 1.13-4.5-.25-.4A9.65 9.65 0 0 1 6.3 15c0-5.36 4.4-9.7 9.74-9.7 5.35 0 9.74 4.34 9.74 9.7 0 5.36-4.39 9.7-9.74 9.7Zm5.34-7.26c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.9-2.19-.24-.57-.48-.5-.66-.5-.17 0-.37-.02-.56-.02-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.19 3.03c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.68.62.7.22 1.34.19 1.85.12.56-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.2-.55-.35Z"/></svg>
+        Quiero vender
+      </a>
     </div>
-    <a href="#" id="sell-whatsapp-btn" target="_blank" rel="noopener" class="btn btn-primary">
-      <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.36.7 4.56 1.9 6.4L4 29l7.8-1.86A11.94 11.94 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3Zm0 21.7c-2 0-3.86-.55-5.46-1.5l-.39-.23-4.63 1.1 1.13-4.5-.25-.4A9.65 9.65 0 0 1 6.3 15c0-5.36 4.4-9.7 9.74-9.7 5.35 0 9.74 4.34 9.74 9.7 0 5.36-4.39 9.7-9.74 9.7Zm5.34-7.26c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.9-2.19-.24-.57-.48-.5-.66-.5-.17 0-.37-.02-.56-.02-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.19 3.03c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.68.62.7.22 1.34.19 1.85.12.56-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.2-.55-.35Z"/></svg>
-      Quiero vender
-    </a>
+    <div class="sell-steps">
+      <div class="sell-step reveal">
+        <span class="sell-step-num">1</span>
+        <h3>Cuéntanos</h3>
+        <p>Nos escribes por WhatsApp con los datos y fotos de lo que quieres vender.</p>
+      </div>
+      <div class="sell-step reveal">
+        <span class="sell-step-num">2</span>
+        <h3>Lo publicamos</h3>
+        <p>Preparamos tu ficha profesional y la mostramos en el catálogo y redes.</p>
+      </div>
+      <div class="sell-step reveal">
+        <span class="sell-step-num">3</span>
+        <h3>Cerramos la venta</h3>
+        <p>Filtramos interesados y te acompañamos hasta concretar el trato.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -484,8 +565,8 @@
       <div class="footer-col">
         <h4>Enlaces</h4>
         <ul>
-          <li><a href="index.html?tipo=propiedad#catalogo">Propiedades</a></li>
-          <li><a href="index.html?tipo=vehiculo#catalogo">Vehículos</a></li>
+          <li><a href="index.html#propiedades">Propiedades</a></li>
+          <li><a href="index.html#vehiculos">Vehículos</a></li>
           <li><a href="index.html#nosotros">Nosotros</a></li>
           <li><a href="index.html#vender">Vender</a></li>
           <li><a href="index.html#contacto">Contacto</a></li>
@@ -512,8 +593,8 @@
   <svg width="28" height="28" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.36.7 4.56 1.9 6.4L4 29l7.8-1.86A11.94 11.94 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3Zm0 21.7c-2 0-3.86-.55-5.46-1.5l-.39-.23-4.63 1.1 1.13-4.5-.25-.4A9.65 9.65 0 0 1 6.3 15c0-5.36 4.4-9.7 9.74-9.7 5.35 0 9.74 4.34 9.74 9.7 0 5.36-4.39 9.7-9.74 9.7Zm5.34-7.26c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.9-2.19-.24-.57-.48-.5-.66-.5-.17 0-.37-.02-.56-.02-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.19 3.03c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.68.62.7.22 1.34.19 1.85.12.56-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.2-.55-.35Z"/></svg>
 </a>
 
-<script src="js/data.js?v=f81f49de95"></script>
-<script src="js/common.js?v=f81f49de95"></script>
-<script src="js/main.js?v=f81f49de95"></script>
+<script src="js/data.js?v=18ccff5570"></script>
+<script src="js/common.js?v=18ccff5570"></script>
+<script src="js/main.js?v=18ccff5570"></script>
 </body>
 </html>
