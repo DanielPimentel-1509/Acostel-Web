@@ -222,17 +222,39 @@ function initStatsCount() {
   }
 }
 
+const catalogState = { type: "propiedad" };
+
+function switchCatalogType(type) {
+  if (catalogState.type === type) return;
+  catalogState.type = type;
+  const secondaryType = type === "propiedad" ? "vehiculo" : "propiedad";
+
+  document.getElementById("filter-location").value = "";
+  document.getElementById("filter-price-min").value = "";
+  document.getElementById("filter-price-max").value = "";
+
+  updateCatalogLabels(type, secondaryType);
+  populateLocationFilter(type);
+  renderCatalog(type);
+  renderSidebar(secondaryType);
+
+  const url = new URL(window.location.href);
+  url.searchParams.set("tipo", type);
+  url.hash = "catalogo";
+  window.history.replaceState({}, "", url);
+}
+
 function initCatalog() {
   const grid = document.getElementById("catalog-grid");
   if (!grid) return;
 
   const params = new URLSearchParams(window.location.search);
-  const primaryType = params.get("tipo") === "vehiculo" ? "vehiculo" : "propiedad";
-  const secondaryType = primaryType === "propiedad" ? "vehiculo" : "propiedad";
+  catalogState.type = params.get("tipo") === "vehiculo" ? "vehiculo" : "propiedad";
+  const secondaryType = catalogState.type === "propiedad" ? "vehiculo" : "propiedad";
 
-  updateCatalogLabels(primaryType, secondaryType);
-  populateLocationFilter(primaryType);
-  renderCatalog(primaryType);
+  updateCatalogLabels(catalogState.type, secondaryType);
+  populateLocationFilter(catalogState.type);
+  renderCatalog(catalogState.type);
   renderSidebar(secondaryType);
 
   const locationEl = document.getElementById("filter-location");
@@ -240,18 +262,87 @@ function initCatalog() {
   const maxEl = document.getElementById("filter-price-max");
   const clearBtn = document.getElementById("filter-clear");
 
-  locationEl.addEventListener("change", () => renderCatalog(primaryType));
-  minEl.addEventListener("input", () => renderCatalog(primaryType));
-  maxEl.addEventListener("input", () => renderCatalog(primaryType));
+  locationEl.addEventListener("change", () => renderCatalog(catalogState.type));
+  minEl.addEventListener("input", () => renderCatalog(catalogState.type));
+  maxEl.addEventListener("input", () => renderCatalog(catalogState.type));
   clearBtn.addEventListener("click", () => {
     locationEl.value = "";
     minEl.value = "";
     maxEl.value = "";
-    renderCatalog(primaryType);
+    renderCatalog(catalogState.type);
   });
+}
+
+function initInPageNav() {
+  const sections = {
+    inicio: document.querySelector(".hero"),
+    catalogo: document.getElementById("catalogo"),
+    nosotros: document.getElementById("nosotros"),
+    vender: document.getElementById("vender"),
+    contacto: document.getElementById("contacto"),
+  };
+  if (!sections.catalogo) return;
+
+  const navLinks = Array.from(document.querySelectorAll(".main-nav a[data-nav]"));
+
+  function setActiveNav(key) {
+    navLinks.forEach((link) => link.classList.toggle("is-active", link.dataset.nav === key));
+  }
+
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("a[href^='index.html']");
+    if (!link) return;
+
+    const url = new URL(link.getAttribute("href"), window.location.href);
+    const tipo = url.searchParams.get("tipo");
+    const hashKey = url.hash ? url.hash.slice(1) : null;
+
+    e.preventDefault();
+
+    if (tipo === "propiedad" || tipo === "vehiculo") {
+      switchCatalogType(tipo);
+      sections.catalogo.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveNav(tipo);
+    } else if (hashKey && sections[hashKey]) {
+      window.history.replaceState({}, "", `index.html#${hashKey}`);
+      sections[hashKey].scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveNav(hashKey);
+    } else {
+      window.history.replaceState({}, "", "index.html");
+      sections.inicio.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveNav("inicio");
+    }
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        if (entry.target === sections.catalogo) {
+          setActiveNav(catalogState.type);
+        } else {
+          const key = Object.keys(sections).find((k) => sections[k] === entry.target);
+          if (key) setActiveNav(key);
+        }
+      });
+    },
+    { rootMargin: "-45% 0px -45% 0px" }
+  );
+  Object.values(sections).forEach((el) => el && observer.observe(el));
+
+  const initialParams = new URLSearchParams(window.location.search);
+  const initialTipo = initialParams.get("tipo");
+  if (initialTipo === "propiedad" || initialTipo === "vehiculo") {
+    setActiveNav(initialTipo);
+  } else if (window.location.hash && sections[window.location.hash.slice(1)]) {
+    setActiveNav(window.location.hash.slice(1));
+  } else {
+    setActiveNav("inicio");
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initStatsCount();
   initCatalog();
+  initInPageNav();
 });

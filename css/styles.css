@@ -129,6 +129,8 @@ h1, h2, h3, h4 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
+.hero, #catalogo, #nosotros, #vender, #contacto { scroll-margin-top: 76px; }
+
 .site-header .container {
   display: flex;
   align-items: center;
