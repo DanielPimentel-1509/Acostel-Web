@@ -189,7 +189,8 @@ function jsonLd(listing) {
 function pageHtml(listing) {
   const pageUrl = `${SITE_URL}/p/${listing.id}/`;
   const summaryText = metaDescription(listing);
-  const cover = listing.images && listing.images[0] ? absUrl(listing.images[0]) : absUrl("images/site/favicon-icon.png");
+  const hasRealPhoto = !!(listing.images && listing.images[0]);
+  const cover = hasRealPhoto ? absUrl(listing.images[0]) : absUrl("images/site/og-banner.jpg");
   const whatsappMessage = `Hola, estoy interesado/a en "${listing.title}" (ref. ${listing.id}). ¿Me podrían dar más información?`;
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
   const typeLabel = listing.type === "propiedad" ? "Propiedad" : "Vehículo";
@@ -208,7 +209,7 @@ function pageHtml(listing) {
 <meta property="og:title" content="${esc(listing.title)} | Pimtel">
 <meta property="og:description" content="${esc(summaryText)}">
 <meta property="og:image" content="${esc(cover)}">
-<meta property="og:url" content="${pageUrl}">
+${!hasRealPhoto ? '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n' : ""}<meta property="og:url" content="${pageUrl}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/images/site/favicon-icon.png" type="image/png">
 <link rel="apple-touch-icon" href="/images/site/favicon-icon.png">

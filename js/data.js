@@ -52,7 +52,7 @@ const listings = [
   {
     id: "prop-clou",
     type: "propiedad",
-    title: "Casa en venta en Lourdes Colón — Casa nueva a estrenar",
+    title: "Casa nueva a estrenar en Lourdes Colón",
     price: 77000,
     location: "Colón",
     badge: "Destacada",
@@ -73,7 +73,7 @@ const listings = [
   {
     id: "prop-lour1",
     type: "propiedad",
-    title: "Casa en venta en Lourdes Colón — Residencial El Conacaste",
+    title: "Casa nueva en Lourdes Colón — El Conacaste",
     price: 195000,
     location: "Colón",
     badge: "Destacada",
@@ -94,7 +94,7 @@ const listings = [
   {
     id: "prop-atac4",
     type: "propiedad",
-    title: "Terreno a orilla de calle en Ataco — Ruta de las Flores",
+    title: "Terreno a orilla de calle en Ataco",
     price: 185000,
     location: "Ataco",
     operacion: "Venta",
@@ -114,7 +114,7 @@ const listings = [
   {
     id: "prop-occi",
     type: "propiedad",
-    title: "Mini condominio de 10 habitaciones en Santa Ana — Inversión que ya genera",
+    title: "Mini condominio en Santa Ana — ya genera ingresos",
     price: 450000,
     location: "Santa Ana",
     operacion: "Venta",
@@ -174,7 +174,7 @@ const listings = [
   {
     id: "prop-copa2",
     type: "propiedad",
-    title: "Terreno plano y fértil en Copapayo, Armenia — $62,000",
+    title: "Terreno plano en Copapayo, Armenia — $62,000",
     price: 62000,
     location: "Armenia",
     operacion: "Venta",
@@ -194,7 +194,7 @@ const listings = [
   {
     id: "prop-bazz",
     type: "propiedad",
-    title: "Terreno con vista sobre el Boulevard Bazzini — $95,000",
+    title: "Terreno sobre el Boulevard Bazzini — $95,000",
     price: 95000,
     location: "Blvd. Bazzini",
     operacion: "Venta",
@@ -254,7 +254,7 @@ const listings = [
   {
     id: "prop-ahua2",
     type: "propiedad",
-    title: "Casa de lujo en venta en Ahuachapán — Cerca del Parque Concordia",
+    title: "Casa de lujo en Ahuachapán, Parque Concordia",
     price: 560000,
     location: "Ahuachapán",
     operacion: "Venta",
@@ -274,7 +274,7 @@ const listings = [
   {
     id: "prop-cumb",
     type: "propiedad",
-    title: "Terreno urbano en Cumbres de la Escalón — Zona premium de San Salvador",
+    title: "Terreno urbano en Cumbres de la Escalón",
     price: 1449250,
     location: "Cumbres de la Escalón",
     operacion: "Venta",
@@ -294,7 +294,7 @@ const listings = [
   {
     id: "prop-sanv",
     type: "propiedad",
-    title: "215 manzanas en venta en San Vicente — Cantón Río Frío",
+    title: "215 manzanas en San Vicente, Río Frío",
     price: 1720000,
     location: "San Vicente",
     operacion: "Venta",
@@ -314,7 +314,7 @@ const listings = [
   {
     id: "prop-ssal",
     type: "propiedad",
-    title: "Propiedad en San Salvador — A orilla de calle y generando ingresos",
+    title: "Propiedad en San Salvador — A orilla de calle",
     price: 285000,
     location: "San Salvador",
     operacion: "Venta",
@@ -374,7 +374,7 @@ const listings = [
   {
     id: "prop-ilop",
     type: "propiedad",
-    title: "2 manzanas en venta frente al Lago de Ilopango — Cantón Apancino",
+    title: "2 manzanas frente al Lago de Ilopango",
     price: 1100000,
     location: "Ilopango",
     operacion: "Venta",
@@ -394,7 +394,7 @@ const listings = [
   {
     id: "prop-flor",
     type: "propiedad",
-    title: "Terreno con vista al Lago de Coatepeque — Cantón Flor Amarilla",
+    title: "Terreno con vista al Lago de Coatepeque",
     price: 135000,
     location: "Flor Amarilla",
     operacion: "Venta",
@@ -414,7 +414,7 @@ const listings = [
   {
     id: "prop-huiz",
     type: "propiedad",
-    title: "6 manzanas en venta en Huizúcar — Junto a El Encanto Golf Country Club",
+    title: "6 manzanas en Huizúcar, junto a El Encanto Golf",
     price: 900000,
     location: "Huizúcar",
     operacion: "Venta",
@@ -454,7 +454,7 @@ const listings = [
   {
     id: "prop-lagu",
     type: "propiedad",
-    title: "18,000 v² con vista al Lago de Coatepeque — Cantón Planes de la Laguna, Santa Ana",
+    title: "18,000 v² con vista al Lago de Coatepeque",
     price: 92000,
     location: "Planes de la Laguna",
     operacion: "Venta",
@@ -489,12 +489,13 @@ const listings = [
       parqueos: "—",
     },
     features: ["17,000 v² (1.7 manzanas)", "100% plano", "$55 por vara²", "A solo 3 minutos de la ciudad de Ataco", "Ideal para desarrollo, lotificación o proyecto turístico"],
-    images: ["images/site/placeholder-propiedad.svg"],
+    images: ["images/listings/atac/01.jpg"],
+    video: "images/listings/atac/video.mp4",
   },
   {
     id: "prop-card",
     type: "propiedad",
-    title: "Terreno a 200 m del Lago de Coatepeque, cerca de Cardedeu — $130,000",
+    title: "Terreno cerca del Lago de Coatepeque — $130,000",
     price: 130000,
     location: "Cardedeu",
     operacion: "Venta",
@@ -514,7 +515,7 @@ const listings = [
   {
     id: "prop-juju",
     type: "propiedad",
-    title: "335 manzanas en venta en Jujutla, Ahuachapán Sur — Finca de inversión",
+    title: "335 manzanas en Jujutla — Finca de inversión",
     price: 2847500,
     location: "Jujutla",
     operacion: "Venta",
@@ -534,7 +535,7 @@ const listings = [
   {
     id: "prop-mora",
     type: "propiedad",
-    title: "4 manzanas en venta en Morazán — Ideal para ganadería",
+    title: "4 manzanas en Morazán — Ideal para ganadería",
     price: 140000,
     location: "Morazán",
     operacion: "Venta",
@@ -554,7 +555,7 @@ const listings = [
   {
     id: "prop-atac2",
     type: "propiedad",
-    title: "Finca de café de estricta altura en Ataco — 10 manzanas",
+    title: "Finca de café de altura en Ataco — 10 manzanas",
     price: 750000,
     location: "Ataco",
     operacion: "Venta",
@@ -574,7 +575,7 @@ const listings = [
   {
     id: "prop-cost",
     type: "propiedad",
-    title: "Rancho a remodelar en Playa Costa Azul — Con piscina, a 300 m del mar",
+    title: "Rancho a remodelar en Playa Costa Azul, con piscina",
     price: 180000,
     location: "Costa Azul",
     operacion: "Venta",
@@ -614,7 +615,7 @@ const listings = [
   {
     id: "prop-acaj",
     type: "propiedad",
-    title: "83 manzanas en venta en Acajutla — Cañal en producción",
+    title: "83 manzanas en Acajutla — Cañal en producción",
     price: 2241000,
     location: "Acajutla",
     operacion: "Venta",
@@ -634,7 +635,7 @@ const listings = [
   {
     id: "prop-jaya",
     type: "propiedad",
-    title: "Finca de café en Jayaque — Con cabaña de 2 niveles y mirador",
+    title: "Finca de café en Jayaque, con cabaña y mirador",
     price: 298000,
     location: "Jayaque",
     operacion: "Venta",
@@ -654,7 +655,7 @@ const listings = [
   {
     id: "prop-coat",
     type: "propiedad",
-    title: "2 manzanas en venta con vista al Lago de Coatepeque — Rumbo al Cerro Verde",
+    title: "2 manzanas con vista al Lago de Coatepeque",
     price: 365000,
     location: "Coatepeque",
     operacion: "Venta",
@@ -694,7 +695,7 @@ const listings = [
   {
     id: "prop-copa-1",
     type: "propiedad",
-    title: "Lote en Copapayo — A minutos de la carretera principal",
+    title: "Lote en Copapayo, cerca de la carretera",
     price: 29000,
     location: "Copapayo",
     operacion: "Venta",
@@ -796,7 +797,7 @@ const listings = [
   {
     id: "veh-q3sl2018",
     type: "vehiculo",
-    title: "Audi Q3 S Line 2018 Quattro 4x4 en venta — El Salvador",
+    title: "Audi Q3 S Line 2018 Quattro 4x4",
     price: 16500,
     location: "Coordinar por WhatsApp",
     operacion: "Venta",
@@ -836,7 +837,7 @@ const listings = [
   {
     id: "veh-fron2021",
     type: "vehiculo",
-    title: "Nissan Frontier 2021 King Cab en venta — El Salvador",
+    title: "Nissan Frontier 2021 King Cab",
     price: 13500,
     location: "Coordinar por WhatsApp",
     operacion: "Venta",
