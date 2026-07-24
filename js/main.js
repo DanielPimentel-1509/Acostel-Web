@@ -274,13 +274,13 @@ function initCatalog() {
 }
 
 const VIEW_TRANSITION_MS = 220;
-const VIEW_KEYS = ["inicio", "catalogo", "nosotros", "vender", "contacto"];
+const INICIO_ANCHORS = ["nosotros", "contacto"];
 
 function setActiveView(key, { animate = true } = {}) {
   const views = Array.from(document.querySelectorAll(".view[data-view]"));
   const current = views.find((v) => v.classList.contains("is-active"));
   const next = views.find((v) => v.dataset.view === key);
-  if (!next || next === current) return;
+  if (!next || next === current) return false;
 
   function activate() {
     views.forEach((v) => v.classList.remove("is-active", "is-fading"));
@@ -293,11 +293,12 @@ function setActiveView(key, { animate = true } = {}) {
 
   if (!animate || !current) {
     activate();
-    return;
+    return true;
   }
 
   current.classList.add("is-fading");
   setTimeout(activate, VIEW_TRANSITION_MS);
+  return true;
 }
 
 function setActiveNavLink(key) {
@@ -310,8 +311,24 @@ function viewTargetFromUrl(url) {
   const tipo = url.searchParams.get("tipo");
   if (tipo === "propiedad" || tipo === "vehiculo") return { view: "catalogo", nav: tipo, tipo };
   const hashKey = url.hash ? url.hash.slice(1) : "";
-  if (VIEW_KEYS.includes(hashKey)) return { view: hashKey, nav: hashKey };
+  if (hashKey === "vender") return { view: "vender", nav: "vender" };
+  if (INICIO_ANCHORS.includes(hashKey)) return { view: "inicio", nav: hashKey, anchor: hashKey };
   return { view: "inicio", nav: "inicio" };
+}
+
+function featuredCards(type, count) {
+  return listings
+    .filter((item) => item.type === type)
+    .sort((a, b) => (b.badge ? 1 : 0) - (a.badge ? 1 : 0))
+    .slice(0, count);
+}
+
+function renderFeatured() {
+  const grid = document.getElementById("featured-grid");
+  if (!grid) return;
+  const items = [...featuredCards("propiedad", 4), ...featuredCards("vehiculo", 2)];
+  grid.innerHTML = items.map(cardHtml).join("");
+  attachVideoPreviews(grid);
 }
 
 function initViews() {
@@ -319,17 +336,26 @@ function initViews() {
   if (!views.length) return;
   document.body.classList.add("js-views");
 
+  let suppressSpyUntil = 0;
+
   document.addEventListener("click", (e) => {
     const link = e.target.closest("a[href^='index.html']");
     if (!link) return;
 
     const url = new URL(link.getAttribute("href"), window.location.href);
-    const { view, nav, tipo } = viewTargetFromUrl(url);
+    const { view, nav, tipo, anchor } = viewTargetFromUrl(url);
 
     e.preventDefault();
     if (tipo) switchCatalogType(tipo);
-    setActiveView(view);
+    const switched = setActiveView(view);
     setActiveNavLink(nav);
+    suppressSpyUntil = Date.now() + (switched ? VIEW_TRANSITION_MS : 0) + 900;
+
+    if (anchor) {
+      setTimeout(() => {
+        document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, switched ? VIEW_TRANSITION_MS : 0);
+    }
 
     const newPath = tipo
       ? `index.html?tipo=${tipo}#catalogo`
@@ -341,10 +367,33 @@ function initViews() {
   if (initial.tipo) catalogState.type = initial.tipo;
   setActiveView(initial.view, { animate: false });
   setActiveNavLink(initial.nav);
+  if (initial.anchor) {
+    document.getElementById(initial.anchor)?.scrollIntoView({ behavior: "auto", block: "start" });
+  }
+
+  const spyTargets = [
+    { el: document.querySelector(".hero"), nav: "inicio" },
+    { el: document.getElementById("nosotros"), nav: "nosotros" },
+    { el: document.getElementById("contacto"), nav: "contacto" },
+  ].filter((t) => t.el);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (Date.now() < suppressSpyUntil) return;
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const target = spyTargets.find((t) => t.el === entry.target);
+        if (target) setActiveNavLink(target.nav);
+      });
+    },
+    { rootMargin: "-45% 0px -45% 0px" }
+  );
+  spyTargets.forEach((t) => observer.observe(t.el));
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   initStatsCount();
   initCatalog();
+  renderFeatured();
   initViews();
 });

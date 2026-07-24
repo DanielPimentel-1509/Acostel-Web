@@ -287,6 +287,17 @@ h1, h2, h3, h4 {
 /* ---------- Catalog / Tabs ---------- */
 .catalog { padding: 88px 0; background: var(--color-white); }
 
+.featured { padding: 88px 0; background: var(--color-white); }
+
+.featured-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+#nosotros, #contacto { scroll-margin-top: 76px; }
+
 .catalog-header {
   display: flex;
   flex-wrap: wrap;

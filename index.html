@@ -73,7 +73,9 @@
   </div>
 </header>
 
-<section class="hero view" data-view="inicio" style="background-image: linear-gradient(180deg, rgba(10,26,39,0.78), rgba(10,26,39,0.62)), url('images/site/hero-bg.svg');">
+<div class="view" data-view="inicio">
+
+<section class="hero" style="background-image: linear-gradient(180deg, rgba(10,26,39,0.78), rgba(10,26,39,0.62)), url('images/site/hero-bg.svg');">
   <div class="container">
     <div class="hero-content">
       <span class="hero-eyebrow">Bienes raíces &amp; vehículos en El Salvador</span>
@@ -87,46 +89,23 @@
   </div>
 </section>
 
-<section id="catalogo" class="catalog view" data-view="catalogo">
+<section id="destacadas" class="featured">
   <div class="container">
-    <div class="catalog-layout">
-      <div class="catalog-main">
-        <div class="catalog-header">
-          <div>
-            <span class="section-label">Catálogo</span>
-            <h2 class="section-title" id="catalog-title">Propiedades disponibles</h2>
-          </div>
-        </div>
-        <div class="catalog-filters">
-          <div class="filter-field" id="filter-location-wrap">
-            <label for="filter-location">Ubicación</label>
-            <select id="filter-location">
-              <option value="">Todas las ubicaciones</option>
-            </select>
-          </div>
-          <div class="filter-field">
-            <label for="filter-price-min">Precio mínimo</label>
-            <input type="number" id="filter-price-min" placeholder="$0" min="0" inputmode="numeric">
-          </div>
-          <div class="filter-field">
-            <label for="filter-price-max">Precio máximo</label>
-            <input type="number" id="filter-price-max" placeholder="Sin límite" min="0" inputmode="numeric">
-          </div>
-          <button type="button" id="filter-clear" class="filter-clear">Limpiar filtros</button>
-        </div>
-        <p class="catalog-count" id="catalog-count"></p>
-        <div class="catalog-grid" id="catalog-grid" style="margin-top:20px;"></div>
+    <div class="catalog-header">
+      <div>
+        <span class="section-label">Destacadas</span>
+        <h2 class="section-title">Propiedades y vehículos destacados</h2>
       </div>
-      <aside class="catalog-sidebar">
-        <h3 class="sidebar-title" id="sidebar-title">Vehículos disponibles</h3>
-        <div class="sidebar-list" id="sidebar-list"></div>
-        <a href="index.html?tipo=vehiculo#catalogo" id="sidebar-viewall" class="sidebar-viewall">Ver todos los vehículos →</a>
-      </aside>
+    </div>
+    <div class="catalog-grid" id="featured-grid" style="margin-top:20px;"></div>
+    <div class="featured-actions">
+      <a href="index.html?tipo=propiedad#catalogo" class="btn btn-outline">Ver todas las propiedades →</a>
+      <a href="index.html?tipo=vehiculo#catalogo" class="btn btn-outline">Ver todos los vehículos →</a>
     </div>
   </div>
 </section>
 
-<section id="nosotros" class="about view" data-view="nosotros">
+<section id="nosotros" class="about">
   <div class="container">
     <div class="about-media">
       <img src="images/site/about.svg" alt="Equipo de Acostel">
@@ -158,21 +137,7 @@
   </div>
 </section>
 
-<section id="vender" class="sell-cta view" data-view="vender">
-  <div class="container sell-cta-inner">
-    <div>
-      <span class="section-label sell-cta-label">¿Tienes algo para vender?</span>
-      <h2 class="sell-cta-title">Vende tu propiedad o vehículo con Acostel</h2>
-      <p>Publicamos tu propiedad o vehículo en nuestro catálogo y te ayudamos a encontrar comprador. Cuéntanos los detalles y te contactamos para coordinar todo.</p>
-    </div>
-    <a href="#" id="sell-whatsapp-btn" target="_blank" rel="noopener" class="btn btn-primary">
-      <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.36.7 4.56 1.9 6.4L4 29l7.8-1.86A11.94 11.94 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3Zm0 21.7c-2 0-3.86-.55-5.46-1.5l-.39-.23-4.63 1.1 1.13-4.5-.25-.4A9.65 9.65 0 0 1 6.3 15c0-5.36 4.4-9.7 9.74-9.7 5.35 0 9.74 4.34 9.74 9.7 0 5.36-4.39 9.7-9.74 9.7Zm5.34-7.26c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.9-2.19-.24-.57-.48-.5-.66-.5-.17 0-.37-.02-.56-.02-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.19 3.03c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.68.62.7.22 1.34.19 1.85.12.56-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.2-.55-.35Z"/></svg>
-      Quiero vender
-    </a>
-  </div>
-</section>
-
-<section id="contacto" class="contact view" data-view="contacto">
+<section id="contacto" class="contact">
   <div class="container">
     <div class="contact-panel">
       <h3>Hablemos por WhatsApp</h3>
@@ -445,6 +410,61 @@
       </div>
       <button type="submit" class="btn btn-primary">Enviar mensaje</button>
     </form>
+  </div>
+</section>
+
+</div>
+
+<section id="catalogo" class="catalog view" data-view="catalogo">
+  <div class="container">
+    <div class="catalog-layout">
+      <div class="catalog-main">
+        <div class="catalog-header">
+          <div>
+            <span class="section-label">Catálogo</span>
+            <h2 class="section-title" id="catalog-title">Propiedades disponibles</h2>
+          </div>
+        </div>
+        <div class="catalog-filters">
+          <div class="filter-field" id="filter-location-wrap">
+            <label for="filter-location">Ubicación</label>
+            <select id="filter-location">
+              <option value="">Todas las ubicaciones</option>
+            </select>
+          </div>
+          <div class="filter-field">
+            <label for="filter-price-min">Precio mínimo</label>
+            <input type="number" id="filter-price-min" placeholder="$0" min="0" inputmode="numeric">
+          </div>
+          <div class="filter-field">
+            <label for="filter-price-max">Precio máximo</label>
+            <input type="number" id="filter-price-max" placeholder="Sin límite" min="0" inputmode="numeric">
+          </div>
+          <button type="button" id="filter-clear" class="filter-clear">Limpiar filtros</button>
+        </div>
+        <p class="catalog-count" id="catalog-count"></p>
+        <div class="catalog-grid" id="catalog-grid" style="margin-top:20px;"></div>
+      </div>
+      <aside class="catalog-sidebar">
+        <h3 class="sidebar-title" id="sidebar-title">Vehículos disponibles</h3>
+        <div class="sidebar-list" id="sidebar-list"></div>
+        <a href="index.html?tipo=vehiculo#catalogo" id="sidebar-viewall" class="sidebar-viewall">Ver todos los vehículos →</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="vender" class="sell-cta view" data-view="vender">
+  <div class="container sell-cta-inner">
+    <div>
+      <span class="section-label sell-cta-label">¿Tienes algo para vender?</span>
+      <h2 class="sell-cta-title">Vende tu propiedad o vehículo con Acostel</h2>
+      <p>Publicamos tu propiedad o vehículo en nuestro catálogo y te ayudamos a encontrar comprador. Cuéntanos los detalles y te contactamos para coordinar todo.</p>
+    </div>
+    <a href="#" id="sell-whatsapp-btn" target="_blank" rel="noopener" class="btn btn-primary">
+      <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.36 4 15c0 2.36.7 4.56 1.9 6.4L4 29l7.8-1.86A11.94 11.94 0 0 0 16.04 27C22.68 27 28 21.64 28 15S22.68 3 16.04 3Zm0 21.7c-2 0-3.86-.55-5.46-1.5l-.39-.23-4.63 1.1 1.13-4.5-.25-.4A9.65 9.65 0 0 1 6.3 15c0-5.36 4.4-9.7 9.74-9.7 5.35 0 9.74 4.34 9.74 9.7 0 5.36-4.39 9.7-9.74 9.7Zm5.34-7.26c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.6-1.99-.17-.29-.02-.44.13-.59.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.9-2.19-.24-.57-.48-.5-.66-.5-.17 0-.37-.02-.56-.02-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.19 3.03c.15.2 2.07 3.16 5.02 4.43.7.3 1.25.48 1.68.62.7.22 1.34.19 1.85.12.56-.08 1.73-.71 1.98-1.39.24-.68.24-1.27.17-1.39-.07-.12-.26-.2-.55-.35Z"/></svg>
+      Quiero vender
+    </a>
   </div>
 </section>
 
