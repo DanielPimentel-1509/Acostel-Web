@@ -41,7 +41,7 @@ function cardHtml(listing) {
           <span class="card-title">${listing.title}</span>
           <span class="card-location">${listing.location}</span>
           <div class="card-specs">${specsRowHtml(listing)}</div>
-          <span class="card-cta">Ver detalle →</span>
+          <span class="card-cta">Ver detalle <span class="arrow">→</span></span>
         </div>
       </a>
     </article>
