@@ -184,8 +184,8 @@ ${jsonLd(listing)}
 <header class="site-header">
   <div class="container">
     <a href="/index.html" class="logo">
-      <img src="/images/site/logo-icon.png" alt="" class="brand-icon">
       <span class="brand-wordmark">PIMT<span class="e">E</span>L</span>
+      <img src="/images/site/logo-icon.png" alt="" class="brand-icon">
       <span class="logo-tagline">Bienes Raíces &amp; Vehículos</span>
     </a>
     <nav class="main-nav">
@@ -254,8 +254,8 @@ ${jsonLd(listing)}
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo-row">
-          <img src="/images/site/logo-icon.png" alt="" class="brand-icon">
           <span class="brand-wordmark on-dark">PIMT<span class="e">E</span>L</span>
+          <img src="/images/site/logo-icon.png" alt="" class="brand-icon">
         </div>
         <p>Bienes raíces y vehículos en venta en todo El Salvador.</p>
       </div>
