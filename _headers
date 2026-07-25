@@ -1,8 +1,17 @@
+# El HTML nunca se guarda en caché: siempre se pide fresco al servidor.
+# Así el navegador siempre recibe la versión actual, que a su vez apunta
+# al CSS/JS con el ?v=<hash> correcto — evita que quede un HTML viejo
+# pidiendo un JS nuevo (o al revés), que era lo que rompía la navegación.
+/*.html
+  Cache-Control: no-store
+
+/
+  Cache-Control: no-store
+
+# CSS y JS llevan ?v=<hash-del-contenido> en la URL: cuando cambian,
+# cambia la URL. Se revalidan siempre para nunca servir una copia vieja.
 /js/*
   Cache-Control: no-cache
 
 /css/*
-  Cache-Control: no-cache
-
-/*.html
   Cache-Control: no-cache
