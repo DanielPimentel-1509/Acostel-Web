@@ -344,24 +344,41 @@ function viewTargetFromUrl(url) {
   return "inicio";
 }
 
+// El router se basa en el hash de la URL: cuando el hash cambia (por un
+// clic en un enlace #vista o por los botones atrás/adelante), se cambia
+// de pantalla. Así el cambio de URL ES lo que dispara el cambio de
+// vista — no depende de interceptar el clic, que en algunos navegadores
+// fallaba (la URL cambiaba pero la pantalla no se actualizaba).
 function initViews() {
   const views = document.querySelectorAll(".view[data-view]");
   if (!views.length) return;
   document.body.classList.add("js-views");
 
-  document.addEventListener("click", (e) => {
-    const link = e.target.closest("a[href^='index.html']");
-    if (!link) return;
-
-    const url = new URL(link.getAttribute("href"), window.location.href);
-    const view = viewTargetFromUrl(url);
-
-    e.preventDefault();
+  function routeFromLocation() {
+    const view = viewTargetFromUrl(new URL(window.location.href));
     setActiveView(view);
     setActiveNavLink(view);
+  }
 
-    const newPath = view === "inicio" ? "index.html" : `index.html#${view}`;
-    window.history.replaceState({}, "", newPath);
+  window.addEventListener("hashchange", routeFromLocation);
+
+  // Respaldo: si un clic en un enlace interno no llega a cambiar el hash
+  // (por ejemplo si el navegador no lo procesa), lo forzamos aquí.
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest('a[href^="#"], a[href*="index.html#"]');
+    if (!link) return;
+    const url = new URL(link.getAttribute("href"), window.location.href);
+    // Solo intervenimos en enlaces internos de esta misma página.
+    if (url.pathname !== window.location.pathname && !/(^|\/)index\.html$/.test(url.pathname)) return;
+    e.preventDefault();
+    const view = viewTargetFromUrl(url);
+    const targetHash = view === "inicio" ? "#inicio" : `#${view}`;
+    if (window.location.hash !== targetHash) {
+      // Cambiar el hash dispara 'hashchange' → routeFromLocation.
+      window.location.hash = targetHash;
+    } else {
+      routeFromLocation();
+    }
   });
 
   const initial = viewTargetFromUrl(new URL(window.location.href));
