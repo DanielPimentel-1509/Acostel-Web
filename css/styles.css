@@ -478,25 +478,46 @@ h1, h2, h3, h4 {
   position: relative;
   background: var(--color-white);
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  /* Sombra de "apoyo": una capa de contacto suave arriba + una sombra
-     grande desplazada hacia abajo y contraída (spread negativo) para
-     que caiga concentrada bajo la tarjeta y se difumine a los lados,
-     como en las referencias. La sombra siempre queda DETRÁS del cuadro. */
-  box-shadow: 0 2px 4px rgba(15, 61, 94, 0.06),
-              0 26px 32px -18px rgba(15, 61, 94, 0.45);
+  overflow: visible;
+  /* Sombra ambiental muy tenue solo para definir el borde. La sombra de
+     "apoyo" ovalada la proyecta el ::after de abajo. */
+  box-shadow: 0 1px 3px rgba(15, 61, 94, 0.10);
   transition: transform var(--transition-card), box-shadow var(--transition-card);
   display: flex;
   flex-direction: column;
 }
 
-.card:hover {
-  transform: translateY(-16px) scale(1.035);
-  box-shadow: 0 8px 14px rgba(15, 61, 94, 0.10),
-              0 46px 60px -22px rgba(15, 61, 94, 0.62);
+/* Sombra de contacto ovalada, SIEMPRE por debajo de la tarjeta (empieza
+   justo en su borde inferior, nunca la tapa). Al pasar el mouse la
+   tarjeta sube y esta sombra se agranda, se separa y se oscurece —como
+   si una luz de arriba proyectara su sombra en el suelo al elevarse. */
+.card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 100%;
+  left: 9%; right: 9%;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(15, 61, 94, 0.34) 0%, rgba(15, 61, 94, 0.15) 45%, rgba(15, 61, 94, 0) 72%);
+  filter: blur(7px);
+  transition: all var(--transition-card);
+  pointer-events: none;
 }
 
-.card-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-gray-light); }
+.card:hover {
+  transform: translateY(-16px) scale(1.03);
+  box-shadow: 0 2px 6px rgba(15, 61, 94, 0.10);
+}
+.card:hover::after {
+  top: calc(100% + 12px);
+  left: 3%; right: 3%;
+  height: 34px;
+  background: radial-gradient(ellipse at center, rgba(15, 61, 94, 0.52) 0%, rgba(15, 61, 94, 0.24) 45%, rgba(15, 61, 94, 0) 72%);
+  filter: blur(11px);
+}
+
+.card-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-gray-light); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
 
 .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
