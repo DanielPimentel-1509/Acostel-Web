@@ -507,7 +507,11 @@ h1, h2, h3, h4 {
   filter: blur(11px);
 }
 
-/* La superficie visible es la que se anima: baja y se agranda. */
+/* La superficie visible es la que se anima. El origen ARRIBA-centro hace
+   que, al crecer, la tarjeta se expanda HACIA ABAJO (su borde superior
+   se queda en la fila, no sube), dando la sensación de que se acerca al
+   observador mientras las demás quedan "más al fondo" —no de que esta se
+   sale por arriba. */
 .card-link {
   display: flex;
   flex-direction: column;
@@ -516,12 +520,13 @@ h1, h2, h3, h4 {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(15, 61, 94, 0.10);
+  transform-origin: center top;
   transition: transform var(--transition-card), box-shadow var(--transition-card);
   will-change: transform;
 }
 .card:hover .card-link {
-  transform: translateY(9px) scale(1.045);
-  box-shadow: 0 12px 26px rgba(15, 61, 94, 0.16);
+  transform: scale(1.055);
+  box-shadow: 0 14px 30px rgba(15, 61, 94, 0.18);
 }
 
 .card-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-gray-light); }
