@@ -461,8 +461,8 @@ h1, h2, h3, h4 {
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  column-gap: 28px;
-  row-gap: 40px;
+  column-gap: 34px;
+  row-gap: 48px;
 }
 
 .catalog-empty {
@@ -482,15 +482,19 @@ h1, h2, h3, h4 {
   /* Sombra ambiental muy tenue solo para definir el borde. La sombra de
      "apoyo" ovalada la proyecta el ::after de abajo. */
   box-shadow: 0 1px 3px rgba(15, 61, 94, 0.10);
+  /* El origen abajo-centro hace que, al crecer en hover, la tarjeta se
+     agrande hacia arriba y los lados (se "acerca") pero su base quede
+     plantada — así la sombra del piso no sube ni baja, solo se expande. */
+  transform-origin: center bottom;
   transition: transform var(--transition-card), box-shadow var(--transition-card);
   display: flex;
   flex-direction: column;
 }
 
 /* Sombra de contacto ovalada, SIEMPRE por debajo de la tarjeta (empieza
-   justo en su borde inferior, nunca la tapa). Al pasar el mouse la
-   tarjeta sube y esta sombra se agranda, se separa y se oscurece —como
-   si una luz de arriba proyectara su sombra en el suelo al elevarse. */
+   justo en su borde inferior, nunca la tapa). Al pasar el mouse toda la
+   ficha se acerca (crece) y esta sombra se expande en su lugar —como si
+   una luz de arriba la proyectara en un "piso" imaginario. */
 .card::after {
   content: "";
   position: absolute;
@@ -505,23 +509,24 @@ h1, h2, h3, h4 {
   pointer-events: none;
 }
 
+/* Toda la ficha crece (no solo la imagen). La base queda anclada. */
 .card:hover {
-  transform: translateY(-16px) scale(1.03);
-  box-shadow: 0 2px 6px rgba(15, 61, 94, 0.10);
+  transform: scale(1.05);
+  box-shadow: 0 1px 3px rgba(15, 61, 94, 0.10);
 }
+/* La sombra solo se expande (más ancha, alta y oscura) — no se traslada. */
 .card:hover::after {
-  top: calc(100% + 12px);
-  left: 3%; right: 3%;
-  height: 34px;
-  background: radial-gradient(ellipse at center, rgba(15, 61, 94, 0.52) 0%, rgba(15, 61, 94, 0.24) 45%, rgba(15, 61, 94, 0) 72%);
-  filter: blur(11px);
+  left: 0; right: 0;
+  height: 30px;
+  background: radial-gradient(ellipse at center, rgba(15, 61, 94, 0.5) 0%, rgba(15, 61, 94, 0.24) 45%, rgba(15, 61, 94, 0) 72%);
+  filter: blur(10px);
 }
 
 .card-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-gray-light); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
 
 .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-.card:hover .card-media img { transform: scale(1.08); }
+.card:hover .card-media img { transform: scale(1.05); }
 
 .card-badge {
   position: absolute;
@@ -883,6 +888,7 @@ h1, h2, h3, h4 {
 }
 
 .gallery-main {
+  position: relative;
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -890,9 +896,48 @@ h1, h2, h3, h4 {
   margin-bottom: 12px;
   box-shadow: var(--shadow-card);
   border: 1px solid var(--card-border);
+  touch-action: pan-y; /* permite scroll vertical, deja el swipe horizontal para la galería */
 }
 
 .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Flechas de navegación de la galería */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-blue);
+  font-size: 1.6rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(15, 61, 94, 0.25);
+  transition: background var(--transition), transform var(--transition);
+  z-index: 2;
+}
+.gallery-nav:hover { background: var(--color-white); }
+.gallery-prev { left: 12px; }
+.gallery-next { right: 12px; }
+.gallery-prev:hover { transform: translateY(-50%) scale(1.08); }
+.gallery-next:hover { transform: translateY(-50%) scale(1.08); }
+
+.gallery-counter {
+  position: absolute;
+  bottom: 12px; right: 12px;
+  background: rgba(10, 26, 39, 0.62);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: var(--color-white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  z-index: 2;
+}
 
 .gallery-thumbs { display: flex; gap: 10px; flex-wrap: wrap; }
 

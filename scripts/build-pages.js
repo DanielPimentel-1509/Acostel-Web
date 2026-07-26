@@ -161,12 +161,19 @@ function galleryHtml(listing) {
   const thumbs = images
     .map(
       (src, i) =>
-        `<button data-src="/${esc(src)}" class="${i === 0 ? "is-active" : ""}" aria-label="Foto ${i + 1}"><img src="/${esc(src)}" alt="${esc(listing.title)} - foto ${i + 1}" loading="lazy"></button>`
+        `<button data-index="${i}" class="${i === 0 ? "is-active" : ""}" aria-label="Foto ${i + 1}"><img src="/${esc(src)}" alt="${esc(listing.title)} - foto ${i + 1}" loading="lazy"></button>`
     )
     .join("");
+  const srcs = images.map((s) => `/${esc(s)}`);
+  const nav = images.length > 1
+    ? `<button type="button" class="gallery-nav gallery-prev" aria-label="Foto anterior">‹</button>
+       <button type="button" class="gallery-nav gallery-next" aria-label="Foto siguiente">›</button>
+       <span class="gallery-counter"><span id="gallery-current">1</span>/${images.length}</span>`
+    : "";
   return `
-    <div class="gallery-main">
-      <img id="gallery-main-img" src="/${esc(images[0])}" alt="${esc(listing.title)}">
+    <div class="gallery-main" id="gallery-main" data-images='${JSON.stringify(srcs)}'>
+      <img id="gallery-main-img" src="${srcs[0]}" alt="${esc(listing.title)}">
+      ${nav}
     </div>
     ${images.length > 1 ? `<div class="gallery-thumbs">${thumbs}</div>` : ""}
   `;
@@ -366,14 +373,54 @@ ${jsonLd(listing)}
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
   (function () {
+    var wrap = document.getElementById("gallery-main");
     var main = document.getElementById("gallery-main-img");
-    document.querySelectorAll(".gallery-thumbs button").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        main.src = btn.getAttribute("data-src");
-        document.querySelectorAll(".gallery-thumbs button").forEach(function (b) { b.classList.remove("is-active"); });
-        btn.classList.add("is-active");
-      });
+    if (!wrap || !main) return;
+    var images = [];
+    try { images = JSON.parse(wrap.getAttribute("data-images") || "[]"); } catch (e) {}
+    if (images.length <= 1) return;
+
+    var thumbs = Array.prototype.slice.call(document.querySelectorAll(".gallery-thumbs button"));
+    var counter = document.getElementById("gallery-current");
+    var index = 0;
+
+    function show(i) {
+      index = (i + images.length) % images.length; // circular
+      main.src = images[index];
+      if (counter) counter.textContent = index + 1;
+      thumbs.forEach(function (b, n) { b.classList.toggle("is-active", n === index); });
+    }
+
+    thumbs.forEach(function (btn) {
+      btn.addEventListener("click", function () { show(parseInt(btn.getAttribute("data-index"), 10)); });
     });
+
+    var prev = wrap.querySelector(".gallery-prev");
+    var next = wrap.querySelector(".gallery-next");
+    if (prev) prev.addEventListener("click", function () { show(index - 1); });
+    if (next) next.addEventListener("click", function () { show(index + 1); });
+
+    // Teclado (escritorio): flechas izquierda / derecha
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") show(index - 1);
+      else if (e.key === "ArrowRight") show(index + 1);
+    });
+
+    // Deslizar (celular): swipe sobre el recuadro de la imagen
+    var startX = 0, startY = 0, tracking = false;
+    wrap.addEventListener("touchstart", function (e) {
+      var t = e.changedTouches[0];
+      startX = t.clientX; startY = t.clientY; tracking = true;
+    }, { passive: true });
+    wrap.addEventListener("touchend", function (e) {
+      if (!tracking) return;
+      tracking = false;
+      var t = e.changedTouches[0];
+      var dx = t.clientX - startX, dy = t.clientY - startY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        show(dx < 0 ? index + 1 : index - 1); // izquierda = siguiente
+      }
+    }, { passive: true });
   })();
 </script>
 </body>

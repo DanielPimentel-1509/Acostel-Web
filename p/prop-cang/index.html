@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css?v=50ef1ee851">
+<link rel="stylesheet" href="/css/styles.css?v=44381f23db">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Terreno cerca de la playa en Cangrejera — $38,000","description":"Terreno plano de 349 m² (499 v²) en Cangrejera, La Libertad, a solo 700 metros de la playa. El precio de entrada ideal para tu casa o…","image":["https://pimtel.netlify.app/images/listings/cang/01.jpg"],"category":"Bienes raíces","offers":{"@type":"Offer","price":38000,"priceCurrency":"USD","availability":"https://schema.org/InStock","areaServed":{"@type":"Country","name":"El Salvador"},"seller":{"@type":"RealEstateAgent","name":"Pimtel"}}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://pimtel.netlify.app/"},{"@type":"ListItem","position":2,"name":"Propiedades","item":"https://pimtel.netlify.app/index.html?tipo=propiedad"},{"@type":"ListItem","position":3,"name":"Terreno cerca de la playa en Cangrejera — $38,000"}]}</script>
 </head>
@@ -57,8 +57,9 @@
     <div class="detail-grid">
       <div class="detail-gallery">
         
-    <div class="gallery-main">
+    <div class="gallery-main" id="gallery-main" data-images='["/images/listings/cang/01.jpg"]'>
       <img id="gallery-main-img" src="/images/listings/cang/01.jpg" alt="Terreno cerca de la playa en Cangrejera — $38,000">
+      
     </div>
     
   
@@ -141,14 +142,54 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
   (function () {
+    var wrap = document.getElementById("gallery-main");
     var main = document.getElementById("gallery-main-img");
-    document.querySelectorAll(".gallery-thumbs button").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        main.src = btn.getAttribute("data-src");
-        document.querySelectorAll(".gallery-thumbs button").forEach(function (b) { b.classList.remove("is-active"); });
-        btn.classList.add("is-active");
-      });
+    if (!wrap || !main) return;
+    var images = [];
+    try { images = JSON.parse(wrap.getAttribute("data-images") || "[]"); } catch (e) {}
+    if (images.length <= 1) return;
+
+    var thumbs = Array.prototype.slice.call(document.querySelectorAll(".gallery-thumbs button"));
+    var counter = document.getElementById("gallery-current");
+    var index = 0;
+
+    function show(i) {
+      index = (i + images.length) % images.length; // circular
+      main.src = images[index];
+      if (counter) counter.textContent = index + 1;
+      thumbs.forEach(function (b, n) { b.classList.toggle("is-active", n === index); });
+    }
+
+    thumbs.forEach(function (btn) {
+      btn.addEventListener("click", function () { show(parseInt(btn.getAttribute("data-index"), 10)); });
     });
+
+    var prev = wrap.querySelector(".gallery-prev");
+    var next = wrap.querySelector(".gallery-next");
+    if (prev) prev.addEventListener("click", function () { show(index - 1); });
+    if (next) next.addEventListener("click", function () { show(index + 1); });
+
+    // Teclado (escritorio): flechas izquierda / derecha
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") show(index - 1);
+      else if (e.key === "ArrowRight") show(index + 1);
+    });
+
+    // Deslizar (celular): swipe sobre el recuadro de la imagen
+    var startX = 0, startY = 0, tracking = false;
+    wrap.addEventListener("touchstart", function (e) {
+      var t = e.changedTouches[0];
+      startX = t.clientX; startY = t.clientY; tracking = true;
+    }, { passive: true });
+    wrap.addEventListener("touchend", function (e) {
+      if (!tracking) return;
+      tracking = false;
+      var t = e.changedTouches[0];
+      var dx = t.clientX - startX, dy = t.clientY - startY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        show(dx < 0 ? index + 1 : index - 1); // izquierda = siguiente
+      }
+    }, { passive: true });
   })();
 </script>
 </body>
