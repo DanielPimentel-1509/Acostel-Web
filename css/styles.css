@@ -473,60 +473,62 @@ h1, h2, h3, h4 {
   grid-column: 1 / -1;
 }
 
-/* ---------- Card ---------- */
+/* ---------- Card ----------
+   Dos capas: .card es el contenedor fijo que proyecta la sombra en el
+   "piso" (no se mueve); .card-link es la superficie visible blanca que,
+   al pasar el mouse, BAJA un poco y se AGRANDA (se acerca), acercándose
+   a su sombra —que permanece en el piso y solo se expande. */
 .card {
   position: relative;
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  overflow: visible;
-  /* Sombra ambiental muy tenue solo para definir el borde. La sombra de
-     "apoyo" ovalada la proyecta el ::after de abajo. */
-  box-shadow: 0 1px 3px rgba(15, 61, 94, 0.10);
-  /* El origen abajo-centro hace que, al crecer en hover, la tarjeta se
-     agrande hacia arriba y los lados (se "acerca") pero su base quede
-     plantada — así la sombra del piso no sube ni baja, solo se expande. */
-  transform-origin: center bottom;
-  transition: transform var(--transition-card), box-shadow var(--transition-card);
   display: flex;
   flex-direction: column;
 }
 
-/* Sombra de contacto ovalada, SIEMPRE por debajo de la tarjeta (empieza
-   justo en su borde inferior, nunca la tapa). Al pasar el mouse toda la
-   ficha se acerca (crece) y esta sombra se expande en su lugar —como si
-   una luz de arriba la proyectara en un "piso" imaginario. */
+/* Sombra ovalada en el "piso". En reposo hay una separación clara con la
+   tarjeta (parece flotando). Al hover se queda anclada arriba y solo se
+   expande hacia abajo y los lados y se oscurece —no se traslada. */
 .card::after {
   content: "";
   position: absolute;
   z-index: -1;
-  top: 100%;
-  left: 9%; right: 9%;
-  height: 20px;
+  top: calc(100% + 11px);   /* separación inicial tarjeta ↔ sombra */
+  left: 13%; right: 13%;
+  height: 15px;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(15, 61, 94, 0.34) 0%, rgba(15, 61, 94, 0.15) 45%, rgba(15, 61, 94, 0) 72%);
+  background: radial-gradient(ellipse at center, rgba(15, 61, 94, 0.28) 0%, rgba(15, 61, 94, 0.12) 45%, rgba(15, 61, 94, 0) 72%);
   filter: blur(7px);
   transition: all var(--transition-card);
   pointer-events: none;
 }
-
-/* Toda la ficha crece (no solo la imagen). La base queda anclada. */
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 1px 3px rgba(15, 61, 94, 0.10);
-}
-/* La sombra solo se expande (más ancha, alta y oscura) — no se traslada. */
 .card:hover::after {
-  left: 0; right: 0;
-  height: 30px;
-  background: radial-gradient(ellipse at center, rgba(15, 61, 94, 0.5) 0%, rgba(15, 61, 94, 0.24) 45%, rgba(15, 61, 94, 0) 72%);
-  filter: blur(10px);
+  height: 30px;             /* crece hacia abajo desde el mismo tope */
+  left: 4%; right: 4%;
+  background: radial-gradient(ellipse at center, rgba(15, 61, 94, 0.46) 0%, rgba(15, 61, 94, 0.22) 45%, rgba(15, 61, 94, 0) 72%);
+  filter: blur(11px);
 }
 
-.card-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-gray-light); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+/* La superficie visible es la que se anima: baja y se agranda. */
+.card-link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(15, 61, 94, 0.10);
+  transition: transform var(--transition-card), box-shadow var(--transition-card);
+  will-change: transform;
+}
+.card:hover .card-link {
+  transform: translateY(9px) scale(1.045);
+  box-shadow: 0 12px 26px rgba(15, 61, 94, 0.16);
+}
+
+.card-media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-gray-light); }
 
 .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
-.card:hover .card-media img { transform: scale(1.05); }
+.card:hover .card-media img { transform: scale(1.04); }
 
 .card-badge {
   position: absolute;
@@ -627,7 +629,7 @@ h1, h2, h3, h4 {
 .card:hover .card-cta { color: var(--color-gold-dark); }
 .card:hover .card-cta .arrow { transform: translateX(4px); }
 
-.card-link { display: block; height: 100%; }
+/* (.card-link se define arriba, en el bloque de la tarjeta) */
 
 /* ---------- About ---------- */
 .about { background: transparent; padding: 88px 0; }
