@@ -832,7 +832,6 @@ const listings = [
     },
     features: ["Motor 2.0 Turbo gasolina, 4 cilindros", "Tracción Quattro 4x4", "Tapicería en cuero y techo panorámico", "Encendido de botón con llave de proximidad", "Freno de mano electrónico y baúl eléctrico", "Todas las bolsas de aire en buen estado", "75,000 millas recorridas"],
     images: ["images/listings/q3sl2018/01.jpg", "images/listings/q3sl2018/02.jpg", "images/listings/q3sl2018/03.jpg", "images/listings/q3sl2018/04.jpg", "images/listings/q3sl2018/05.jpg", "images/listings/q3sl2018/06.jpg", "images/listings/q3sl2018/07.jpg", "images/listings/q3sl2018/08.jpg", "images/listings/q3sl2018/09.jpg", "images/listings/q3sl2018/10.jpg", "images/listings/q3sl2018/11.jpg", "images/listings/q3sl2018/12.jpg", "images/listings/q3sl2018/13.jpg"],
-    video: "images/listings/q3sl2018/WhatsApp Video 2026-07-13 at 02.23.11.mp4",
   },
   {
     id: "veh-mazd2016",
