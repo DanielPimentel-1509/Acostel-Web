@@ -149,6 +149,9 @@ function specsGridHtml(listing) {
     .map(([key, label]) => {
       const value = listing.specs[key];
       if (value === undefined) return "";
+      // No mostrar specs vacíos (guiones o cadenas en blanco) para que resalten los datos reales
+      const str = String(value).trim();
+      if (str === "" || str === "—" || str === "-") return "";
       return `<div class="spec"><strong>${esc(label)}</strong><span>${esc(value)}</span></div>`;
     })
     .join("");
@@ -170,19 +173,34 @@ function galleryHtml(listing) {
        <button type="button" class="gallery-nav gallery-next" aria-label="Foto siguiente">›</button>
        <span class="gallery-counter"><span id="gallery-current">1</span>/${images.length}</span>`
     : "";
+  const expandIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+  const lightbox = `
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button type="button" class="lightbox-close" aria-label="Cerrar">&times;</button>
+      ${images.length > 1 ? '<button type="button" class="lightbox-nav lightbox-prev" aria-label="Foto anterior">&lsaquo;</button>' : ""}
+      <img id="lightbox-img" src="${srcs[0]}" alt="${esc(listing.title)}">
+      ${images.length > 1 ? '<button type="button" class="lightbox-nav lightbox-next" aria-label="Foto siguiente">&rsaquo;</button>' : ""}
+      ${images.length > 1 ? `<span class="lightbox-counter"><span id="lightbox-current">1</span>/${images.length}</span>` : ""}
+    </div>`;
   return `
     <div class="gallery-main" id="gallery-main" data-images='${JSON.stringify(srcs)}'>
       <img id="gallery-main-img" src="${srcs[0]}" alt="${esc(listing.title)}">
+      <button type="button" class="gallery-zoom" id="gallery-zoom" aria-label="Ver en pantalla completa">${expandIcon}</button>
       ${nav}
     </div>
     ${images.length > 1 ? `<div class="gallery-thumbs">${thumbs}</div>` : ""}
+    ${lightbox}
   `;
 }
 
 function videoSectionHtml(listing) {
   if (!listing.video) return "";
   if (isVideoFile(listing.video)) {
-    return `<div class="detail-section"><h2>Video</h2><video controls playsinline class="detail-video" src="/${esc(listing.video)}"></video></div>`;
+    const poster = /video\.mp4$/i.test(listing.video)
+      ? listing.video.replace(/video\.mp4$/i, "video-poster.jpg")
+      : null;
+    const posterAttr = poster ? ` poster="/${esc(poster)}"` : "";
+    return `<div class="detail-section"><h2>Video</h2><div class="detail-video-wrap"><video controls playsinline preload="metadata"${posterAttr} class="detail-video"><source src="/${esc(listing.video)}" type="video/mp4"></video></div></div>`;
   }
   const ytId = getYouTubeId(listing.video);
   if (!ytId) return "";
@@ -311,12 +329,12 @@ ${jsonLd(listing)}
       </div>
     </div>
 
+    ${videoSectionHtml(listing)}
+
     <div class="detail-section">
       <h2>Descripción</h2>
       <p>${esc(listing.description)}</p>
     </div>
-
-    ${videoSectionHtml(listing)}
 
     ${listing.features && listing.features.length ? `
       <div class="detail-section">
@@ -378,49 +396,98 @@ ${jsonLd(listing)}
     if (!wrap || !main) return;
     var images = [];
     try { images = JSON.parse(wrap.getAttribute("data-images") || "[]"); } catch (e) {}
-    if (images.length <= 1) return;
+    if (!images.length) return;
 
     var thumbs = Array.prototype.slice.call(document.querySelectorAll(".gallery-thumbs button"));
     var counter = document.getElementById("gallery-current");
+    var lb = document.getElementById("lightbox");
+    var lbImg = document.getElementById("lightbox-img");
+    var lbCounter = document.getElementById("lightbox-current");
+    var multi = images.length > 1;
     var index = 0;
 
     function show(i) {
       index = (i + images.length) % images.length; // circular
       main.src = images[index];
+      if (lbImg) lbImg.src = images[index];
       if (counter) counter.textContent = index + 1;
+      if (lbCounter) lbCounter.textContent = index + 1;
       thumbs.forEach(function (b, n) { b.classList.toggle("is-active", n === index); });
     }
 
-    thumbs.forEach(function (btn) {
-      btn.addEventListener("click", function () { show(parseInt(btn.getAttribute("data-index"), 10)); });
-    });
+    if (multi) {
+      thumbs.forEach(function (btn) {
+        btn.addEventListener("click", function () { show(parseInt(btn.getAttribute("data-index"), 10)); });
+      });
+      var prev = wrap.querySelector(".gallery-prev");
+      var next = wrap.querySelector(".gallery-next");
+      if (prev) prev.addEventListener("click", function (e) { e.stopPropagation(); show(index - 1); });
+      if (next) next.addEventListener("click", function (e) { e.stopPropagation(); show(index + 1); });
+    }
 
-    var prev = wrap.querySelector(".gallery-prev");
-    var next = wrap.querySelector(".gallery-next");
-    if (prev) prev.addEventListener("click", function () { show(index - 1); });
-    if (next) next.addEventListener("click", function () { show(index + 1); });
+    // ---- Pantalla completa (lightbox) ----
+    function openLb() { if (!lb) return; lb.classList.add("is-open"); lb.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
+    function closeLb() { if (!lb) return; lb.classList.remove("is-open"); lb.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
 
-    // Teclado (escritorio): flechas izquierda / derecha
+    var zoom = document.getElementById("gallery-zoom");
+    if (zoom) zoom.addEventListener("click", function (e) { e.stopPropagation(); openLb(); });
+    main.addEventListener("click", openLb);
+    main.style.cursor = "zoom-in";
+
+    if (lb) {
+      var closeBtn = lb.querySelector(".lightbox-close");
+      if (closeBtn) closeBtn.addEventListener("click", closeLb);
+      var lbPrev = lb.querySelector(".lightbox-prev");
+      var lbNext = lb.querySelector(".lightbox-next");
+      if (lbPrev) lbPrev.addEventListener("click", function (e) { e.stopPropagation(); show(index - 1); });
+      if (lbNext) lbNext.addEventListener("click", function (e) { e.stopPropagation(); show(index + 1); });
+      lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); }); // click en el fondo cierra
+    }
+
+    // ---- Video: adelantar/atrasar 5s con las flechas del teclado ----
+    var video = document.querySelector(".detail-video");
+    var videoHover = false;
+    if (video) {
+      var vwrap = video.closest(".detail-video-wrap") || video;
+      vwrap.addEventListener("pointerenter", function () { videoHover = true; });
+      vwrap.addEventListener("pointerleave", function () { videoHover = false; });
+    }
+    function videoFocused() {
+      if (!video) return false;
+      if (videoHover) return true;
+      var a = document.activeElement;
+      return a === video || (video.contains && video.contains(a));
+    }
+
+    // Teclado: Esc cierra; flechas navegan (galería) o adelantan/atrasan (video)
     document.addEventListener("keydown", function (e) {
+      var open = lb && lb.classList.contains("is-open");
+      if (open && e.key === "Escape") { closeLb(); return; }
+      // Si el video tiene el foco/hover, las flechas mueven el video de 5 en 5 seg.
+      if (!open && video && videoFocused() && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
+        var dur = isFinite(video.duration) ? video.duration : 1e9;
+        if (e.key === "ArrowRight") video.currentTime = Math.min(dur, video.currentTime + 5);
+        else video.currentTime = Math.max(0, video.currentTime - 5);
+        e.preventDefault();
+        return;
+      }
+      if (!multi) return;
       if (e.key === "ArrowLeft") show(index - 1);
       else if (e.key === "ArrowRight") show(index + 1);
     });
 
-    // Deslizar (celular): swipe sobre el recuadro de la imagen
-    var startX = 0, startY = 0, tracking = false;
-    wrap.addEventListener("touchstart", function (e) {
-      var t = e.changedTouches[0];
-      startX = t.clientX; startY = t.clientY; tracking = true;
-    }, { passive: true });
-    wrap.addEventListener("touchend", function (e) {
-      if (!tracking) return;
-      tracking = false;
-      var t = e.changedTouches[0];
-      var dx = t.clientX - startX, dy = t.clientY - startY;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-        show(dx < 0 ? index + 1 : index - 1); // izquierda = siguiente
-      }
-    }, { passive: true });
+    // Deslizar (celular) en la galería y en el lightbox
+    function addSwipe(el) {
+      var sx = 0, sy = 0, tr = false;
+      el.addEventListener("touchstart", function (e) { var t = e.changedTouches[0]; sx = t.clientX; sy = t.clientY; tr = true; }, { passive: true });
+      el.addEventListener("touchend", function (e) {
+        if (!tr) return; tr = false;
+        var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+        if (multi && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? index + 1 : index - 1);
+      }, { passive: true });
+    }
+    addSwipe(wrap);
+    if (lb) addSwipe(lb);
   })();
 </script>
 </body>

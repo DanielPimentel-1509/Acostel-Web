@@ -48,7 +48,7 @@ const listings = [
     },
     features: ["842.5 m² (1,205 v²)", "Zona con plusvalía y fácil acceso", "Energía eléctrica disponible y agua potable", "Cerca del río, entorno natural", "Lote ya segregado; acceso por servidumbre privada en proyecto (plano), aún no construida"],
     images: ["images/listings/copa/02.jpg", "images/listings/copa/01.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
-    video: "images/listings/copa/WhatsApp Video 2026-07-15 at 18.24.18 (1).mp4",
+    video: "images/listings/copa/video.mp4",
   },
   {
     id: "prop-clou",
@@ -70,7 +70,7 @@ const listings = [
     },
     features: ["161 m² de terreno (7 × 23 m / 230 v²)", "3 habitaciones amplias", "1 baño completo", "Sala espaciosa y cocina moderna", "Cochera techada", "Agua y luz ya instaladas", "Acceso desde dos calles"],
     images: ["images/listings/jose/01.jpg", "images/listings/jose/02.jpg", "images/listings/jose/03.jpg", "images/listings/jose/04.jpg", "images/listings/jose/05.jpg", "images/listings/jose/06.jpg", "images/listings/jose/07.jpg", "images/listings/jose/08.jpg", "images/listings/jose/09.jpg", "images/listings/jose/10.jpg", "images/listings/jose/11.jpg", "images/listings/jose/12.jpg"],
-    video: "images/listings/jose/WhatsApp Video 2026-06-26 at 08.33.01.mp4",
+    video: "images/listings/jose/video.mp4",
   },
   {
     id: "prop-lour1",
@@ -172,7 +172,7 @@ const listings = [
     },
     features: ["349 m² (499 v²)", "12.96 m de frente x 27 m de fondo", "A 700 metros de la playa", "Terreno plano", "Ideal para casa o rancho de playa"],
     images: ["images/listings/cang/01.jpg"],
-    video: "images/listings/cang/WhatsApp Video 2026-07-13 at 01.25.41.mp4",
+    video: "images/listings/cang/video.mp4",
   },
   {
     id: "prop-copa2",
@@ -193,7 +193,7 @@ const listings = [
     },
     features: ["828 m² (1,185 v²)", "18 m de frente x 46 m de fondo", "3 accesos de entrada (uno con acceso a Claudia Lars)", "Acceso en cualquier vehículo, calle de tierra plana", "Energía eléctrica y agua disponibles (solo de activar)", "Tierra totalmente fértil, terreno 100% plano"],
     images: ["images/listings/copa2/01.jpg", "images/listings/copa2/02.jpg"],
-    video: "images/listings/copa2/WhatsApp Video 2026-07-15 at 00.05.23.mp4",
+    video: "images/listings/copa2/video.mp4",
   },
   {
     id: "prop-bazz",
@@ -214,7 +214,7 @@ const listings = [
     },
     features: ["2,500 m² (3,577 v²), compuesto por 2 parcelas", "Vista espectacular", "A 1 minuto de la carretera Bazzini y 4 minutos del desvío a Talnique, Jayaque y Ateos", "A 10 minutos de escuelas, centros comerciales y negocios de Lourdes", "Terreno semiplano, tierra fértil, calle de ingreso plana", "Ideal para cabañas, casa de campo o lugar de retiro"],
     images: ["images/listings/bazz/01.jpg", "images/listings/bazz/02.jpg", "images/listings/bazz/03.jpg", "images/listings/bazz/04.jpg", "images/listings/bazz/05.jpg", "images/listings/bazz/06.jpg"],
-    video: "images/listings/bazz/WhatsApp Video 2026-07-15 at 00.09.50.mp4",
+    video: "images/listings/bazz/video.mp4",
   },
   {
     id: "prop-copa-p",
@@ -235,7 +235,7 @@ const listings = [
     },
     features: ["842.5 m² (1,205 v²)", "Pozo propio incluido y agua potable", "Energía eléctrica disponible", "Acceso por ambos extremos (colinda en su lado más largo con la servidumbre)", "Entorno natural, cerca del río", "Lote ya segregado; la calle de servidumbre interna está en proyecto (plano), aún no construida"],
     images: ["images/listings/copa/02.jpg", "images/listings/copa/01.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
-    video: "images/listings/copa/WhatsApp Video 2026-07-15 at 18.24.18 (1).mp4",
+    video: "images/listings/copa/video.mp4",
   },
   {
     id: "prop-ssal2",
@@ -276,7 +276,7 @@ const listings = [
     },
     features: ["6 amplias habitaciones", "6 baños", "Piscina, deck y terraza", "2 salas de estar y sala comedor", "Cocina con desayunador", "Amplio jardín", "Espacio para 2 vehículos"],
     images: ["images/listings/ahua2/01.jpg", "images/listings/ahua2/02.jpg", "images/listings/ahua2/03.jpg", "images/listings/ahua2/04.jpg", "images/listings/ahua2/05.jpg", "images/listings/ahua2/06.jpg", "images/listings/ahua2/07.jpg", "images/listings/ahua2/08.jpg", "images/listings/ahua2/09.jpg", "images/listings/ahua2/10.jpg", "images/listings/ahua2/11.jpg", "images/listings/ahua2/12.jpg"],
-    video: "images/listings/ahua2/WhatsApp Video 2026-07-13 at 01.43.38.mp4",
+    video: "images/listings/ahua2/video.mp4",
   },
   {
     id: "prop-cumb",
@@ -297,7 +297,7 @@ const listings = [
     },
     features: ["1,842.16 m² (2,635 v²)", "Topografía plana", "Listo para construir: casa grande o torre de apartamentos (desarrollo vertical)", "Factibilidad de luz eléctrica y agua potable", "Valor de $550 por vara², por debajo del valor de mercado actual"],
     images: ["images/listings/cumb/01.jpg", "images/listings/cumb/02.jpg", "images/listings/cumb/03.jpg", "images/listings/cumb/04.jpg", "images/listings/cumb/05.jpg", "images/listings/cumb/06.jpg", "images/listings/cumb/07.jpg", "images/listings/cumb/08.jpg", "images/listings/cumb/09.jpg"],
-    video: "images/listings/cumb/WhatsApp Video 2026-07-13 at 01.34.49.mp4",
+    video: "images/listings/cumb/video.mp4",
   },
   {
     id: "prop-sanv",
@@ -378,7 +378,7 @@ const listings = [
     },
     features: ["2,300 m² (3,291 v²)", "Acceso a Sonsonate, Santa Ana y San Salvador", "Acceso en cualquier vehículo, calle de ingreso plana", "Factibilidad de luz y agua", "Tierra totalmente fértil, terreno plano", "Ideal para cabaña, predio de furgones, restaurante y otros negocios"],
     images: ["images/listings/clau/01.jpg", "images/listings/clau/02.jpg", "images/listings/clau/03.jpg", "images/listings/clau/04.jpg", "images/listings/clau/05.jpg", "images/listings/clau/06.jpg", "images/listings/clau/07.jpg", "images/listings/clau/08.jpg"],
-    video: "images/listings/clau/WhatsApp Video 2026-07-15 at 00.06.31.mp4",
+    video: "images/listings/clau/video.mp4",
   },
   {
     id: "prop-ilop",
@@ -399,7 +399,7 @@ const listings = [
     },
     features: ["2 manzanas (20,000 v²)", "Vista espectacular al Lago de Ilopango", "A 500 m del Turicentro Apulo, en dirección al Club Salvadoreño", "Ideal para hoteles y desarrollo inmobiliario"],
     images: ["images/listings/ilop/01.jpg", "images/listings/ilop/02.jpg", "images/listings/ilop/03.jpg", "images/listings/ilop/04.jpg", "images/listings/ilop/05.jpg", "images/listings/ilop/06.jpg"],
-    video: "images/listings/ilop/WhatsApp Video 2026-07-13 at 01.38.38.mp4",
+    video: "images/listings/ilop/video.mp4",
   },
   {
     id: "prop-flor",
@@ -440,7 +440,7 @@ const listings = [
     },
     features: ["6 manzanas (60,000 v²)", "Vista al complejo privado El Encanto Golf Country Club", "Factibilidad de agua potable y luz eléctrica", "Acceso en cualquier vehículo, a 20 minutos de la carretera al Puerto de La Libertad", "Topografía irregular", "Ideal para proyecto inmobiliario, apartamentos Airbnb o proyecto agrícola"],
     images: ["images/listings/huiz/01.jpg", "images/listings/huiz/02.jpg", "images/listings/huiz/03.jpg", "images/listings/huiz/04.jpg", "images/listings/huiz/05.jpg", "images/listings/huiz/06.jpg", "images/listings/huiz/07.jpg", "images/listings/huiz/08.jpg", "images/listings/huiz/09.jpg", "images/listings/huiz/10.jpg", "images/listings/huiz/11.jpg", "images/listings/huiz/12.jpg", "images/listings/huiz/13.jpg", "images/listings/huiz/14.jpg", "images/listings/huiz/15.jpg"],
-    video: "images/listings/huiz/WhatsApp Video 2026-07-13 at 01.33.10.mp4",
+    video: "images/listings/huiz/video.mp4",
   },
   {
     id: "prop-ahua",
@@ -461,7 +461,7 @@ const listings = [
     },
     features: ["20 manzanas (200,000 v²)", "Topografía plana y semiplana", "Apta para paneles solares", "Agua mediante pozo artesanal", "Acceso con vehículo 4x4"],
     images: ["images/listings/ahua/01.jpg", "images/listings/ahua/02.jpg", "images/listings/ahua/03.jpg", "images/listings/ahua/04.jpg", "images/listings/ahua/05.jpg", "images/listings/ahua/06.jpg", "images/listings/ahua/07.jpg", "images/listings/ahua/08.jpg", "images/listings/ahua/09.jpg", "images/listings/ahua/10.jpg", "images/listings/ahua/11.jpg", "images/listings/ahua/12.jpg", "images/listings/ahua/13.jpg"],
-    video: "images/listings/ahua/WhatsApp Video 2026-07-13 at 01.19.20.mp4",
+    video: "images/listings/ahua/video.mp4",
   },
   {
     id: "prop-lagu",
@@ -543,7 +543,7 @@ const listings = [
     },
     features: ["335 manzanas (3,350,000 v² / 2,340,645 m²)", "100 manzanas de café cultivado en producción", "3 ríos y 6 cascadas dentro de la propiedad", "16 minas de piedra laja (5 sobre la carretera)", "Aproximadamente 2 km de frente sobre carretera", "Agua potable y energía eléctrica", "Acceso para todo tipo de vehículo"],
     images: ["images/listings/juju/01.jpg", "images/listings/juju/02.jpg", "images/listings/juju/03.jpg", "images/listings/juju/04.jpg", "images/listings/juju/05.jpg", "images/listings/juju/06.jpg", "images/listings/juju/07.jpg", "images/listings/juju/08.jpg"],
-    video: "images/listings/juju/WhatsApp Video 2026-07-15 at 01.31.35.mp4",
+    video: "images/listings/juju/video.mp4",
   },
   {
     id: "prop-mora",
@@ -564,7 +564,7 @@ const listings = [
     },
     features: ["4 manzanas (40,000 v²)", "Ideal para ganadería", "Topografía semiplana (quebrada en invierno)", "Factibilidad de luz eléctrica y agua potable a 200 m"],
     images: ["images/listings/mora/01.jpg", "images/listings/mora/02.jpg", "images/listings/mora/03.jpg", "images/listings/mora/04.jpg", "images/listings/mora/05.jpg", "images/listings/mora/06.jpg", "images/listings/mora/07.jpg"],
-    video: "images/listings/mora/WhatsApp Video 2026-07-13 at 01.27.21.mp4",
+    video: "images/listings/mora/video.mp4",
   },
   {
     id: "prop-atac2",
@@ -605,7 +605,7 @@ const listings = [
     },
     features: ["600 m² (858 v²)", "Amplia piscina (sin filtro)", "2 habitaciones y corredor amplio", "Baño con ducha y área de lavado", "Agua de pozo y de punta, energía eléctrica activa", "Amplio parqueo, fácil acceso, a 5 minutos de la playa"],
     images: ["images/listings/cost/01.jpg", "images/listings/cost/02.jpg", "images/listings/cost/03.jpg", "images/listings/cost/04.jpg", "images/listings/cost/05.jpg", "images/listings/cost/06.jpg", "images/listings/cost/07.jpg"],
-    video: "images/listings/cost/WhatsApp Video 2026-07-15 at 00.18.23.mp4",
+    video: "images/listings/cost/video.mp4",
   },
   {
     id: "prop-delg",
@@ -646,7 +646,7 @@ const listings = [
     },
     features: ["83 manzanas 100% planas (830,000 v²)", "Cultivo de caña con sistema de riego propio", "2 galeras grandes para tractores y maquinaria", "2 casas de seguridad", "Luz eléctrica y agua potable", "A 8 minutos de la carretera principal"],
     images: ["images/listings/acaj/01.jpg", "images/listings/acaj/02.jpg", "images/listings/acaj/03.jpg", "images/listings/acaj/04.jpg", "images/listings/acaj/05.jpg", "images/listings/acaj/06.jpg", "images/listings/acaj/07.jpg", "images/listings/acaj/08.jpg", "images/listings/acaj/09.jpg"],
-    video: "images/listings/acaj/WhatsApp Video 2026-07-13 at 01.36.36.mp4",
+    video: "images/listings/acaj/video.mp4",
   },
   {
     id: "prop-jaya",
@@ -707,7 +707,7 @@ const listings = [
     },
     features: ["842.5 m² (1,205 v²)", "Entorno natural, cerca del río", "Energía eléctrica disponible y agua potable", "Zona tranquila y de buen acceso", "Lote ya segregado; acceso por servidumbre en proyecto (plano), aún no construida"],
     images: ["images/listings/copa/02.jpg", "images/listings/copa/01.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
-    video: "images/listings/copa/WhatsApp Video 2026-07-15 at 18.24.18 (1).mp4",
+    video: "images/listings/copa/video.mp4",
   },
   {
     id: "prop-copa-1",
@@ -728,7 +728,7 @@ const listings = [
     },
     features: ["842.5 m² (1,205 v²)", "A pocos minutos de la carretera principal", "Energía eléctrica disponible y agua potable", "Zona tranquila y fresca, cerca del río", "Lote ya segregado; acceso por servidumbre privada en proyecto (plano), aún no construida"],
     images: ["images/listings/copa/02.jpg", "images/listings/copa/01.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
-    video: "images/listings/copa/WhatsApp Video 2026-07-15 at 18.24.18 (1).mp4",
+    video: "images/listings/copa/video.mp4",
   },
 
   // ---------------- VEHÍCULOS ----------------
@@ -751,7 +751,7 @@ const listings = [
     },
     features: ["Motor 1000 Turbo", "Suspensión FOX de alto rendimiento", "Tijeras y estribos ATB", "4 plazas", "~2,000 millas recorridas"],
     images: ["images/listings/rzr4pro/01.jpg", "images/listings/rzr4pro/02.jpg", "images/listings/rzr4pro/03.jpg", "images/listings/rzr4pro/04.jpg", "images/listings/rzr4pro/05.jpg", "images/listings/rzr4pro/06.jpg", "images/listings/rzr4pro/07.jpg", "images/listings/rzr4pro/08.jpg", "images/listings/rzr4pro/09.jpg", "images/listings/rzr4pro/10.jpg"],
-    video: "images/listings/rzr4pro/WhatsApp Video 2026-07-13 at 02.15.33.mp4",
+    video: "images/listings/rzr4pro/video.mp4",
   },
   {
     id: "veh-cfmo2020",
@@ -872,7 +872,7 @@ const listings = [
     },
     features: ["Nissan Frontier 2021", "Cabina King Cab", "Excelente estado"],
     images: ["images/listings/fron2021/01.jpg", "images/listings/fron2021/02.jpg", "images/listings/fron2021/03.jpg", "images/listings/fron2021/04.jpg", "images/listings/fron2021/05.jpg", "images/listings/fron2021/06.jpg", "images/listings/fron2021/07.jpg", "images/listings/fron2021/08.jpg", "images/listings/fron2021/09.jpg", "images/listings/fron2021/10.jpg", "images/listings/fron2021/11.jpg", "images/listings/fron2021/12.jpg", "images/listings/fron2021/13.jpg"],
-    video: "images/listings/fron2021/WhatsApp Video 2026-07-13 at 02.20.59.mp4",
+    video: "images/listings/fron2021/video.mp4",
   },
   {
     id: "veh-outl2020",
@@ -933,6 +933,6 @@ const listings = [
     },
     features: ["Mitsubishi L200 2013", "Pick-up de trabajo, resistente", "Buen estado"],
     images: ["images/listings/l2002013/01.jpg", "images/listings/l2002013/02.jpg", "images/listings/l2002013/03.jpg", "images/listings/l2002013/04.jpg", "images/listings/l2002013/05.jpg", "images/listings/l2002013/06.jpg", "images/listings/l2002013/07.jpg", "images/listings/l2002013/08.jpg", "images/listings/l2002013/09.jpg", "images/listings/l2002013/10.jpg", "images/listings/l2002013/11.jpg", "images/listings/l2002013/12.jpg", "images/listings/l2002013/13.jpg", "images/listings/l2002013/14.jpg"],
-    video: "images/listings/l2002013/WhatsApp Video 2026-07-13 at 02.19.47.mp4",
+    video: "images/listings/l2002013/video.mp4",
   },
 ];
