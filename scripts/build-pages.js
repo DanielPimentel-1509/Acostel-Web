@@ -314,7 +314,7 @@ ${jsonLd(listing)}
         ${galleryHtml(listing)}
       </div>
       <div class="detail-info">
-        ${listing.badge ? `<span class="card-badge">${esc(listing.badge)}</span>` : ""}
+        ${listing.badges && listing.badges.length ? listing.badges.map((b) => `<span class="card-badge">${esc(b)}</span>`).join("") : ""}
         <span class="card-type">${typeLabel}${listing.operacion ? " · " + esc(listing.operacion) : ""}</span>
         <h1>${esc(listing.title)}</h1>
         <div class="detail-location">${esc(listing.location)}</div>

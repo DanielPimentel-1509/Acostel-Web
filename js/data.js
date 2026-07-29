@@ -56,7 +56,7 @@ const listings = [
     title: "Casa nueva a estrenar en Lourdes Colón",
     price: 77000,
     location: "Colón",
-    badge: "Acepta FSV",
+    badges: ["Acepta FSV"],
     operacion: "Venta",
     summary: "Casa nueva a estrenar en Colonia Las Margaritas, Lourdes Colón, La Libertad. Ubicada a solo 5 minutos de Metrocentro Lourdes, es una…",
     description:
@@ -78,7 +78,7 @@ const listings = [
     title: "Casa nueva en Lourdes Colón — El Conacaste",
     price: 195000,
     location: "Colón",
-    badge: "Residencial privado",
+    badges: ["Residencial privado"],
     operacion: "Venta",
     summary: "Casa nueva a estrenar en residencial privado exclusivo, Lourdes Colón, La Libertad. El Conacaste es una mini residencial de solo 20 casas…",
     description:
@@ -99,7 +99,7 @@ const listings = [
     title: "Terreno a orilla de calle en Ataco",
     price: 185000,
     location: "Ataco",
-    badge: "Financiamiento sin interés",
+    badges: ["Financiamiento sin interés"],
     operacion: "Venta",
     summary: "Terreno de 1,200 m² (1,717 v²) a orilla de calle en Ataco, sobre la Ruta de las Flores, a 30 metros del Restaurante La Pampa. Zona de alta…",
     description:
@@ -120,7 +120,7 @@ const listings = [
     title: "Mini condominio en Santa Ana — ya genera ingresos",
     price: 450000,
     location: "Santa Ana",
-    badge: "Ya genera ingresos",
+    badges: ["Ya genera ingresos"],
     operacion: "Venta",
     summary: "Mini condominio de 462 m² (661 v²) en Colonia San José, Santa Ana, sobre la carretera a Metapán. Una inversión inmobiliaria que genera…",
     description:
@@ -141,6 +141,7 @@ const listings = [
     title: "Finca de 17 manzanas en Ataco — Con casa patronal",
     price: 260000,
     location: "Ataco",
+    badges: ["Requiere 4x4"],
     operacion: "Venta",
     summary: "Finca de 17 manzanas (170,000 v² / 118,779 m²) en Ataco, a 10 minutos del pueblo y a 1,200 metros sobre el nivel del mar. Clima fresco de…",
     description:
@@ -224,7 +225,7 @@ const listings = [
     title: "Lote premium en Copapayo — Con pozo propio",
     price: 32000,
     location: "Copapayo",
-    badge: "Con pozo propio",
+    badges: ["Con pozo propio"],
     operacion: "Venta",
     summary: "Lote de 842.5 m² (1,205 v²) en Copapayo, cerca del río. El de mejor ubicación del proyecto: con pozo propio y doble acceso, en un entorno…",
     description:
@@ -266,7 +267,7 @@ const listings = [
     title: "Casa de lujo en Ahuachapán, Parque Concordia",
     price: 560000,
     location: "Ahuachapán",
-    badge: "Con piscina",
+    badges: ["Con piscina"],
     operacion: "Venta",
     summary: "Amplia residencia de lujo en Ahuachapán, a pocos metros del Parque Concordia. Una propiedad señorial con piscina y espacios generosos para…",
     description:
@@ -288,7 +289,7 @@ const listings = [
     title: "Terreno urbano en Cumbres de la Escalón",
     price: 1449250,
     location: "Cumbres de la Escalón",
-    badge: "Bajo el valor de mercado",
+    badges: ["Bajo el valor de mercado"],
     operacion: "Venta",
     summary: "Terreno urbano de 1,842.16 m² (2,635 v²) en Cumbres de la Escalón, San Salvador, la zona de mayor exclusividad y plusvalía del país. Listo…",
     description:
@@ -330,7 +331,7 @@ const listings = [
     title: "Propiedad en San Salvador — A orilla de calle",
     price: 285000,
     location: "San Salvador",
-    badge: "Ya genera ingresos",
+    badges: ["Ya genera ingresos"],
     operacion: "Venta",
     summary: "Propiedad de 840 m² (1,202 v²) en San Salvador, a orilla de la calle que va de Santa Ana hacia San Salvador. Ya genera ingresos mensuales;…",
     description:
@@ -392,7 +393,7 @@ const listings = [
     title: "2 manzanas frente al Lago de Ilopango",
     price: 1100000,
     location: "Ilopango",
-    badge: "Vista al lago",
+    badges: ["Vista al lago"],
     operacion: "Venta",
     summary: "Terreno de 2 manzanas con vista espectacular al Lago de Ilopango, en Cantón Apancino, a 500 metros del Turicentro Apulo. Ubicación…",
     description:
@@ -414,7 +415,7 @@ const listings = [
     title: "Terreno con vista al Lago de Coatepeque",
     price: 135000,
     location: "Flor Amarilla",
-    badge: "Vista al lago",
+    badges: ["Vista al lago"],
     operacion: "Venta",
     summary: "Terreno de 2,500 v² (1,747.5 m²) en Cantón Flor Amarilla, con vista espectacular al Lago de Coatepeque. Súper bien ubicado, sobre la calle…",
     description:
@@ -435,7 +436,7 @@ const listings = [
     title: "6 manzanas en Huizúcar, junto a El Encanto Golf",
     price: 900000,
     location: "Huizúcar",
-    badge: "Junto a campo de golf",
+    badges: ["Junto a campo de golf"],
     operacion: "Venta",
     summary: "Terreno de 6 manzanas en Huizúcar, La Libertad, con vista al exclusivo complejo privado Residencial El Encanto Golf Country Club. Zona de…",
     description:
@@ -457,6 +458,7 @@ const listings = [
     title: "20 manzanas en venta en Ahuachapán — Venta total",
     price: 175000,
     location: "Ahuachapán",
+    badges: ["Requiere 4x4"],
     operacion: "Venta",
     summary: "Gran terreno de 20 manzanas en Ahuachapán, a 8 minutos de la carretera hacia Tacuba y 15 minutos del centro. Ideal para proyecto agrícola o…",
     description:
@@ -478,7 +480,7 @@ const listings = [
     title: "18,000 v² con vista al Lago de Coatepeque",
     price: 92000,
     location: "Planes de la Laguna",
-    badge: "Vista al lago",
+    badges: ["Vista al lago"],
     operacion: "Venta",
     summary: "Terreno de 18,000 v² (12,582 m²) en Cantón Planes de la Laguna, Santa Ana, con vista al Lago de Coatepeque. Gran extensión a un precio…",
     description:
@@ -499,7 +501,7 @@ const listings = [
     title: "17,000 v² 100% planos en Ataco — $55 la vara",
     price: 935000,
     location: "Ataco",
-    badge: "100% plano",
+    badges: ["100% plano"],
     operacion: "Venta",
     summary: "Terreno de 17,000 v² (1.7 manzanas) a 3 minutos de la ciudad de Ataco, totalmente plano. Ideal para desarrollo, lotificación o proyecto…",
     description:
@@ -521,7 +523,7 @@ const listings = [
     title: "Terreno cerca del Lago de Coatepeque — $130,000",
     price: 130000,
     location: "Cardedeu",
-    badge: "Con árboles frutales",
+    badges: ["Con árboles frutales"],
     operacion: "Venta",
     summary: "Terreno de 4,000 v² (2,794.8 m²) a un costado de Cardedeu, a solo 200 metros del Lago de Coatepeque. Fresco y arbolado, ideal para casa de…",
     description:
@@ -542,7 +544,7 @@ const listings = [
     title: "335 manzanas en Jujutla — Finca de inversión",
     price: 2847500,
     location: "Jujutla",
-    badge: "Café en producción",
+    badges: ["Café en producción"],
     operacion: "Venta",
     summary: "Extraordinaria propiedad de 335 manzanas en Jujutla, Ahuachapán Sur, conformada por tres fincas (El Escondido, Copinula y Casa de Jesús),…",
     description:
@@ -585,7 +587,7 @@ const listings = [
     title: "Finca de café de altura en Ataco — 10 manzanas",
     price: 750000,
     location: "Ataco",
-    badge: "Vista al océano",
+    badges: ["Vista al océano"],
     operacion: "Venta",
     summary: "Finca de café de 10 manzanas (100,000 v²) en Ataco, a 1,300 msnm, con vista al océano. Café de estricta altura, el más cotizado por su…",
     description:
@@ -606,7 +608,7 @@ const listings = [
     title: "Rancho a remodelar en Playa Costa Azul, con piscina",
     price: 180000,
     location: "Costa Azul",
-    badge: "Con piscina",
+    badges: ["Con piscina"],
     operacion: "Venta",
     summary: "Rancho de 600 m² (858 v²) en Playa Costa Azul, Sonsonate, a 300 metros del mar. Con piscina y listo para remodelar a tu gusto. Ideal para…",
     description:
@@ -628,7 +630,7 @@ const listings = [
     title: "Mesón comercial en Ciudad Delgado — $420,000",
     price: 420000,
     location: "Ciudad Delgado",
-    badge: "Uso comercial",
+    badges: ["Uso comercial"],
     operacion: "Venta",
     summary: "Propiedad de uso comercial en Ciudad Delgado, con 8 habitaciones, cerca de la Avenida Juan Bertis y los juzgados. Zona de alto movimiento,…",
     description:
@@ -649,7 +651,7 @@ const listings = [
     title: "83 manzanas en Acajutla — Cañal en producción",
     price: 2241000,
     location: "Acajutla",
-    badge: "Cultivo en producción",
+    badges: ["Cultivo en producción"],
     operacion: "Venta",
     summary: "Finca de 83 manzanas 100% planas en Acajutla, Sonsonate, con cultivo de caña, sistema de riego propio e infraestructura completa.…",
     description:
@@ -671,7 +673,7 @@ const listings = [
     title: "Finca de café en Jayaque, con cabaña y mirador",
     price: 298000,
     location: "Jayaque",
-    badge: "Café en producción",
+    badges: ["Café en producción"],
     operacion: "Venta",
     summary: "Finca de café de 27,000 m² (39,000 v²) en Jayaque, a orilla de calle pavimentada, con vista espectacular a la ciudad. Cultivo en…",
     description:
@@ -692,7 +694,7 @@ const listings = [
     title: "2 manzanas con vista al Lago de Coatepeque",
     price: 365000,
     location: "Coatepeque",
-    badge: "Vista al lago",
+    badges: ["Vista al lago"],
     operacion: "Venta",
     summary: "Terreno de 2 manzanas con vista espectacular al Lago de Coatepeque, en Coatepeque, Santa Ana, en dirección al Cerro Verde y cerca del…",
     description:
@@ -757,7 +759,7 @@ const listings = [
     title: "Polaris RZR 4 PRO Turbo 1000 en venta — El Salvador",
     price: 29500,
     location: "Santa Tecla",
-    badge: "Bajo kilometraje",
+    badges: ["Bajo kilometraje"],
     operacion: "Venta",
     summary: "UTV/Buggy Polaris RZR 4 PRO importado, en estado impecable y listo para rodar. Ideal para off-road, montaña y playa. $29,500 (no se aceptan…",
     description:
@@ -799,6 +801,7 @@ const listings = [
     title: "Ford F-150 2022 4x4 en venta — El Salvador",
     price: 38000,
     location: "Coordinar por WhatsApp",
+    badges: ["4x4"],
     operacion: "Venta",
     summary: "Pick-up Ford F-150 modelo 2022 con tracción 4x4, en excelente estado. Ideal para trabajo pesado y uso familiar.",
     description:
@@ -839,7 +842,7 @@ const listings = [
     title: "Audi Q3 S Line 2018 Quattro 4x4",
     price: 16500,
     location: "Coordinar por WhatsApp",
-    badge: "Importado de EE.UU.",
+    badges: ["Importado de EE.UU.", "4x4"],
     operacion: "Venta",
     summary: "SUV Audi Q3 S Line 2018 con tracción Quattro (4x4), importada de Estados Unidos y a toda revisión mecánica profesional. Lujo europeo súper…",
     description:
@@ -860,7 +863,7 @@ const listings = [
     title: "Mazda 3 2016 en venta — El Salvador",
     price: 7900,
     location: "Coordinar por WhatsApp",
-    badge: "Con financiamiento",
+    badges: ["Con financiamiento"],
     operacion: "Venta",
     summary: "Sedán Mazda 3 modelo 2016 en buen estado, deportivo y económico. Con opción de financiamiento. $7,900 Financiamiento: Disponible — prima…",
     description:
@@ -881,7 +884,7 @@ const listings = [
     title: "Nissan Frontier 2021 King Cab",
     price: 13500,
     location: "Coordinar por WhatsApp",
-    badge: "Con financiamiento",
+    badges: ["Con financiamiento"],
     operacion: "Venta",
     summary: "Pick-up Nissan Frontier 2021 cabina King Cab en excelente estado. Ideal para trabajo y uso diario. Con opción de financiamiento. $13,500…",
     description:
@@ -903,7 +906,7 @@ const listings = [
     title: "Mitsubishi Outlander 2020 en venta — El Salvador",
     price: 13500,
     location: "Coordinar por WhatsApp",
-    badge: "Con financiamiento",
+    badges: ["Con financiamiento"],
     operacion: "Venta",
     summary: "SUV Mitsubishi Outlander modelo 2020 en excelente estado. Amplio, cómodo y seguro, ideal para familia. Con opción de financiamiento.…",
     description:
@@ -924,7 +927,7 @@ const listings = [
     title: "Hyundai Kona AWD (4x4) 2023 en venta — El Salvador",
     price: 15500,
     location: "Coordinar por WhatsApp",
-    badge: "Con financiamiento",
+    badges: ["Con financiamiento", "AWD"],
     operacion: "Venta",
     summary: "SUV compacto Hyundai Kona con tracción integral AWD, modelo 2023 en excelente estado. Moderno y tecnológico. Con opción de financiamiento.…",
     description:
@@ -945,7 +948,7 @@ const listings = [
     title: "Mitsubishi L200 2013 en venta — El Salvador",
     price: 20000,
     location: "Coordinar por WhatsApp",
-    badge: "Nunca chocado",
+    badges: ["Nunca chocado"],
     operacion: "Venta",
     summary: "Pick-up Mitsubishi L200 Sportero 2013, de agencia y nunca chocado. Resistente y confiable, ideal para trabajo, finca y uso diario.",
     description:

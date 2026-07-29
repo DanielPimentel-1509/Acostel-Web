@@ -34,7 +34,7 @@ function cardHtml(listing) {
       <a href="p/${encodeURIComponent(listing.id)}/" class="card-link">
         <div class="card-media"${listing.video ? ` data-video="${listing.video}"` : ""}>
           <img src="${cover}" alt="${listing.title}" loading="lazy">
-          ${listing.badge ? `<span class="card-badge">${listing.badge}</span>` : ""}
+          ${listing.badges && listing.badges.length ? `<div class="card-badges">${listing.badges.map((b) => `<span class="card-badge">${b}</span>`).join("")}</div>` : ""}
           <span class="card-type">${listing.type === "propiedad" ? "Propiedad" : "Vehículo"}</span>
           ${listing.video ? `<span class="card-play" aria-hidden="true">▶</span>` : ""}
         </div>
@@ -136,7 +136,7 @@ function initReveals() {
 function featuredCards(type, count) {
   return listings
     .filter((item) => item.type === type)
-    .sort((a, b) => (b.badge ? 1 : 0) - (a.badge ? 1 : 0))
+    .sort((a, b) => (b.badges && b.badges.length ? 1 : 0) - (a.badges && a.badges.length ? 1 : 0))
     .slice(0, count);
 }
 
@@ -170,7 +170,7 @@ function initShowcase() {
 
   const items = listings
     .filter((item) => item.type === "propiedad" && item.images && item.images.length)
-    .sort((a, b) => (b.badge ? 1 : 0) - (a.badge ? 1 : 0))
+    .sort((a, b) => (b.badges && b.badges.length ? 1 : 0) - (a.badges && a.badges.length ? 1 : 0))
     .slice(0, 10);
   if (!items.length) {
     track.closest(".showcase")?.remove();
