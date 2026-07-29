@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo — Alquiler vacacional | Pimtel</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="images/site/favicon-icon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .demo-banner {
+    background: #B4923F;
+    color: #000;
+    text-align: center;
+    padding: 10px 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+  }
+  .demo-section { padding: 60px 0 90px; }
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    margin-top: 28px;
+  }
+  .demo-note {
+    max-width: 640px;
+    margin: 10px 0 0;
+    color: var(--color-gray-dark);
+    font-size: 0.95rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">🔒 VISTA PREVIA INTERNA — no publicada, no indexada, con datos de ejemplo. Solo para revisión.</div>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="brand-wordmark">PIMT<span class="e">E</span>L</span>
+      <img src="images/site/logo-icon.png" alt="" class="brand-icon">
+      <span class="logo-tagline">Bienes Raíces &amp; Vehículos</span>
+    </a>
+  </div>
+</header>
+
+<section class="demo-section">
+  <div class="container">
+    <span class="section-label">Vista previa — Alquiler vacacional</span>
+    <h2 class="section-title">Ranchos y villas por noche</h2>
+    <p class="demo-note">Así se vería una futura sección de alquiler vacacional (ranchos, villas, casas de descanso por noche o fin de semana) usando el mismo estilo de tarjeta que el resto del sitio. Las dos fichas de abajo son un <strong>ejemplo</strong> armado sobre fotos reales de propiedades que hoy están en venta — no son una oferta de alquiler real.</p>
+
+    <div class="demo-grid">
+      <article class="card reveal">
+        <a href="#" class="card-link" onclick="return false;">
+          <div class="card-media">
+            <img src="images/listings/jose/01.jpg" alt="Rancho de ejemplo en Lourdes Colón" loading="lazy">
+            <div class="card-badges"><span class="card-badge">Ejemplo</span></div>
+            <span class="card-type">Alquiler vacacional</span>
+          </div>
+          <div class="card-body">
+            <span class="card-price">$65/noche</span>
+            <span class="card-title">Rancho en Lourdes Colón</span>
+            <span class="card-location">Colón</span>
+            <div class="card-specs">
+              <span>3 hab.</span>
+              <span>1 baño</span>
+              <span>Cochera</span>
+            </div>
+            <span class="card-cta">Ver detalle <span class="arrow">→</span></span>
+          </div>
+        </a>
+      </article>
+
+      <article class="card reveal">
+        <a href="#" class="card-link" onclick="return false;">
+          <div class="card-media">
+            <img src="images/listings/cona/01.jpg" alt="Villa de ejemplo en El Conacaste" loading="lazy">
+            <div class="card-badges"><span class="card-badge">Ejemplo</span></div>
+            <span class="card-type">Alquiler vacacional</span>
+          </div>
+          <div class="card-body">
+            <span class="card-price">$120/noche</span>
+            <span class="card-title">Villa en El Conacaste</span>
+            <span class="card-location">Colón</span>
+            <div class="card-specs">
+              <span>3 hab.</span>
+              <span>2 baños</span>
+              <span>Jardín privado</span>
+            </div>
+            <span class="card-cta">Ver detalle <span class="arrow">→</span></span>
+          </div>
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>Vista previa interna — Pimtel</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-revealed"));
+</script>
+</body>
+</html>
