@@ -372,7 +372,6 @@ ${jsonLd(listing)}
         <ul>
           <li><a href="#" id="footer-whatsapp-link">WhatsApp</a></li>
           <li><a href="tel:+50361968521">+503 6196 8521</a></li>
-          <li><a href="mailto:bienesyraicesacsotel@gmail.com">bienesyraicesacsotel@gmail.com</a></li>
           <li><span>El Salvador</span></li>
         </ul>
       </div>
