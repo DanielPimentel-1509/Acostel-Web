@@ -228,6 +228,7 @@ function initCatalogView(section) {
   const type = section.dataset.type;
   const grid = section.querySelector(".js-catalog-grid");
   const countEl = section.querySelector(".js-catalog-count");
+  const searchEl = section.querySelector(".js-filter-search");
   const locationEl = section.querySelector(".js-filter-location");
   const minEl = section.querySelector(".js-filter-min");
   const maxEl = section.querySelector(".js-filter-max");
@@ -246,11 +247,13 @@ function initCatalogView(section) {
   }
 
   const render = () => {
+    const search = searchEl ? searchEl.value.trim().toLowerCase() : "";
     const location = locationEl ? locationEl.value : "";
     const priceMin = minEl && minEl.value !== "" ? Number(minEl.value) : null;
     const priceMax = maxEl && maxEl.value !== "" ? Number(maxEl.value) : null;
 
     const filtered = items.filter((item) => {
+      if (search && !`${item.title} ${item.location}`.toLowerCase().includes(search)) return false;
       if (location && item.location !== location) return false;
       if (priceMin !== null && item.price < priceMin) return false;
       if (priceMax !== null && item.price > priceMax) return false;
@@ -266,11 +269,13 @@ function initCatalogView(section) {
     revealInView(grid);
   };
 
+  if (searchEl) searchEl.addEventListener("input", render);
   if (locationEl) locationEl.addEventListener("change", render);
   if (minEl) minEl.addEventListener("input", render);
   if (maxEl) maxEl.addEventListener("input", render);
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
+      if (searchEl) searchEl.value = "";
       if (locationEl) locationEl.value = "";
       if (minEl) minEl.value = "";
       if (maxEl) maxEl.value = "";

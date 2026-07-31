@@ -420,6 +420,29 @@ h1, h2, h3, h4 {
   min-width: 160px;
 }
 
+.filter-field--search {
+  flex: 1 1 220px;
+  min-width: 200px;
+}
+
+.search-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-wrap .search-icon {
+  position: absolute;
+  left: 10px;
+  color: var(--color-gray-dark);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.search-input-wrap input {
+  width: 100%;
+}
+
 .filter-field label {
   font-size: 0.74rem;
   font-weight: 600;
@@ -444,6 +467,10 @@ h1, h2, h3, h4 {
 .filter-field input:focus {
   outline: none;
   border-color: var(--color-gold);
+}
+
+.search-input-wrap input {
+  padding-left: 32px;
 }
 
 .filter-clear {
