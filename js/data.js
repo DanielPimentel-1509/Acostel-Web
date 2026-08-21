@@ -51,28 +51,6 @@ const listings = [
     video: "images/listings/copa/video.mp4",
   },
   {
-    id: "prop-clou",
-    type: "propiedad",
-    title: "Casa nueva a estrenar en Lourdes Colón",
-    price: 77000,
-    location: "Colón",
-    badges: ["Acepta FSV"],
-    operacion: "Venta",
-    summary: "Casa nueva a estrenar en Colonia Las Margaritas, Lourdes Colón, La Libertad. Ubicada a solo 5 minutos de Metrocentro Lourdes, es una…",
-    description:
-      "Casa nueva a estrenar en Colonia Las Margaritas, Lourdes Colón, La Libertad. Ubicada a solo 5 minutos de Metrocentro Lourdes, es una excelente opción para tu primera vivienda o para inversión. Precio: $77,000. Se aceptan trámites bancarios, Fondo Social para la Vivienda y pago de contado. Colonia Las Margaritas, Lourdes Colón, La Libertad, El Salvador. A 5 minutos de Metrocentro Lourdes, zona de alta plusvalía y crecimiento.",
-    specs: {
-      habitaciones: 3,
-      banos: 1,
-      areaConstruccion: "—",
-      areaTerreno: "161 m² / 230 v²",
-      parqueos: "2",
-    },
-    features: ["161 m² de terreno (7 × 23 m / 230 v²)", "3 habitaciones amplias", "1 baño completo", "Sala espaciosa y cocina moderna", "Cochera techada", "Agua y luz ya instaladas", "Acceso desde dos calles"],
-    images: ["images/listings/jose/01.jpg", "images/listings/jose/02.jpg", "images/listings/jose/03.jpg", "images/listings/jose/04.jpg", "images/listings/jose/05.jpg", "images/listings/jose/06.jpg", "images/listings/jose/07.jpg", "images/listings/jose/08.jpg", "images/listings/jose/09.jpg", "images/listings/jose/10.jpg", "images/listings/jose/11.jpg", "images/listings/jose/12.jpg"],
-    video: "images/listings/jose/video.mp4",
-  },
-  {
     id: "prop-lour1",
     type: "propiedad",
     title: "Casa nueva en Lourdes Colón — El Conacaste",
