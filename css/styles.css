@@ -165,7 +165,7 @@ h1, h2, h3, h4 {
   gap: 10px;
 }
 
-.brand-icon { height: 14px; width: auto; display: block; }
+.brand-icon { height: 34px; width: auto; display: block; }
 
 .brand-wordmark {
   font-family: 'DM Sans', var(--font-body);
@@ -181,13 +181,13 @@ h1, h2, h3, h4 {
 
 @media (max-width: 640px) {
   .logo { gap: 5px; }
-  .logo .brand-icon { height: 10px; }
+  .logo .brand-icon { height: 26px; }
   .logo .brand-wordmark { font-size: 1.2rem; }
   .header-actions { margin-left: 12px; }
 }
 
 .footer-logo-row { display: flex; align-items: center; gap: 8px; }
-.footer-brand .brand-icon { height: 13px; }
+.footer-brand .brand-icon { height: 30px; }
 .footer-brand .brand-wordmark { font-size: 1.3rem; }
 
 .logo-tagline {
