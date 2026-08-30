@@ -729,6 +729,27 @@ const listings = [
     images: ["images/listings/copa/02.jpg", "images/listings/copa/01.jpg", "images/listings/copa/03.jpg", "images/listings/copa/04.jpg", "images/listings/copa/05.jpg"],
     video: "images/listings/copa/video.mp4",
   },
+  {
+    id: "prop-cverdes2",
+    type: "propiedad",
+    title: "Casa totalmente remodelada en Campos Verdes 2, Lourdes Colón",
+    price: 69000,
+    location: "Lourdes Colón",
+    badges: ["Remodelada"],
+    operacion: "Venta",
+    summary: "Casa totalmente remodelada en Campos Verdes 2, Lourdes Colón. Acabados modernos, techo más alto para un ambiente más fresco, lista para entrar…",
+    description:
+      "Casa totalmente remodelada en Campos Verdes 2, Lourdes Colón. 5 m de ancho por 12.50 m de largo. 2 habitaciones, sala, comedor, cocina, 1 baño completo, cochera para 1 vehículo, terraza, patio techado, lavadero y tendedero, jardincito. Techo más alto para un ambiente más fresco y acabados modernos. $69,000.",
+    specs: {
+      habitaciones: 2,
+      banos: 1,
+      areaConstruccion: "—",
+      areaTerreno: "5 x 12.50 m",
+      parqueos: "1",
+    },
+    features: ["5 m de ancho por 12.50 m de largo", "2 habitaciones", "Sala y comedor", "Cocina", "1 baño completo", "Cochera para 1 vehículo", "Terraza y patio techado", "Lavadero y tendedero", "Jardincito", "Techo más alto — ambiente más fresco", "Acabados modernos"],
+    images: ["images/listings/cverdes2/01.jpg", "images/listings/cverdes2/02.jpg", "images/listings/cverdes2/03.jpg", "images/listings/cverdes2/04.jpg", "images/listings/cverdes2/05.jpg", "images/listings/cverdes2/06.jpg"],
+  },
 
   // ---------------- VEHÍCULOS ----------------
   {
