@@ -753,6 +753,27 @@ const listings = [
 
   // ---------------- VEHÍCULOS ----------------
   {
+    id: "veh-npfront2021",
+    type: "vehiculo",
+    title: "Nissan Frontier NP300 2021 4x4 — Turbo diésel",
+    price: 26000,
+    location: "Coordinar por WhatsApp",
+    badges: ["4x4"],
+    operacion: "Venta",
+    summary: "Nissan Frontier NP300 2021, estándar 4x4, turbo diésel, de agencia. Un solo dueño, 137,000 km recorridos. Rines especiales, aire acondicionado…",
+    description:
+      "Nissan Frontier NP300 2021, estándar 4x4, turbo diésel, de agencia. Un solo dueño con 137,000 kilómetros recorridos. Rines especiales de lujo, aire acondicionado, pantalla de navegación, llantas en muy buen estado, protector de cama y vidrios eléctricos. Venta directa cash o al crédito, no se aceptan cambios. $26,000.",
+    specs: {
+      anio: 2021,
+      kilometraje: "137,000 km",
+      transmision: "Estándar",
+      combustible: "Diésel",
+      motor: "Turbo diésel",
+    },
+    features: ["Un solo dueño, 137,000 km recorridos", "Estándar, 4x4", "Rines especiales de lujo", "Aire acondicionado", "Pantalla de navegación", "Protector de cama", "Vidrios eléctricos", "Llantas en muy buen estado"],
+    images: ["images/listings/npfront2021/01.jpg", "images/listings/npfront2021/02.jpg", "images/listings/npfront2021/03.jpg", "images/listings/npfront2021/04.jpg", "images/listings/npfront2021/05.jpg", "images/listings/npfront2021/06.jpg", "images/listings/npfront2021/07.jpg", "images/listings/npfront2021/08.jpg", "images/listings/npfront2021/09.jpg", "images/listings/npfront2021/10.jpg", "images/listings/npfront2021/11.jpg"],
+  },
+  {
     id: "veh-cfmo2020",
     type: "vehiculo",
     title: "Cuadrimoto CF Moto 2020 en venta — El Salvador",
