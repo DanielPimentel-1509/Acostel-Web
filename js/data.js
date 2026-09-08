@@ -773,6 +773,27 @@ const listings = [
 
   // ---------------- VEHÍCULOS ----------------
   {
+    id: "veh-pathsl2025",
+    type: "vehiculo",
+    title: "Nissan Pathfinder SL 2025 — Línea nueva, 3 filas, full cuero",
+    price: 36000,
+    location: "Coordinar por WhatsApp",
+    badges: ["Línea nueva"],
+    operacion: "Venta",
+    summary: "Nissan Pathfinder SL línea nueva 2025, 3 filas de asientos, full cuero y techo panorámico, 41,000 millas recorridas. Rines súper especiales de…",
+    description:
+      "Nissan Pathfinder SL línea nueva 2025, 3 filas de asientos, full cuero y techo panorámico, 41,000 millas recorridas. Tapicería en full cuero, rines súper especiales de lujo, triple aire acondicionado. Cero detalles, a toda revisión mecánica. Se brinda garantía de 6 meses. $36,000.",
+    specs: {
+      anio: 2025,
+      kilometraje: "41,000 millas",
+      transmision: "Automática",
+      combustible: "Gasolina",
+      motor: "—",
+    },
+    features: ["Línea nueva, 3 filas de asientos", "Full cuero y techo panorámico", "41,000 millas recorridas", "Rines súper especiales de lujo", "Triple aire acondicionado", "Garantía de 6 meses"],
+    images: ["images/listings/pathsl2025/01.jpg", "images/listings/pathsl2025/02.jpg", "images/listings/pathsl2025/03.jpg", "images/listings/pathsl2025/04.jpg", "images/listings/pathsl2025/05.jpg", "images/listings/pathsl2025/06.jpg", "images/listings/pathsl2025/07.jpg", "images/listings/pathsl2025/08.jpg", "images/listings/pathsl2025/09.jpg", "images/listings/pathsl2025/10.jpg"],
+  },
+  {
     id: "veh-frontpro4x2025",
     type: "vehiculo",
     title: "Nissan Frontier PRO-4X 2025 — Línea nueva 4x4",
