@@ -773,6 +773,27 @@ const listings = [
 
   // ---------------- VEHÍCULOS ----------------
   {
+    id: "veh-4runnertrd2024",
+    type: "vehiculo",
+    title: "Toyota 4Runner TRD Off Road Premium 2024 4x4 — Importada de EE.UU.",
+    price: 44000,
+    location: "Coordinar por WhatsApp",
+    badges: ["4x4", "Importado de EE.UU."],
+    operacion: "Venta",
+    summary: "Toyota 4Runner TRD Off Road Premium 2024, importada de Estados Unidos, 4x4 automática, 34,000 millas recorridas. Rines especiales de lujo, doble…",
+    description:
+      "Toyota 4Runner TRD Off Road Premium 2024, importada de Estados Unidos, 4x4 automática, 34,000 millas recorridas. Rines especiales de lujo, doble aire acondicionado, tapicería en cuero. Motor 4.0, 6 cilindros, gasolina. Cero detalles, a toda revisión mecánica. Se recibe vehículo a cuenta a menor valor. $44,000.",
+    specs: {
+      anio: 2024,
+      kilometraje: "34,000 millas",
+      transmision: "Automática",
+      combustible: "Gasolina",
+      motor: "4.0, 6 cilindros",
+    },
+    features: ["Importada de Estados Unidos, 4x4 automática", "34,000 millas recorridas", "Rines especiales de lujo", "Doble aire acondicionado", "Tapicería en cuero", "Se recibe vehículo a cuenta a menor valor"],
+    images: ["images/listings/4runnertrd2024/01.jpg", "images/listings/4runnertrd2024/02.jpg", "images/listings/4runnertrd2024/03.jpg", "images/listings/4runnertrd2024/04.jpg", "images/listings/4runnertrd2024/05.jpg", "images/listings/4runnertrd2024/06.jpg", "images/listings/4runnertrd2024/07.jpg", "images/listings/4runnertrd2024/08.jpg", "images/listings/4runnertrd2024/09.jpg", "images/listings/4runnertrd2024/10.jpg", "images/listings/4runnertrd2024/11.jpg"],
+  },
+  {
     id: "veh-pathsl2025",
     type: "vehiculo",
     title: "Nissan Pathfinder SL 2025 — Línea nueva, 3 filas, full cuero",
