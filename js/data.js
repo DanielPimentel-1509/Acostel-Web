@@ -1269,21 +1269,21 @@ const listings = [
   {
     id: "veh-outl2022",
     type: "vehiculo",
-    title: "Mitsubishi Outlander 2022 4x2",
-    price: 22000,
+    title: "Mitsubishi Outlander SE 2022 4x2 — Color negro, 3 filas",
+    price: 22500,
     location: "Coordinar por WhatsApp",
     operacion: "Venta",
-    summary: "Mitsubishi Outlander línea nueva 2022, 4x2, 3 asientos, súper económica y espaciosa, importada de Estados Unidos, 74,000 millas recorridas.…",
+    summary: "Mitsubishi Outlander SE línea nueva 2022, color negro, 4x2, 3 filas de asientos, súper económica y espaciosa, importada de Estados Unidos, 74,000…",
     description:
-      "Mitsubishi Outlander línea nueva 2022, 4x2, 3 asientos, súper económica y espaciosa, importada de Estados Unidos, 74,000 millas recorridas. Automática, encendido de botón con llave de proximidad, pantalla de CarPlay y Android Auto. $22,000, venta cash o crédito con EasyCar, 40% de prima.",
+      "Mitsubishi Outlander SE línea nueva 2022, color negro, 4x2, 3 filas de asientos, súper económica y espaciosa, importada de Estados Unidos, 74,000 millas recorridas. Automática, encendido de botón con llave de proximidad, pantalla de CarPlay y Android Auto. $22,500, venta cash o crédito con EasyCar, 40% de prima, no se acepta vehículo a cuenta.",
     specs: {
       anio: "2022",
       kilometraje: "74,000 millas",
       transmision: "Automática",
       combustible: "Gasolina",
-      motor: "—",
+      motor: "2.4, gasolina",
     },
-    features: ["74,000 millas, importada de EE.UU.", "CarPlay y Android Auto", "Encendido de botón con llave de proximidad"],
+    features: ["Color negro, 3 filas de asientos", "74,000 millas, importada de EE.UU.", "CarPlay y Android Auto", "Encendido de botón con llave de proximidad"],
     images: ["images/listings/outl2022/01.jpg", "images/listings/outl2022/02.jpg", "images/listings/outl2022/03.jpg", "images/listings/outl2022/04.jpg", "images/listings/outl2022/05.jpg", "images/listings/outl2022/06.jpg", "images/listings/outl2022/07.jpg", "images/listings/outl2022/08.jpg", "images/listings/outl2022/09.jpg", "images/listings/outl2022/10.jpg", "images/listings/outl2022/11.jpg"],
   },
   {
