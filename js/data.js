@@ -753,6 +753,27 @@ const listings = [
 
   // ---------------- VEHÍCULOS ----------------
   {
+    id: "veh-broncosport2022",
+    type: "vehiculo",
+    title: "Ford Bronco Sport Outerbanks 2022 4x4 — Importada de EE.UU.",
+    price: 21950,
+    location: "Coordinar por WhatsApp",
+    badges: ["4x4", "Importado de EE.UU."],
+    operacion: "Venta",
+    summary: "Ford Bronco Sport Outerbanks 2022 4x4, importada de Estados Unidos, apenas 1,400 millas recorridas, como nueva. Sunroof, tapicería con detalles…",
+    description:
+      "Ford Bronco Sport Outerbanks 2022 4x4, importada de Estados Unidos, apenas 1,400 millas recorridas, como nueva. Sunroof, tapicería con detalles de cuero y tela, pantalla de navegación táctil, rines súper especiales de lujo. Motor 1.5 turbo de 3 cilindros, gasolina. Full extras. Venta cash de un solo pago, no se aceptan cambios. También financiamiento con 40% de prima ($9,200) y cuotas aproximadas de $380 por 5 años. $21,950.",
+    specs: {
+      anio: 2022,
+      kilometraje: "1,400 millas",
+      transmision: "—",
+      combustible: "Gasolina",
+      motor: "1.5 turbo, 3 cilindros",
+    },
+    features: ["Importada de Estados Unidos, apenas 1,400 millas — como nueva", "Sunroof", "Tapicería con detalles de cuero y tela", "Pantalla de navegación táctil", "Rines súper especiales de lujo", "Full extras"],
+    images: ["images/listings/broncosport2022/01.jpg", "images/listings/broncosport2022/02.jpg", "images/listings/broncosport2022/03.jpg", "images/listings/broncosport2022/04.jpg", "images/listings/broncosport2022/05.jpg", "images/listings/broncosport2022/06.jpg", "images/listings/broncosport2022/07.jpg", "images/listings/broncosport2022/08.jpg", "images/listings/broncosport2022/09.jpg", "images/listings/broncosport2022/10.jpg", "images/listings/broncosport2022/11.jpg"],
+  },
+  {
     id: "veh-npfront2021",
     type: "vehiculo",
     title: "Nissan Frontier NP300 2021 4x4 — Turbo diésel",
