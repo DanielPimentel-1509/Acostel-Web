@@ -750,6 +750,26 @@ const listings = [
     features: ["5 m de ancho por 12.50 m de largo", "2 habitaciones", "Sala y comedor", "Cocina", "1 baño completo", "Cochera para 1 vehículo", "Terraza y patio techado", "Lavadero y tendedero", "Jardincito", "Techo más alto — ambiente más fresco", "Acabados modernos"],
     images: ["images/listings/cverdes2/01.jpg", "images/listings/cverdes2/02.jpg", "images/listings/cverdes2/03.jpg", "images/listings/cverdes2/04.jpg", "images/listings/cverdes2/05.jpg", "images/listings/cverdes2/06.jpg"],
   },
+  {
+    id: "prop-papalon",
+    type: "propiedad",
+    title: "Terreno de 200 m² en El Papalón, Santa Rosa de Lima",
+    price: 44000,
+    location: "Santa Rosa de Lima, La Unión",
+    operacion: "Venta",
+    summary: "Terreno de 10 x 20 m (200 m²) en El Papalón, Santa Rosa de Lima, La Unión. Ideal para construir casa. A 300 metros de la carretera principal…",
+    description:
+      "Terreno de 10 x 20 m (200 m²) en El Papalón, Santa Rosa de Lima, La Unión. Ideal para construir casa. Con factibilidad de luz eléctrica y agua potable, a 300 metros de la carretera principal, excelente ubicación. $44,000.",
+    specs: {
+      habitaciones: "—",
+      banos: "—",
+      areaConstruccion: "—",
+      areaTerreno: "200 m² (10 x 20 m)",
+      parqueos: "—",
+    },
+    features: ["200 m² (10 x 20 m)", "Ideal para construir casa", "Factibilidad de luz eléctrica y agua potable", "A 300 metros de la carretera principal", "Excelente ubicación"],
+    images: ["images/listings/papalon/01.jpg", "images/listings/papalon/02.jpg", "images/listings/papalon/03.jpg", "images/listings/papalon/04.jpg", "images/listings/papalon/05.jpg"],
+  },
 
   // ---------------- VEHÍCULOS ----------------
   {
