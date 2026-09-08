@@ -1249,13 +1249,13 @@ const listings = [
   {
     id: "veh-rogue2023",
     type: "vehiculo",
-    title: "Nissan Rogue 2023 — Full extras",
-    price: 18900,
+    title: "Nissan Rogue 2023 4x2 — Full extras",
+    price: 18000,
     location: "Coordinar por WhatsApp",
     operacion: "Venta",
-    summary: "Nissan Rogue línea nueva 2023, 4x4 full extras, motor 1.5 turbo súper económico y espaciosa, todas bolsas de aire buenas. $18,900, al crédito con 40%…",
+    summary: "Nissan Rogue línea nueva 2023, 4x2 full extras, motor 1.5 turbo súper económico y espaciosa, todas bolsas de aire buenas. $18,000, al crédito con 40%…",
     description:
-      "Nissan Rogue línea nueva 2023, 4x4 full extras, motor 1.5 turbo súper económico y espaciosa, todas bolsas de aire buenas. $18,900, al crédito con 40% de prima en efectivo.",
+      "Nissan Rogue línea nueva 2023, 4x2 full extras, motor 1.5 turbo súper económico y espaciosa, todas bolsas de aire buenas. $18,000, al crédito con 40% de prima en efectivo o al contado.",
     specs: {
       anio: "2023",
       kilometraje: "—",
