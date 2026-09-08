@@ -773,6 +773,27 @@ const listings = [
 
   // ---------------- VEHÍCULOS ----------------
   {
+    id: "veh-frontpro4x2025",
+    type: "vehiculo",
+    title: "Nissan Frontier PRO-4X 2025 — Línea nueva 4x4",
+    price: 33500,
+    location: "Coordinar por WhatsApp",
+    badges: ["4x4", "Línea nueva"],
+    operacion: "Venta",
+    summary: "Nissan Frontier PRO-4X 2025, línea nueva, 4x4 automático, full extras. Rines súper especiales de lujo, doble aire acondicionado, encendido de…",
+    description:
+      "Nissan Frontier PRO-4X 2025, línea nueva, 4x4 automático, full extras. Rines súper especiales de lujo, doble aire acondicionado, encendido de botón con llave de proximidad, pantalla de navegación táctil, sonido premium, protector de cama. Motor 3.8, 6 cilindros, gasolina. Cero detalles, a toda revisión mecánica. $33,500.",
+    specs: {
+      anio: 2025,
+      kilometraje: "—",
+      transmision: "Automática",
+      combustible: "Gasolina",
+      motor: "3.8, 6 cilindros",
+    },
+    features: ["Línea nueva, 4x4 automático", "Rines súper especiales de lujo", "Doble aire acondicionado", "Encendido de botón con llave de proximidad", "Pantalla de navegación táctil", "Sonido premium", "Protector de cama"],
+    images: ["images/listings/frontpro4x2025/01.jpg", "images/listings/frontpro4x2025/02.jpg", "images/listings/frontpro4x2025/03.jpg", "images/listings/frontpro4x2025/04.jpg", "images/listings/frontpro4x2025/05.jpg", "images/listings/frontpro4x2025/06.jpg", "images/listings/frontpro4x2025/07.jpg", "images/listings/frontpro4x2025/08.jpg", "images/listings/frontpro4x2025/09.jpg", "images/listings/frontpro4x2025/10.jpg", "images/listings/frontpro4x2025/11.jpg"],
+  },
+  {
     id: "veh-broncosport2022",
     type: "vehiculo",
     title: "Ford Bronco Sport Outerbanks 2022 4x4 — Importada de EE.UU.",
