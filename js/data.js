@@ -30,6 +30,26 @@
 const listings = [
   // ---------------- PROPIEDADES ----------------
   {
+    id: "prop-nsanmiguel",
+    type: "propiedad",
+    title: "Casa en Residencial Nueva San Miguel — Venta de derecho o traspaso total",
+    price: 49000,
+    location: "Residencial Nueva San Miguel",
+    operacion: "Venta",
+    summary: "Casa de 8 x 25 metros en Residencial Nueva San Miguel, 2 amplias habitaciones, 2 baños completos, parqueo para 3 vehículos, patio con jardín,…",
+    description:
+      "Casa de 8 x 25 metros en Residencial Nueva San Miguel. 2 amplias habitaciones, 2 baños completos, parqueo para 3 vehículos, sala, comedor, cocina, patio con jardín, área de lavandería. Residencial privada con piscina y parques recreativos. Se vende el derecho de la casa en $49,000 (valor total $173,000, faltan 13 años y 6 meses por pagar, mensualidad de $1,260), o se vende en su totalidad.",
+    specs: {
+      habitaciones: 2,
+      banos: 2,
+      areaConstruccion: "—",
+      areaTerreno: "8 x 25 m",
+      parqueos: 3,
+    },
+    features: ["2 amplias habitaciones, 2 baños completos", "Parqueo para 3 vehículos", "Sala, comedor, cocina, patio con jardín", "Área de lavandería", "Residencial privada con piscina y parques recreativos"],
+    images: ["images/listings/nsanmiguel/01.jpg", "images/listings/nsanmiguel/02.jpg", "images/listings/nsanmiguel/03.jpg", "images/listings/nsanmiguel/04.jpg", "images/listings/nsanmiguel/05.jpg", "images/listings/nsanmiguel/06.jpg", "images/listings/nsanmiguel/07.jpg", "images/listings/nsanmiguel/08.jpg", "images/listings/nsanmiguel/09.jpg", "images/listings/nsanmiguel/10.jpg", "images/listings/nsanmiguel/11.jpg", "images/listings/nsanmiguel/12.jpg"],
+  },
+  {
     id: "prop-copa-2",
     type: "propiedad",
     title: "Lote en Copapayo — Zona con plusvalía",
