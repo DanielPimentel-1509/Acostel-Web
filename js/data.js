@@ -30,6 +30,26 @@
 const listings = [
   // ---------------- PROPIEDADES ----------------
   {
+    id: "prop-marsella2",
+    type: "propiedad",
+    title: "Casa remodelada en Ciudad Marsella",
+    price: 78000,
+    location: "Ciudad Marsella",
+    operacion: "Venta",
+    summary: "Casa remodelada en Ciudad Marsella. 2 habitaciones, espacio para 2 vehículos, baño completo, patio con jardín, lavadero y tendedero, sala…",
+    description:
+      "Casa remodelada en Ciudad Marsella. 2 habitaciones, espacio para 2 vehículos, baño completo, patio con jardín pequeño, lavadero y tendedero, sala comedor, cocina con pantry y desayunador. $78,000.",
+    specs: {
+      habitaciones: 2,
+      banos: 1,
+      areaConstruccion: "—",
+      areaTerreno: "—",
+      parqueos: 2,
+    },
+    features: ["2 habitaciones, baño completo", "Espacio para 2 vehículos", "Patio con jardín pequeño", "Lavadero y tendedero", "Cocina con pantry y desayunador"],
+    images: ["images/listings/marsella2/01.jpg", "images/listings/marsella2/02.jpg", "images/listings/marsella2/03.jpg", "images/listings/marsella2/04.jpg", "images/listings/marsella2/05.jpg", "images/listings/marsella2/06.jpg", "images/listings/marsella2/07.jpg", "images/listings/marsella2/08.jpg", "images/listings/marsella2/09.jpg", "images/listings/marsella2/10.jpg"],
+  },
+  {
     id: "prop-marsella",
     type: "propiedad",
     title: "Casa remodelada en Ciudad Marsella, Quartier 9",
