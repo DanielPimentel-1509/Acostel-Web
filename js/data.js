@@ -30,6 +30,26 @@
 const listings = [
   // ---------------- PROPIEDADES ----------------
   {
+    id: "prop-herradura",
+    type: "propiedad",
+    title: "Terreno plano de 14 x 37 m en San Luis La Herradura, La Paz",
+    price: 45000,
+    location: "San Luis La Herradura, La Paz",
+    operacion: "Venta",
+    summary: "Terreno plano de 14 x 37 metros en San Luis La Herradura, La Paz, a 5 minutos del malecón del Estero de Jaltepeque y a 20 minutos de la playa…",
+    description:
+      "Terreno plano de 14 x 37 metros en San Luis La Herradura, La Paz, a 5 minutos del malecón del Estero de Jaltepeque y a 20 minutos de la playa Costa del Sol. Factibilidad de luz eléctrica y agua potable. A su alrededor hay bancos, hoteles, restaurantes, supermercados y muchos más. $45,000.",
+    specs: {
+      habitaciones: "—",
+      banos: "—",
+      areaConstruccion: "—",
+      areaTerreno: "14 x 37 m (518 m²)",
+      parqueos: "—",
+    },
+    features: ["14 x 37 m, terreno plano", "A 5 minutos del malecón del Estero de Jaltepeque", "A 20 minutos de la playa Costa del Sol", "Factibilidad de luz eléctrica y agua potable", "Cerca de bancos, hoteles, restaurantes y supermercados"],
+    images: ["images/listings/herradura/01.jpg", "images/listings/herradura/02.jpg", "images/listings/herradura/03.jpg", "images/listings/herradura/04.jpg", "images/listings/herradura/05.jpg", "images/listings/herradura/06.jpg", "images/listings/herradura/07.jpg"],
+  },
+  {
     id: "prop-vlourdes",
     type: "propiedad",
     title: "Casa en Residencial Valle Lourdes",
