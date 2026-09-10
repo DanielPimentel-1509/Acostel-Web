@@ -30,6 +30,26 @@
 const listings = [
   // ---------------- PROPIEDADES ----------------
   {
+    id: "prop-istagua",
+    type: "propiedad",
+    title: "Casa de campo en San Martín Istagua, Cuscatlán — A 15 minutos de Suchitoto",
+    price: 98000,
+    location: "San Martín Istagua, Cuscatlán",
+    operacion: "Venta",
+    summary: "Casa de campo en San Martín Istagua, Cuscatlán, a 15 minutos de Suchitoto. 2 amplias habitaciones, amplia sala, comedor, cocina, 2 baños…",
+    description:
+      "Casa de campo en San Martín Istagua, Cuscatlán, a 15 minutos de Suchitoto. 2 amplias habitaciones, amplia sala, comedor, cocina, 2 baños completos, 3 terrazas alrededor de la casa, rodeada de zonas verdes con árboles frutales. 701 varas² (489.7 m²). Cuenta con luz eléctrica y agua potable. $98,000.",
+    specs: {
+      habitaciones: 2,
+      banos: 2,
+      areaConstruccion: "—",
+      areaTerreno: "701 v² (489.7 m²)",
+      parqueos: "—",
+    },
+    features: ["2 amplias habitaciones", "Amplia sala, comedor, cocina", "2 baños completos", "3 terrazas alrededor de la casa", "Rodeada de zonas verdes con árboles frutales", "Luz eléctrica y agua potable"],
+    images: ["images/listings/istagua/01.jpg", "images/listings/istagua/02.jpg", "images/listings/istagua/03.jpg", "images/listings/istagua/04.jpg", "images/listings/istagua/05.jpg", "images/listings/istagua/06.jpg", "images/listings/istagua/07.jpg", "images/listings/istagua/08.jpg", "images/listings/istagua/09.jpg", "images/listings/istagua/10.jpg", "images/listings/istagua/11.jpg", "images/listings/istagua/12.jpg", "images/listings/istagua/13.jpg", "images/listings/istagua/14.jpg"],
+  },
+  {
     id: "prop-tacachico",
     type: "propiedad",
     title: "Terreno con 2 casas completas — Carretera San Juan Opico a San Pablo Tacachico",
