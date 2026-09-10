@@ -30,6 +30,26 @@
 const listings = [
   // ---------------- PROPIEDADES ----------------
   {
+    id: "prop-nlourdesp",
+    type: "propiedad",
+    title: "Casa en Residencial Privada Nuevo Lourdes Poniente",
+    price: 67000,
+    location: "Residencial Nuevo Lourdes Poniente",
+    operacion: "Venta",
+    summary: "Casa lista para habitar en Residencial Privada Nuevo Lourdes Poniente. 2 habitaciones, 1 baño completo, sala, comedor, cocina, patio con…",
+    description:
+      "Casa lista para habitar en Residencial Privada Nuevo Lourdes Poniente. 2 habitaciones, 1 baño completo, sala, comedor, cocina, patio con lavadero y tendedero, espacio para 1 vehículo. Vigilancia las 24 horas. $67,000.",
+    specs: {
+      habitaciones: 2,
+      banos: 1,
+      areaConstruccion: "—",
+      areaTerreno: "—",
+      parqueos: 1,
+    },
+    features: ["Lista para habitar", "2 habitaciones, 1 baño completo", "Sala, comedor, cocina", "Patio con lavadero y tendedero", "Espacio para 1 vehículo", "Vigilancia las 24 horas"],
+    images: ["images/listings/nlourdesp/01.jpg", "images/listings/nlourdesp/02.jpg", "images/listings/nlourdesp/03.jpg", "images/listings/nlourdesp/04.jpg", "images/listings/nlourdesp/05.jpg", "images/listings/nlourdesp/06.jpg", "images/listings/nlourdesp/07.jpg"],
+  },
+  {
     id: "prop-istagua",
     type: "propiedad",
     title: "Casa de campo en San Martín Istagua, Cuscatlán — A 15 minutos de Suchitoto",
