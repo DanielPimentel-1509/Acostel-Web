@@ -1230,12 +1230,12 @@ const listings = [
     id: "veh-front2025",
     type: "vehiculo",
     title: "Nissan Frontier 2025 4x4 — Importada de EE.UU.",
-    price: 33500,
+    price: 31500,
     location: "Coordinar por WhatsApp",
     operacion: "Venta",
     summary: "Nissan Frontier línea nueva 4x4 2025, importada de Estados Unidos, apenas 1,000 millas recorridas, bolsas frontales buenas. Motor 3.8 de 6 cilindros…",
     description:
-      "Nissan Frontier línea nueva 4x4 2025, importada de Estados Unidos, apenas 1,000 millas recorridas, bolsas frontales buenas. Motor 3.8 de 6 cilindros gasolina, rines especiales de lujo, encendido de botón, sonido premium, pantalla de navegación táctil. $33,500, venta únicamente un solo pago cash.",
+      "Nissan Frontier línea nueva 4x4 2025, importada de Estados Unidos, apenas 1,000 millas recorridas, bolsas frontales buenas. Motor 3.8 de 6 cilindros gasolina, rines especiales de lujo, doble aire acondicionado, encendido de botón con llave de proximidad, sonido premium, pantalla grande de navegación táctil. $31,500, venta únicamente un solo pago cash. Se recibe vehículo a cuenta a menor valor de mercado.",
     specs: {
       anio: "2025",
       kilometraje: "1,000 millas",
@@ -1243,7 +1243,7 @@ const listings = [
       combustible: "Gasolina",
       motor: "3.8, 6 cilindros",
     },
-    features: ["Importada de EE.UU., apenas 1,000 millas", "Motor 3.8 V6, rines especiales de lujo", "Encendido de botón, sonido premium, pantalla táctil"],
+    features: ["Importada de EE.UU., apenas 1,000 millas", "Motor 3.8 V6, rines especiales de lujo", "Doble aire acondicionado", "Encendido de botón, sonido premium, pantalla táctil", "Se recibe vehículo a cuenta a menor valor de mercado"],
     images: ["images/listings/front2025/01.jpg", "images/listings/front2025/02.jpg", "images/listings/front2025/03.jpg", "images/listings/front2025/04.jpg", "images/listings/front2025/05.jpg", "images/listings/front2025/06.jpg"],
   },
   {
