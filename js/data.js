@@ -30,6 +30,26 @@
 const listings = [
   // ---------------- PROPIEDADES ----------------
   {
+    id: "prop-vlourdes",
+    type: "propiedad",
+    title: "Casa en Residencial Valle Lourdes",
+    price: 85000,
+    location: "Residencial Valle Lourdes",
+    operacion: "Venta",
+    summary: "Casa de 84.80 m² en Residencial Valle Lourdes. 3 habitaciones con closet cada una, cochera techada para 1 vehículo, baño completo, patio con…",
+    description:
+      "Casa de 84.80 m² en Residencial Valle Lourdes. 3 habitaciones con closet cada una, cochera techada para 1 vehículo, baño completo, patio con lavadero y tendedero, sala, comedor, cocina. $85,000. Se recibe de contado o con financiamiento ya aprobado.",
+    specs: {
+      habitaciones: 3,
+      banos: 1,
+      areaConstruccion: "84.80 m²",
+      areaTerreno: "—",
+      parqueos: 1,
+    },
+    features: ["3 habitaciones con closet cada una", "Cochera techada para 1 vehículo", "Baño completo", "Patio con lavadero y tendedero", "Sala, comedor, cocina"],
+    images: ["images/listings/vlourdes/01.jpg", "images/listings/vlourdes/02.jpg", "images/listings/vlourdes/03.jpg", "images/listings/vlourdes/04.jpg", "images/listings/vlourdes/05.jpg", "images/listings/vlourdes/06.jpg", "images/listings/vlourdes/07.jpg", "images/listings/vlourdes/08.jpg", "images/listings/vlourdes/09.jpg", "images/listings/vlourdes/10.jpg", "images/listings/vlourdes/11.jpg", "images/listings/vlourdes/12.jpg", "images/listings/vlourdes/13.jpg", "images/listings/vlourdes/14.jpg"],
+  },
+  {
     id: "prop-marsella2",
     type: "propiedad",
     title: "Casa remodelada en Ciudad Marsella",
