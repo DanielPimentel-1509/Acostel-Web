@@ -1130,12 +1130,12 @@ const listings = [
     id: "veh-suzgv2024",
     type: "vehiculo",
     title: "Suzuki Grand Vitara 2024 híbrida — De agencia",
-    price: 24554,
+    price: 22000,
     location: "Coordinar por WhatsApp",
     operacion: "Venta",
-    summary: "Suzuki Grand Vitara 2024 de agencia, híbrida, 38,000 km recorridos, garantía de agencia hasta 100,000 km. Motor 1.5 híbrido, techo panorámico,…",
+    summary: "Suzuki Grand Vitara 2024 de agencia, híbrida, 38,000 km recorridos, garantía de agencia hasta 100,000 km. Motor 1.5 híbrido (75 km/galón, sin…",
     description:
-      "Suzuki Grand Vitara 2024 de agencia, híbrida, 38,000 km recorridos, garantía de agencia hasta 100,000 km. Motor 1.5 híbrido, techo panorámico, cargador inalámbrico, asientos en cuero. $24,554, no se aceptan cambios. Crédito solo con Credi Q.",
+      "Suzuki Grand Vitara 2024 de agencia, híbrida, 38,000 km recorridos, garantía de agencia hasta 100,000 km. Motor 1.5 híbrido, 75 km por galón, sin enchufar. Techo panorámico, cargador inalámbrico, asientos en cuero. $22,000, no se aceptan cambios. Al crédito con 20% de prima o de contado, crédito solo con Credi Q.",
     specs: {
       anio: "2024",
       kilometraje: "38,000 km",
@@ -1143,7 +1143,7 @@ const listings = [
       combustible: "Híbrido",
       motor: "1.5 híbrido",
     },
-    features: ["De agencia, garantía hasta 100,000 km", "Techo panorámico, cargador de celular inalámbrico", "Asientos en cuero"],
+    features: ["De agencia, garantía hasta 100,000 km", "Motor híbrido, 75 km por galón, sin enchufar", "Techo panorámico, cargador de celular inalámbrico", "Asientos en cuero"],
     images: ["images/listings/suzgv2024/01.jpg", "images/listings/suzgv2024/02.jpg", "images/listings/suzgv2024/03.jpg", "images/listings/suzgv2024/04.jpg", "images/listings/suzgv2024/05.jpg", "images/listings/suzgv2024/06.jpg", "images/listings/suzgv2024/07.jpg", "images/listings/suzgv2024/08.jpg", "images/listings/suzgv2024/09.jpg", "images/listings/suzgv2024/10.jpg", "images/listings/suzgv2024/11.jpg", "images/listings/suzgv2024/12.jpg"],
   },
   {
