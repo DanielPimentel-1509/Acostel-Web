@@ -30,6 +30,26 @@
 const listings = [
   // ---------------- PROPIEDADES ----------------
   {
+    id: "prop-costasol",
+    type: "propiedad",
+    title: "Terreno plano de 10 x 25 m cerca del desvío a Costa del Sol, La Paz",
+    price: 42000,
+    location: "Departamento de La Paz",
+    operacion: "Venta",
+    summary: "Terreno plano de 10 x 25 metros (250 m²) en el departamento de La Paz, a 1 minuto con 30 segundos del desvío hacia Costa del Sol, justamente a la…",
+    description:
+      "Terreno plano de 10 x 25 metros (250 m²) en el departamento de La Paz, a 1 minuto con 30 segundos del desvío hacia Costa del Sol, justamente a la par de la carretera que lleva hacia Costa del Sol (no está a orilla de calle). Terreno plano, con agua potable y fácil acceso. $42,000, venta cash de un solo pago, precio mínimo $40,000.",
+    specs: {
+      habitaciones: "—",
+      banos: "—",
+      areaConstruccion: "—",
+      areaTerreno: "10 x 25 m (250 m²)",
+      parqueos: "—",
+    },
+    features: ["10 x 25 m (250 m²), terreno plano", "A 1 minuto 30 segundos del desvío a Costa del Sol", "A la par de la carretera hacia Costa del Sol", "Agua potable", "Fácil acceso"],
+    images: ["images/listings/costasol/01.jpg", "images/listings/costasol/02.jpg", "images/listings/costasol/03.jpg", "images/listings/costasol/04.jpg", "images/listings/costasol/05.jpg", "images/listings/costasol/06.jpg", "images/listings/costasol/07.jpg", "images/listings/costasol/08.jpg", "images/listings/costasol/09.jpg", "images/listings/costasol/10.jpg", "images/listings/costasol/11.jpg", "images/listings/costasol/12.jpg"],
+  },
+  {
     id: "prop-nlourdesp",
     type: "propiedad",
     title: "Casa en Residencial Privada Nuevo Lourdes Poniente",
