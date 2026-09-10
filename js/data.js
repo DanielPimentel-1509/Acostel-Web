@@ -1175,7 +1175,7 @@ const listings = [
     operacion: "Venta",
     summary: "Hyundai Kona 2022 importada, 2WD, todas las bolsas de aire buenas, encendido de botón con llave de proximidad, 37,000 millas recorridas. $15,500, o…",
     description:
-      "Hyundai Kona 2022 importada, 2WD, todas las bolsas de aire buenas, encendido de botón con llave de proximidad, 37,000 millas recorridas. $15,500, o crédito con 40% de prima, cuotas aprox. $399/mes por 5 años.",
+      "Hyundai Kona 2022 importada, 2WD, todas las bolsas de aire buenas, encendido de botón con llave de proximidad, 37,000 millas recorridas. $15,500, o crédito con 40% de prima en efectivo, cuotas aprox. $360/mes por 5 años, a través de CreditCar o EasyCar El Salvador.",
     specs: {
       anio: "2022",
       kilometraje: "37,000 millas",
