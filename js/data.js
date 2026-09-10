@@ -30,6 +30,26 @@
 const listings = [
   // ---------------- PROPIEDADES ----------------
   {
+    id: "prop-marsella",
+    type: "propiedad",
+    title: "Casa remodelada en Ciudad Marsella, Quartier 9",
+    price: 88500,
+    location: "Ciudad Marsella",
+    operacion: "Venta",
+    summary: "Casa de un solo nivel en Ciudad Marsella, Quartier 9, con diseño premium, recientemente remodelada y ampliada. 80.29 m² de construcción, 2…",
+    description:
+      "Casa de un solo nivel en Ciudad Marsella, Quartier 9, con diseño premium, recientemente remodelada y ampliada. 80.29 m² de construcción, 2 habitaciones (principal con A/C instalado), sala con A/C y comedor integrados, cocina ampliada con pantry de finos acabados, cielo falso de altura, área de servicio techada con conexiones para lavadora, jardín privado, parqueo para 2 vehículos. Agua 24/7 y seguridad privada con control de acceso las 24 horas. Residencial con casa club, piscinas familiares, canchas de fútbol y baloncesto, juegos infantiles y zonas Pet Friendly. $88,500.",
+    specs: {
+      habitaciones: 2,
+      banos: "—",
+      areaConstruccion: "80.29 m²",
+      areaTerreno: "—",
+      parqueos: 2,
+    },
+    features: ["80.29 m² de construcción, diseño premium, remodelada y ampliada", "Habitación principal con A/C, sala con A/C", "Cocina ampliada con pantry de finos acabados", "Jardín privado, parqueo para 2 vehículos", "Agua 24/7 y seguridad privada 24/7", "Casa club, piscinas, canchas deportivas, zonas Pet Friendly"],
+    images: ["images/listings/marsella/01.jpg", "images/listings/marsella/02.jpg", "images/listings/marsella/03.jpg", "images/listings/marsella/04.jpg", "images/listings/marsella/05.jpg", "images/listings/marsella/06.jpg", "images/listings/marsella/07.jpg", "images/listings/marsella/08.jpg", "images/listings/marsella/09.jpg", "images/listings/marsella/10.jpg", "images/listings/marsella/11.jpg", "images/listings/marsella/12.jpg"],
+  },
+  {
     id: "prop-nsanmiguel",
     type: "propiedad",
     title: "Casa en Residencial Nueva San Miguel — Venta de derecho o traspaso total",
