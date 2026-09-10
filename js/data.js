@@ -30,6 +30,26 @@
 const listings = [
   // ---------------- PROPIEDADES ----------------
   {
+    id: "prop-tacachico",
+    type: "propiedad",
+    title: "Terreno con 2 casas completas — Carretera San Juan Opico a San Pablo Tacachico",
+    price: 217000,
+    location: "Caserío Las Flores, San Pablo Tacachico",
+    operacion: "Venta",
+    summary: "Terreno de 9 x 90 metros con 2 casas completas, a orilla de calle en la carretera de San Juan Opico a San Pablo Tacachico, Caserío Las Flores.…",
+    description:
+      "Terreno de 9 x 90 metros con 2 casas completas, a orilla de calle en la carretera de San Juan Opico a San Pablo Tacachico, Caserío Las Flores. Ideal para negocio. Cada casa tiene 2 habitaciones, espacio para 2 vehículos, sala, comedor, cocina y 1 baño completo, más área de lavadero y tendedero. La primera casa mide 9 x 15 m, con 3 habitaciones, piso cerámico y aire acondicionado. La segunda casa mide 8 x 18 m. Con luz eléctrica, apta para negocio. $217,000.",
+    specs: {
+      habitaciones: 5,
+      banos: 2,
+      areaConstruccion: "—",
+      areaTerreno: "9 x 90 m",
+      parqueos: 4,
+    },
+    features: ["2 casas completas en el mismo terreno", "A orilla de calle, ideal para negocio", "Casa 1: 9x15 m, 3 habitaciones, piso cerámico y A/C", "Casa 2: 8x18 m, 2 habitaciones", "Cada casa con sala, comedor, cocina y baño completo", "Área de lavadero y tendedero, luz eléctrica"],
+    images: ["images/listings/tacachico/01.jpg", "images/listings/tacachico/02.jpg", "images/listings/tacachico/03.jpg", "images/listings/tacachico/04.jpg", "images/listings/tacachico/05.jpg", "images/listings/tacachico/06.jpg", "images/listings/tacachico/07.jpg", "images/listings/tacachico/08.jpg", "images/listings/tacachico/09.jpg", "images/listings/tacachico/10.jpg", "images/listings/tacachico/11.jpg", "images/listings/tacachico/12.jpg", "images/listings/tacachico/13.jpg"],
+  },
+  {
     id: "prop-herradura",
     type: "propiedad",
     title: "Terreno plano de 14 x 37 m en San Luis La Herradura, La Paz",
